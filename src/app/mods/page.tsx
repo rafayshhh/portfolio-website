@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { ModsClientList } from "@/components/sections/ModsClientList";
 import { Gamepad2, Sparkles, ExternalLink, Download } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/socials";
+import { CurseForgeIcon, ModrinthIcon, DiscordIcon } from "@/components/icons/BrandIcons";
 
 export const metadata: Metadata = {
   title: "Minecraft Mods & Plugins — Shhh Brightness Toggle & Utilities",
@@ -59,28 +60,31 @@ export default function ModsPage() {
               href="https://www.curseforge.com/members/rafayshhh/projects"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg bg-[#15151e] hover:bg-red-600/20 text-zinc-200 hover:text-red-400 border border-[#232332] hover:border-red-500/40 transition-all flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-[#15151e] hover:bg-red-600/20 text-zinc-200 hover:text-red-400 border border-[#232332] hover:border-red-500/40 transition-all flex items-center gap-2"
             >
+              <CurseForgeIcon className="w-3.5 h-3.5" />
               <span>CurseForge Profile</span>
-              <ExternalLink className="w-3 h-3 opacity-60" />
+              <ExternalLink className="w-3 h-3 opacity-60 ml-auto" />
             </a>
             <a
               href="https://modrinth.com/user/RafayShhh"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg bg-[#15151e] hover:bg-emerald-950/40 text-zinc-200 hover:text-emerald-400 border border-[#232332] hover:border-emerald-500/40 transition-all flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-[#15151e] hover:bg-emerald-950/40 text-zinc-200 hover:text-emerald-400 border border-[#232332] hover:border-emerald-500/40 transition-all flex items-center gap-2"
             >
+              <ModrinthIcon className="w-3.5 h-3.5" />
               <span>Modrinth Profile</span>
-              <ExternalLink className="w-3 h-3 opacity-60" />
+              <ExternalLink className="w-3 h-3 opacity-60 ml-auto" />
             </a>
             <a
               href={PERSONAL_INFO.discordInvite}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg bg-[#5865F2]/15 text-[#9cb0ff] hover:bg-[#5865F2]/25 border border-[#5865F2]/30 transition-all flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-[#5865F2]/15 text-[#9cb0ff] hover:bg-[#5865F2]/25 border border-[#5865F2]/30 transition-all flex items-center gap-2"
             >
-              <span>Report Issues / Suggestions on Discord</span>
-              <ExternalLink className="w-3 h-3 opacity-60" />
+              <DiscordIcon className="w-3.5 h-3.5" />
+              <span>Community Discord</span>
+              <ExternalLink className="w-3 h-3 opacity-60 ml-auto" />
             </a>
           </div>
         </div>

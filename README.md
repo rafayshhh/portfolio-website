@@ -1,109 +1,110 @@
-# RafayShhh — Developer & Modder Portfolio Platform
+# RafayShhh — Portfolio & Ecosystem
 
-A modern, high-performance personal portfolio website for **RafayShhh** (`rafayshhh.site` / `rafayshhh.website`). Built specifically to showcase **Minecraft mods & plugins**, **native Android applications**, **software projects**, and community links.
+<p align="center">
+  <img src="src/app/icon.svg" width="64" height="64" alt="RafayShhh Logo" />
+</p>
+
+<p align="center">
+  <strong>The official personal portfolio and digital ecosystem of RafayShhh (Muhammad Abdul Rafay).</strong><br>
+  Showcasing high-impact Minecraft mods & plugins, native Android applications, and modern software engineering.
+</p>
+
+<p align="center">
+  <a href="https://rafayshhh.site">Live Website (rafayshhh.site)</a> •
+  <a href="https://discord.gg/hMNg2mWSYn">Discord Community</a> •
+  <a href="https://www.curseforge.com/members/rafayshhh/projects">CurseForge</a> •
+  <a href="https://modrinth.com/user/RafayShhh">Modrinth</a> •
+  <a href="https://github.com/RafayShhh">GitHub</a>
+</p>
+
+---
+
+## 🌟 Highlights & Features
+
+- **Signature Developer Aesthetic**: Deep obsidian canvas (`#08080a`) with glowing ruby/crimson accents (`#ef4444`, `#dc2626`, `#991b1b`), frosted glassmorphism, responsive cards, and clean typography.
+- **Dedicated SEO Landing Pages**:
+  - `/` — **Main Overview Hub**: Career timeline, featured bento grid, technical radar, and contact form.
+  - `/mods` — **Minecraft Mods & Server Plugins**: Featuring **Shhh Brightness Toggle** (Fabric, 10k+ downloads, 1.20 - 1.21.x, hotkey lightmap control, zero potion particles), loader filters, and version matrices.
+  - `/apps` — **Android Applications**: Native apps built with Kotlin, Jetpack Compose, Material You, offline-first Room DB, and direct APK download buttons.
+  - `/projects` — **Software & Web Projects**: Full-stack services, developer automation CLI tools, and GitHub repositories.
+- **Full Social & Community Integration**:
+  - Discord server (`https://discord.gg/hMNg2mWSYn`) integrated into the navbar, hero, bento cards, and contact section.
+  - Authentic SVG brand icons for GitHub, CurseForge, Modrinth, Discord, YouTube, X (Twitter), Instagram, Threads.
+- **Resend Contact Integration**:
+  - Serverless Next.js route handler (`/api/contact`) with anti-spam honeypot protection, optimistic feedback, and a 1-click "Copy Email" fallback (`contact@rafayshhh.site`).
+- **Complete Search Engine Optimization**:
+  - Schema.org JSON-LD structured data (`Person`, `WebSite`, `SoftwareApplication`, `MobileApplication`).
+  - Dynamic `sitemap.xml` and `robots.txt` prioritizing `/mods`, `/apps`, and `/projects`.
+  - Ready for Google Search Console and Bing Webmaster Tools verification.
+- **Data-Driven Architecture**: All mods, apps, projects, jobs, and socials are defined in typed data files under `src/data/`, allowing effortless updates without editing UI code.
 
 ---
 
 ## 🚀 Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router, React 19)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with a custom obsidian & crimson/red developer-craft aesthetic
-- **Type Safety**: TypeScript 5
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Contact API**: [Resend](https://resend.com/) email delivery with anti-spam honeypot
-- **Search Engine Optimization**: Dynamic `sitemap.xml`, `robots.txt`, Schema.org JSON-LD structured data, Google Search Console & Bing Webmaster verification
-- **Deployment**: [Vercel](https://vercel.com/) (zero-config static & edge deployment)
+| Layer | Technology |
+| :--- | :--- |
+| **Framework** | [Next.js 15 (App Router)](https://nextjs.org/) with React 19 |
+| **Language** | [TypeScript 5](https://www.typescriptlang.org/) |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com/) with custom crimson/obsidian theme |
+| **Icons** | [Lucide React](https://lucide.dev/) + Authentic Brand SVGs |
+| **Email API** | [Resend](https://resend.com/) |
+| **Deployment** | [Vercel](https://vercel.com/) |
 
 ---
 
-## 📂 Architecture & Dedicated Landing Pages
+## 📂 Documentation Directory
 
-| Route | Purpose | SEO Target |
-| :--- | :--- | :--- |
-| `/` | **Main Hub**: Executive overview, featured bento grid, career milestones, skills, and Resend contact form | Personal Brand, Full-Stack Engineer, General Showcase |
-| `/mods` | **Minecraft Mods & Plugins**: Detailed showcase of **Shhh Brightness Toggle**, Fabric/Forge/NeoForge loader filters, version matrices, CurseForge & Modrinth install links | Minecraft Modder, Fabric Utility Mods, Brightness Toggle |
-| `/apps` | **Android Apps**: Native mobile applications, phone frame previews, APK direct downloads, Kotlin & Jetpack Compose architecture | Android Developer, Kotlin, Jetpack Compose Apps |
-| `/projects` | **Software & Web Projects**: Full-stack services, developer tools, CLI utilities, and GitHub repos | Software Engineer, Developer Tools, Open Source |
-| `/api/contact` | **Resend Route Handler**: Secure, server-side email dispatch with honeypot spam protection | N/A (Headless API) |
+Comprehensive guides are available in the [`docs/`](docs/) directory:
+
+- 🏛️ [**Architecture & System Design**](docs/ARCHITECTURE.md): Complete directory structure, design system, and technical conventions.
+- ⚡ [**Deployment & Custom Domains**](docs/DEPLOYMENT.md): Step-by-step instructions for deploying to Vercel and configuring DNS for `rafayshhh.site` / `rafayshhh.website`.
+- 🔍 [**SEO & Webmaster Verification**](docs/SEO.md): Setting up Google Search Console, Bing Webmaster Tools, Schema.org verification, and link previews.
+- ✏️ [**Content Management Guide**](docs/CONTENT_GUIDE.md): How to add new Minecraft mods, Android apps, and projects in 2 minutes.
 
 ---
 
-## 🛠️ Local Development
+## 🛠️ Quick Start (Local Development)
 
-1. **Clone and install dependencies:**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/RafayShhh/portfolio.git
+   cd portfolio
+   ```
+
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-2. **Configure environment variables:**
-   Copy `.env.example` to `.env.local`:
+3. **Configure environment variables:**
    ```bash
    cp .env.example .env.local
    ```
-   Add your keys:
-   ```env
-   RESEND_API_KEY=re_your_api_key_here
-   CONTACT_RECEIVER_EMAIL=your-email@example.com
-   NEXT_PUBLIC_SITE_URL=https://rafayshhh.site
-   NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-verification-code
-   NEXT_PUBLIC_BING_SITE_VERIFICATION=your-bing-verification-code
-   ```
-   *(Note: The contact form will simulate successful delivery in dev mode if `RESEND_API_KEY` is not yet set).*
+   *(Note: The contact form works in simulation dev mode even before adding your keys).*
 
-3. **Start the local development server:**
+4. **Start the development server:**
    ```bash
    npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+   Visit [http://localhost:3000](http://localhost:3000) to view the site.
 
-4. **Build for production:**
+5. **Build for production:**
    ```bash
    npm run build
    ```
 
 ---
 
-## 🌐 Deploying to Vercel
+## 🌐 Deploying to Vercel in 3 Steps
 
-1. Push your code to your GitHub repository under `RafayShhh`.
-2. Go to [vercel.com](https://vercel.com/) and click **"Add New Project"**.
-3. Import your GitHub repository.
-4. Under **Environment Variables**, add:
-   - `RESEND_API_KEY`: Your Resend API key (from [resend.com](https://resend.com/api-keys)).
-   - `CONTACT_RECEIVER_EMAIL`: The email address where you want to receive messages.
-   - `NEXT_PUBLIC_SITE_URL`: `https://rafayshhh.site` (or `https://rafayshhh.website`).
-   - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`: (From Google Search Console).
-   - `NEXT_PUBLIC_BING_SITE_VERIFICATION`: (From Bing Webmaster Tools).
-5. Click **Deploy**.
-6. Under **Settings → Domains**, connect your custom domain `rafayshhh.site` or `rafayshhh.website`.
-
----
-
-## 🔍 Google Search Console & Bing Webmaster Setup
-
-1. **Google Search Console**:
-   - Add your domain (`rafayshhh.site`).
-   - Choose **HTML tag** verification method.
-   - Copy the string inside `content="..."` and paste it into `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel.
-   - Submit your sitemap URL: `https://rafayshhh.site/sitemap.xml`.
-
-2. **Bing Webmaster Tools**:
-   - Add your site or import directly from Google Search Console.
-   - If using meta tag, copy the verification code into `NEXT_PUBLIC_BING_SITE_VERIFICATION`.
-   - Submit sitemap: `https://rafayshhh.site/sitemap.xml`.
-
----
-
-## ✏️ Updating Your Content
-
-All data is separated cleanly from UI components:
-- Edit Minecraft mods in `src/data/mods.ts`
-- Edit Android apps in `src/data/apps.ts`
-- Edit web projects in `src/data/projects.ts`
-- Edit career experience in `src/data/experience.ts`
-- Edit social links in `src/data/socials.ts`
+1. Push this repository to your GitHub account (`RafayShhh`).
+2. Go to [vercel.com](https://vercel.com/) &rarr; Import repository.
+3. Add your environment variables (`RESEND_API_KEY`, `CONTACT_RECEIVER_EMAIL`, `NEXT_PUBLIC_SITE_URL`) & click **Deploy**!
+4. Connect your custom domain `rafayshhh.site` or `rafayshhh.website` in **Settings &rarr; Domains**.
 
 ---
 
 ## 📜 License
-MIT &copy; RafayShhh (Muhammad Abdul Rafay)
+
+MIT &copy; [RafayShhh](https://rafayshhh.site) (Muhammad Abdul Rafay). All rights reserved.

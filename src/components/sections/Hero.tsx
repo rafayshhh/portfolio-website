@@ -8,12 +8,12 @@ import {
   ArrowRight, 
   Download, 
   Sparkles, 
-  MessageSquare,
-  ShieldCheck,
-  Flame,
-  ExternalLink
+  ShieldCheck, 
+  Flame, 
+  ExternalLink 
 } from "lucide-react";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/socials";
+import { getSocialIcon, DiscordIcon } from "@/components/icons/BrandIcons";
 
 export function Hero() {
   return (
@@ -81,7 +81,7 @@ export function Hero() {
             rel="noopener noreferrer"
             className="px-5 py-3.5 rounded-xl font-semibold text-sm bg-[#5865F2]/15 hover:bg-[#5865F2]/25 text-[#9cb0ff] hover:text-white border border-[#5865F2]/30 transition-all flex items-center gap-2"
           >
-            <MessageSquare className="w-4 h-4" />
+            <DiscordIcon className="w-4 h-4" />
             <span>Discord Server</span>
             <ExternalLink className="w-3 h-3 opacity-60" />
           </a>
@@ -92,18 +92,22 @@ export function Hero() {
           <span className="text-zinc-400 font-mono uppercase tracking-wider text-[11px] mr-1">
             Connect:
           </span>
-          {SOCIAL_LINKS.map((link) => (
-            <a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg bg-[#111116] hover:bg-red-950/40 text-zinc-300 hover:text-red-400 border border-[#20202c] hover:border-red-500/40 transition-all flex items-center gap-1.5 font-medium"
-              title={`${link.name}: ${link.username}`}
-            >
-              <span>{link.name}</span>
-            </a>
-          ))}
+          {SOCIAL_LINKS.map((link) => {
+            const Icon = getSocialIcon(link.name);
+            return (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 rounded-lg bg-[#111116] hover:bg-red-950/40 text-zinc-300 hover:text-red-400 border border-[#20202c] hover:border-red-500/40 transition-all flex items-center gap-2 font-medium"
+                title={`${link.name}: ${link.username}`}
+              >
+                <Icon className="w-3.5 h-3.5 opacity-80" />
+                <span>{link.name}</span>
+              </a>
+            );
+          })}
         </div>
 
         {/* Highlights Strip */}

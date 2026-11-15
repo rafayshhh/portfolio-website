@@ -6,12 +6,12 @@ import {
   Send, 
   Copy, 
   Check, 
-  MessageSquare, 
   Sparkles, 
-  ExternalLink,
+  ExternalLink, 
   AlertCircle 
 } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/socials";
+import { DiscordIcon } from "@/components/icons/BrandIcons";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -127,10 +127,10 @@ export function ContactSection() {
                 href={PERSONAL_INFO.discordInvite}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 rounded-xl text-xs font-semibold bg-[#5865F2] hover:bg-[#4752c4] text-white transition-all flex items-center justify-center gap-2"
+                className="w-full py-2.5 rounded-xl text-xs font-semibold bg-[#5865F2] hover:bg-[#4752c4] text-white transition-all flex items-center justify-center gap-2 shadow-sm"
               >
-                <MessageSquare className="w-4 h-4" />
-                <span>Join Discord (https://discord.gg/hMNg2mWSYn)</span>
+                <DiscordIcon className="w-4 h-4" />
+                <span>Join Discord Server</span>
                 <ExternalLink className="w-3.5 h-3.5 opacity-70" />
               </a>
             </div>

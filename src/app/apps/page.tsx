@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { ANDROID_APPS } from "@/data/apps";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Smartphone, Download, CheckCircle2, ShieldCheck, Cpu } from "lucide-react";
-import { GithubIcon } from "@/components/icons/BrandIcons";
+import { GithubIcon, AndroidIcon } from "@/components/icons/BrandIcons";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -142,7 +142,7 @@ export default function AppsPage() {
                     rel="noopener noreferrer"
                     className="px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700 transition-all flex items-center gap-1.5"
                   >
-                    <Smartphone className="w-3.5 h-3.5" />
+                    <AndroidIcon className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Google Play</span>
                   </a>
                 )}

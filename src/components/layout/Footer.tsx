@@ -7,6 +7,7 @@ import {
   ExternalLink 
 } from "lucide-react";
 import { SOCIAL_LINKS, PERSONAL_INFO } from "@/data/socials";
+import { getSocialIcon } from "@/components/icons/BrandIcons";
 
 export function Footer() {
   const scrollToTop = () => {
@@ -86,19 +87,22 @@ export function Footer() {
             <h4 className="text-xs font-semibold text-zinc-200 uppercase tracking-wider mb-4 font-mono">
               Network & Socials
             </h4>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              {SOCIAL_LINKS.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-zinc-400 hover:text-red-400 py-1 transition-colors group"
-                >
-                  <ExternalLink className="w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-transform" />
-                  <span>{link.name}</span>
-                </a>
-              ))}
+            <div className="grid grid-cols-2 gap-2.5 text-xs">
+              {SOCIAL_LINKS.map((link) => {
+                const Icon = getSocialIcon(link.name);
+                return (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-zinc-400 hover:text-red-400 py-1 transition-colors group"
+                  >
+                    <Icon className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 group-hover:text-red-400 transition-all shrink-0" />
+                    <span className="truncate">{link.name}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

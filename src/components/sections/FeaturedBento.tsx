@@ -11,12 +11,17 @@ import {
   Sliders, 
   Sparkles, 
   ShieldCheck, 
-  Zap,
-  MessageSquare
+  Zap 
 } from "lucide-react";
 import { MINECRAFT_MODS } from "@/data/mods";
 import { ANDROID_APPS } from "@/data/apps";
 import { PERSONAL_INFO } from "@/data/socials";
+import { 
+  CurseForgeIcon, 
+  ModrinthIcon, 
+  DiscordIcon, 
+  AndroidIcon 
+} from "@/components/icons/BrandIcons";
 
 export function FeaturedBento() {
   const primaryMod = MINECRAFT_MODS[0]; // Shhh Brightness Toggle
@@ -95,7 +100,7 @@ export function FeaturedBento() {
                     rel="noopener noreferrer"
                     className="px-4 py-2.5 rounded-xl text-xs font-semibold bg-red-600 hover:bg-red-500 text-white shadow-glow-sm transition-all flex items-center gap-2"
                   >
-                    <Download className="w-3.5 h-3.5" />
+                    <CurseForgeIcon className="w-3.5 h-3.5" />
                     <span>Download on CurseForge</span>
                   </a>
                 )}
@@ -106,7 +111,7 @@ export function FeaturedBento() {
                     rel="noopener noreferrer"
                     className="px-4 py-2.5 rounded-xl text-xs font-semibold bg-[#1b1c24] hover:bg-[#252632] text-emerald-400 border border-emerald-500/30 transition-all flex items-center gap-2"
                   >
-                    <Zap className="w-3.5 h-3.5" />
+                    <ModrinthIcon className="w-3.5 h-3.5" />
                     <span>View on Modrinth</span>
                   </a>
                 )}
@@ -125,7 +130,7 @@ export function FeaturedBento() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="p-2 rounded-xl bg-[#5865F2]/20 text-[#8ea0ff] border border-[#5865F2]/30">
-                  <MessageSquare className="w-5 h-5" />
+                  <DiscordIcon className="w-5 h-5" />
                 </span>
                 <span className="text-xs font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-[#5865F2]/10 text-[#a0b0ff] border border-[#5865F2]/20">
                   Community
@@ -146,6 +151,7 @@ export function FeaturedBento() {
                 rel="noopener noreferrer"
                 className="w-full py-3 rounded-xl text-xs font-semibold bg-[#5865F2] hover:bg-[#4752c4] text-white shadow-lg transition-all flex items-center justify-center gap-2"
               >
+                <DiscordIcon className="w-4 h-4" />
                 <span>Join Discord Server</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
@@ -156,7 +162,7 @@ export function FeaturedBento() {
           <div className="rounded-2xl bg-[#0f0f15] border border-[#1f1f2d] p-6 sm:p-8 hover:border-red-500/40 transition-all group">
             <div className="flex items-center justify-between mb-4">
               <span className="p-2 rounded-xl bg-zinc-800 text-zinc-200">
-                <Smartphone className="w-5 h-5 text-red-400" />
+                <AndroidIcon className="w-5 h-5 text-red-400" />
               </span>
               <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800">
                 Android Native
