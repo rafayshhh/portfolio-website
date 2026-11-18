@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -99,6 +101,8 @@ export default function RootLayout({
       <body className="bg-zinc-50 dark:bg-[#080306] text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col selection:bg-red-600 selection:text-white antialiased overflow-x-hidden transition-colors duration-200">
         <ThemeProvider>
           {children}
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
