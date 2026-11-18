@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #08080a;
+  --background: #080306;
   --foreground: #f4f4f5;
-  --brand-red: #ef4444;
+  --brand-crimson: #ef233c;
+  --brand-wine: #220713;
+  --brand-orange: #f88145;
+  --brand-ice: #8eb5cb;
 }
 
 * {
@@ -26,55 +29,64 @@ body {
 
 /* Custom Selection Highlight */
 ::selection {
-  background-color: #dc2626;
+  background-color: #ef233c;
   color: #ffffff;
 }
 
-/* Sleek Red-Themed Scrollbar */
+/* Sleek Red/Wine Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090d;
+  background: #080306;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #272733;
+  background: #250817;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ef4444;
+  background: #ef233c;
 }
 
-/* Glassmorphism helpers */
-.glass-panel {
-  background: rgba(16, 16, 21, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+/* CRT Scanlines Texture Overlay */
+.bg-scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
 }
 
-.glass-panel-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+/* Retro Pixel Border & Notch */
+.pixel-box {
+  background: #0f050b;
+  border: 1px solid #290c1a;
+  position: relative;
 }
 
-.glass-panel-hover:hover {
-  border-color: rgba(239, 68, 68, 0.4);
-  box-shadow: 0 0 25px -5px rgba(239, 68, 68, 0.2);
-  transform: translateY(-2px);
+.pixel-box:hover {
+  border-color: rgba(239, 35, 60, 0.5);
+  box-shadow: 0 0 25px -5px rgba(239, 35, 60, 0.2);
 }
 
-/* Ambient glow background decoration */
-.ambient-glow-top {
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0) 70%);
-  pointer-events: none;
-  z-index: 0;
+/* Glow Helpers */
+.text-glow-crimson {
+  text-shadow: 0 0 18px rgba(239, 35, 60, 0.6);
+}
+
+.box-glow-crimson {
+  box-shadow: 0 0 35px -5px rgba(239, 35, 60, 0.3);
+}
+
+/* Responsive code font utilities */
+.font-pixel-stat {
+  font-feature-settings: "tnum" on, "lnum" on, "zero" on;
 }

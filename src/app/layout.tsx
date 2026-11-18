@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { SystemHUD } from "@/components/layout/SystemHUD";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PERSONAL_INFO } from "@/data/socials";
 
@@ -16,11 +17,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "RafayShhh — Minecraft Mod Developer, Android Engineer & Software Portfolio",
+    default: "RafayShhh — Minecraft Mod Developer, Android Engineer & Systems Portfolio",
     template: "%s | RafayShhh",
   },
   description:
-    "Official portfolio and creations by RafayShhh (Muhammad Abdul Rafay). Creator of Shhh Brightness Toggle, Minecraft mods, Android native apps, and open-source tools.",
+    "Official portfolio and creations by RafayShhh (Muhammad Abdul Rafay). Creator of Shhh Brightness Toggle, client-side Minecraft Fabric mods, and native Android apps.",
   keywords: [
     "RafayShhh",
     "rafayshhh",
@@ -61,6 +62,14 @@ export const metadata: Metadata = {
     description:
       "Explore Minecraft mods (Shhh Brightness Toggle), Android apps, and software projects by RafayShhh.",
     siteName: "RafayShhh Portfolio",
+    images: [
+      {
+        url: "/images/banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "RafayShhh Banner",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -68,6 +77,7 @@ export const metadata: Metadata = {
     description:
       "Explore Minecraft mods (Shhh Brightness Toggle), Android apps, and software projects by RafayShhh.",
     creator: "@RafayShhh",
+    images: ["/images/banner.jpg"],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
@@ -83,12 +93,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark scroll-smooth">
       <head>
         <JsonLd type="person" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
       </head>
-      <body className="bg-[#08080a] text-zinc-100 min-h-screen flex flex-col selection:bg-red-600 selection:text-white">
+      <body className="bg-[#080306] text-zinc-100 min-h-screen flex flex-col selection:bg-red-600 selection:text-white antialiased overflow-x-hidden">
+        <SystemHUD />
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />

@@ -9,14 +9,14 @@ const SKILL_CATEGORIES = [
     icon: Gamepad2,
     badge: "Core Specialty",
     skills: [
-      "Java (8/17/21)",
-      "Fabric API",
-      "Fabric Loom & Gradle",
-      "Mixin Code Injection",
+      "Java (8 / 17 / 21)",
+      "Fabric API & Fabric Loom",
+      "Mixin Bytecode Injection",
       "Quilt Standard Libraries",
-      "NeoForge & Forge",
-      "Paper / Spigot Server API",
-      "Lightmap & Render Hooking",
+      "NeoForge & Forge APIs",
+      "Paper / Purpur Server APIs",
+      "Lightmap & GL Render Hooking",
+      "Gradle Multi-Project Pipelines",
     ],
   },
   {
@@ -24,14 +24,14 @@ const SKILL_CATEGORIES = [
     icon: Smartphone,
     badge: "Mobile Native",
     skills: [
-      "Kotlin",
-      "Jetpack Compose",
-      "Android SDK & NDK",
-      "Coroutines & StateFlow",
-      "Room Persistence DB",
+      "Kotlin Modern Coroutines",
+      "Jetpack Compose Declarative UI",
+      "Android SDK & NDK Tooling",
+      "Room Persistence DB & SQLite",
       "Material Design 3 (Material You)",
-      "MVVM & Clean Architecture",
-      "WorkManager Background Tasks",
+      "Clean Architecture & MVI / MVVM",
+      "WorkManager Background Deferrals",
+      "Offline-First Data Synchronization",
     ],
   },
   {
@@ -39,14 +39,14 @@ const SKILL_CATEGORIES = [
     icon: Globe,
     badge: "Web Standards",
     skills: [
-      "TypeScript",
+      "TypeScript 5 (Strict)",
       "Next.js 15 (App Router)",
-      "React 19",
-      "Tailwind CSS",
-      "Node.js",
-      "REST & Webhook APIs",
-      "Edge Middleware",
-      "Schema.org & SEO",
+      "React 19 Server Components",
+      "Tailwind CSS Utility Architecture",
+      "Node.js Runtime Services",
+      "REST & Webhook Protocols",
+      "Edge Middleware & CDN Caching",
+      "Schema.org JSON-LD SEO",
     ],
   },
   {
@@ -54,13 +54,14 @@ const SKILL_CATEGORIES = [
     icon: Wrench,
     badge: "DevOps & Tools",
     skills: [
-      "Git & GitHub Actions",
+      "Git & Automated GitHub Actions",
       "Modrinth API Automation",
       "CurseForge Developer API",
       "IntelliJ IDEA & Android Studio",
-      "Vercel Deployment",
-      "Resend Email Delivery",
-      "Discord Bot Webhooks",
+      "Vercel Edge Cloud Deployment",
+      "Resend Transactional Email",
+      "Discord Webhook Integrations",
+      "Local Sandbox Virtualization",
     ],
   },
 ];
@@ -74,11 +75,11 @@ export function SkillsSection() {
             <Cpu className="w-3.5 h-3.5" />
             <span>Technical Capabilities</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Skills & Technology Stack
+          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight font-mono">
+            TECHNICAL MATRIX
           </h2>
-          <p className="text-sm text-zinc-400 mt-2">
-            Specialized engineering capabilities across game modding, mobile platforms, and web engineering.
+          <p className="text-sm text-zinc-400 mt-2 font-light">
+            Engineered capabilities across game bytecode modification, mobile platforms, and web systems.
           </p>
         </div>
 
@@ -88,19 +89,19 @@ export function SkillsSection() {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-[#0f0f15] border border-[#1e1e2b] hover:border-red-500/30 transition-all flex flex-col justify-between group"
+                className="p-6 rounded-2xl bg-[#0c0408] border border-[#230917] hover:border-red-500/40 transition-all flex flex-col justify-between group shadow-lg shadow-black/60 font-mono"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="p-2 rounded-xl bg-red-600/10 text-red-400 border border-red-500/20">
                       <Icon className="w-5 h-5" />
                     </span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-[#16060e] text-zinc-400 border border-[#2b0c1c]">
                       {cat.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-4 group-hover:text-red-300 transition-colors">
+                  <h3 className="text-base font-bold text-white mb-4 group-hover:text-red-300 transition-colors">
                     {cat.title}
                   </h3>
 
@@ -108,7 +109,7 @@ export function SkillsSection() {
                     {cat.skills.map((skill, sIdx) => (
                       <li
                         key={sIdx}
-                        className="text-xs text-zinc-300 flex items-center gap-2 font-mono"
+                        className="text-xs text-zinc-300 flex items-center gap-2"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-red-500/60" />
                         <span>{skill}</span>
