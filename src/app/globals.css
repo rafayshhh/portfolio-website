@@ -3,12 +3,29 @@
 @tailwind utilities;
 
 :root {
+  --background: #faf8f9;
+  --foreground: #09090b;
+  --brand-crimson: #be123c;
+  --brand-ruby: #9f1239;
+  --brand-wine: #ffe4e6;
+  --brand-orange: #ea580c;
+  --brand-ice: #0284c7;
+  --card-bg: #ffffff;
+  --card-border: #f2e7e9;
+  --subtle-text: #64748b;
+}
+
+html.dark {
   --background: #080306;
   --foreground: #f4f4f5;
   --brand-crimson: #ef233c;
+  --brand-ruby: #d90429;
   --brand-wine: #220713;
   --brand-orange: #f88145;
   --brand-ice: #8eb5cb;
+  --card-bg: #10060e;
+  --card-border: #260a1a;
+  --subtle-text: #a1a1aa;
 }
 
 * {
@@ -25,6 +42,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Custom Selection Highlight */
@@ -38,17 +56,30 @@ body {
   width: 7px;
 }
 
-::-webkit-scrollbar-track {
+html.dark ::-webkit-scrollbar-track {
   background: #080306;
 }
 
-::-webkit-scrollbar-thumb {
+html.dark ::-webkit-scrollbar-thumb {
   background: #250817;
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+html.dark ::-webkit-scrollbar-thumb:hover {
   background: #ef233c;
+}
+
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #faf8f9;
+}
+
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #fecdd3;
+  border-radius: 4px;
+}
+
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: #be123c;
 }
 
 /* CRT Scanlines Texture Overlay */

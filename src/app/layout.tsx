@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { SystemHUD } from "@/components/layout/SystemHUD";
+import { ThemeProvider } from "@/context/ThemeContext";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PERSONAL_INFO } from "@/data/socials";
 
@@ -93,16 +91,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <JsonLd type="person" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
       </head>
-      <body className="bg-[#080306] text-zinc-100 min-h-screen flex flex-col selection:bg-red-600 selection:text-white antialiased overflow-x-hidden">
-        <SystemHUD />
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+      <body className="bg-zinc-50 dark:bg-[#080306] text-zinc-900 dark:text-zinc-100 min-h-screen flex flex-col selection:bg-red-600 selection:text-white antialiased overflow-x-hidden transition-colors duration-200">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

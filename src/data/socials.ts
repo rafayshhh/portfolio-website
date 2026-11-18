@@ -3,7 +3,7 @@ export interface SocialLink {
   url: string;
   username: string;
   icon: string;
-  category: "dev" | "modding" | "community" | "social";
+  category: "dev" | "modding" | "community" | "social" | "gaming";
   primary?: boolean;
 }
 
@@ -14,6 +14,14 @@ export const SOCIAL_LINKS: SocialLink[] = [
     username: "RafayShhh",
     icon: "github",
     category: "dev",
+    primary: true,
+  },
+  {
+    name: "Discord",
+    url: "https://discord.gg/hMNg2mWSYn",
+    username: "Community Discord",
+    icon: "discord",
+    category: "community",
     primary: true,
   },
   {
@@ -33,11 +41,11 @@ export const SOCIAL_LINKS: SocialLink[] = [
     primary: true,
   },
   {
-    name: "Discord",
-    url: "https://discord.gg/hMNg2mWSYn",
-    username: "Community Discord",
-    icon: "discord",
-    category: "community",
+    name: "Chess.com",
+    url: "https://www.chess.com/member/rafayshhh",
+    username: "rafayshhh",
+    icon: "chess",
+    category: "gaming",
     primary: true,
   },
   {
@@ -75,8 +83,9 @@ export const PERSONAL_INFO = {
   fullName: "Muhammad Abdul Rafay",
   handle: "RafayShhh",
   email: "contact@rafayshhh.site",
-  bio: "Minecraft Mod Developer, Android Engineer & Full-Stack Builder crafting high-performance mods, clean mobile experiences, and modern software.",
+  bio: "Minecraft Mod Developer & Systems Engineer. Crafting high-performance Fabric mods, native Android tools, and clean software.",
   status: "Available for projects & mod collaborations",
   domains: ["rafayshhh.site", "rafayshhh.website"],
   discordInvite: "https://discord.gg/hMNg2mWSYn",
+  chessProfile: "https://www.chess.com/member/rafayshhh",
 };

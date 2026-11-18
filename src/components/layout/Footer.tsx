@@ -18,28 +18,29 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#050103] border-t border-[#200816] pt-16 pb-12 overflow-hidden font-mono">
+    <footer className="relative bg-zinc-100 dark:bg-[#050103] border-t border-zinc-200 dark:border-[#200816] pt-16 pb-12 overflow-hidden font-mono transition-colors duration-200">
       {/* Background glow decoration */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-red-600/10 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-red-600/5 dark:bg-red-600/10 blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-[#1b0612]">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-zinc-200 dark:border-[#1b0612]">
           {/* Col 1: Brand & Bio */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-red-500/60 shadow-glow-sm bg-[#12040b]">
+              <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-red-500/60 shadow-sm bg-zinc-900">
                 <Image
                   src="/images/avatar.jpg"
                   alt="RafayShhh Avatar"
                   fill
+                  sizes="32px"
                   className="object-cover"
                 />
               </div>
-              <span className="font-bold text-lg text-white tracking-tight">
+              <span className="font-bold text-lg text-zinc-900 dark:text-white tracking-tight">
                 {PERSONAL_INFO.name}
               </span>
             </div>
-            <p className="text-zinc-400 text-xs sm:text-sm max-w-md leading-relaxed font-sans font-light">
+            <p className="text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm max-w-md leading-relaxed font-sans font-light">
               {PERSONAL_INFO.bio}
             </p>
             <div className="flex items-center gap-2 pt-2 text-xs">
@@ -47,7 +48,7 @@ export function Footer() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-              <span className="text-zinc-300">
+              <span className="text-zinc-700 dark:text-zinc-300">
                 {PERSONAL_INFO.status}
               </span>
             </div>
@@ -55,27 +56,27 @@ export function Footer() {
 
           {/* Col 2: Navigation */}
           <div>
-            <h4 className="text-xs font-bold text-zinc-200 uppercase tracking-wider mb-4 text-red-400">
+            <h4 className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-4">
               System Directory
             </h4>
-            <ul className="space-y-2.5 text-xs text-zinc-400">
+            <ul className="space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400">
               <li>
                 <Link
                   href="/"
                   onClick={() => sound.playClick()}
-                  className="hover:text-red-400 transition-colors"
+                  className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
                 >
-                  [1] Overview & Experience
+                  [1] Overview & Creations
                 </Link>
               </li>
               <li>
                 <Link
                   href="/mods"
                   onClick={() => sound.playClick()}
-                  className="hover:text-red-400 transition-colors flex items-center gap-1.5"
+                  className="hover:text-red-600 dark:hover:text-red-400 transition-colors flex items-center gap-1.5"
                 >
                   <span>[2] Minecraft Mods</span>
-                  <span className="text-[9px] bg-red-950 text-red-300 px-1 py-0.2 rounded border border-red-800/40">
+                  <span className="text-[9px] bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300 px-1 py-0.2 rounded border border-red-200 dark:border-red-800/40">
                     Hot
                   </span>
                 </Link>
@@ -84,7 +85,7 @@ export function Footer() {
                 <Link
                   href="/apps"
                   onClick={() => sound.playClick()}
-                  className="hover:text-red-400 transition-colors"
+                  className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
                 >
                   [3] Android Applications
                 </Link>
@@ -93,7 +94,7 @@ export function Footer() {
                 <Link
                   href="/projects"
                   onClick={() => sound.playClick()}
-                  className="hover:text-red-400 transition-colors"
+                  className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
                 >
                   [4] Software Projects
                 </Link>
@@ -102,7 +103,7 @@ export function Footer() {
                 <a
                   href="/#contact"
                   onClick={() => sound.playClick()}
-                  className="hover:text-red-400 transition-colors"
+                  className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
                 >
                   Direct Dispatch Form
                 </a>
@@ -110,25 +111,25 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Social & Community */}
+          {/* Col 3: Network Links */}
           <div>
-            <h4 className="text-xs font-bold text-zinc-200 uppercase tracking-wider mb-4 text-red-400">
+            <h4 className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-4">
               Network Links
             </h4>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              {SOCIAL_LINKS.map((link) => {
-                const Icon = getSocialIcon(link.name);
+            <div className="grid grid-cols-2 gap-2 text-xs text-zinc-600 dark:text-zinc-400">
+              {SOCIAL_LINKS.map((s) => {
+                const Icon = getSocialIcon(s.icon);
                 return (
                   <a
-                    key={link.name}
-                    href={link.url}
+                    key={s.name}
+                    href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => sound.playClick()}
-                    className="flex items-center gap-2 text-zinc-400 hover:text-red-400 py-1 transition-colors group"
+                    className="flex items-center gap-1.5 hover:text-red-600 dark:hover:text-red-400 transition-colors py-1 group"
                   >
-                    <Icon className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 group-hover:text-red-400 transition-all shrink-0" />
-                    <span className="truncate">{link.name}</span>
+                    <Icon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+                    <span>{s.name}</span>
                   </a>
                 );
               })}
@@ -137,17 +138,13 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-            <span>&copy; {new Date().getFullYear()} {PERSONAL_INFO.name} ({PERSONAL_INFO.fullName})</span>
-            <span className="text-zinc-600">•</span>
-            <span className="text-red-400/80">rafayshhh.site</span>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-500">
+          <div>
+            &copy; {new Date().getFullYear()} {PERSONAL_INFO.name} ({PERSONAL_INFO.fullName}) • rafayshhh.site
           </div>
-
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#14060e] hover:bg-red-600/20 text-zinc-400 hover:text-red-400 border border-[#2b0c1c] transition-all cursor-pointer"
-            aria-label="Back to top"
+            className="flex items-center gap-1.5 hover:text-red-600 dark:hover:text-red-400 transition-colors p-2 rounded-lg bg-white dark:bg-[#12050c] border border-zinc-200 dark:border-[#220715] shadow-sm"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5" />

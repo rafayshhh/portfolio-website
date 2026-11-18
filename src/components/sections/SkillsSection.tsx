@@ -31,13 +31,13 @@ const SKILL_CATEGORIES = [
       "Material Design 3 (Material You)",
       "Clean Architecture & MVI / MVVM",
       "WorkManager Background Deferrals",
-      "Offline-First Data Synchronization",
+      "Offline-First Architecture",
     ],
   },
   {
-    title: "Web & Full-Stack",
+    title: "Web & Systems",
     icon: Globe,
-    badge: "Web Standards",
+    badge: "Modern Stack",
     skills: [
       "TypeScript 5 (Strict)",
       "Next.js 15 (App Router)",
@@ -68,17 +68,17 @@ const SKILL_CATEGORIES = [
 
 export function SkillsSection() {
   return (
-    <section className="py-20 relative">
+    <section className="py-20 relative transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-12">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-red-400 mb-2">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-red-600 dark:text-red-400 mb-2">
             <Cpu className="w-3.5 h-3.5" />
             <span>Technical Capabilities</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight font-mono">
+          <h2 className="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white tracking-tight font-mono">
             TECHNICAL MATRIX
           </h2>
-          <p className="text-sm text-zinc-400 mt-2 font-light">
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 font-light">
             Engineered capabilities across game bytecode modification, mobile platforms, and web systems.
           </p>
         </div>
@@ -89,19 +89,19 @@ export function SkillsSection() {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-[#0c0408] border border-[#230917] hover:border-red-500/40 transition-all flex flex-col justify-between group shadow-lg shadow-black/60 font-mono"
+                className="p-6 rounded-2xl bg-white dark:bg-[#0c0408] border border-zinc-200 dark:border-[#230917] hover:border-red-500/40 transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg dark:shadow-black/60 font-mono"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="p-2 rounded-xl bg-red-600/10 text-red-400 border border-red-500/20">
+                    <span className="p-2 rounded-xl bg-red-100 dark:bg-red-600/10 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-500/20">
                       <Icon className="w-5 h-5" />
                     </span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-[#16060e] text-zinc-400 border border-[#2b0c1c]">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-[#16060e] text-zinc-700 dark:text-zinc-400 border border-zinc-200 dark:border-[#2b0c1c] font-bold">
                       {cat.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-white mb-4 group-hover:text-red-300 transition-colors">
+                  <h3 className="text-base font-bold text-zinc-900 dark:text-white mb-4 group-hover:text-red-600 dark:group-hover:text-red-300 transition-colors">
                     {cat.title}
                   </h3>
 
@@ -109,9 +109,9 @@ export function SkillsSection() {
                     {cat.skills.map((skill, sIdx) => (
                       <li
                         key={sIdx}
-                        className="text-xs text-zinc-300 flex items-center gap-2"
+                        className="text-xs text-zinc-700 dark:text-zinc-300 flex items-center gap-2"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-red-500/60" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500/70" />
                         <span>{skill}</span>
                       </li>
                     ))}

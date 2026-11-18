@@ -68,6 +68,14 @@ export function ThreadsIcon({ className = "w-4 h-4", ...props }: IconProps) {
   );
 }
 
+export function ChessComIcon({ className = "w-4 h-4", ...props }: IconProps) {
+  return (
+    <svg role="img" viewBox="0 0 24 24" fill="currentColor" className={className} {...props}>
+      <path d="M19 22H5a1 1 0 0 1-1-1c0-.55.45-1 1-1h14c.55 0 1 .45 1 1a1 1 0 0 1-1 1zm-2.2-3H7.2l.6-3.2c.4-.2.8-.5 1.1-.9.6-.8 1.1-1.7 1.1-2.9 0-.4-.1-.8-.3-1.1-.1-.2-.1-.5 0-.7.3-.6.5-1.3.5-2.1C10.2 5.8 11 5 12 5s1.8.8 1.8 1.9c0 .8.2 1.5.5 2.1.1.2.1.5 0 .7-.2.3-.3.7-.3 1.1 0 1.2.5 2.1 1.1 2.9.3.4.7.7 1.1.9l.6 3.2zM12 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+    </svg>
+  );
+}
+
 export function MinecraftIcon({ className = "w-4 h-4", ...props }: IconProps) {
   return (
     <svg role="img" viewBox="0 0 24 24" fill="currentColor" className={className} {...props}>
@@ -102,6 +110,9 @@ export function getSocialIcon(name: string) {
       return CurseForgeIcon;
     case "modrinth":
       return ModrinthIcon;
+    case "chess":
+    case "chess.com":
+      return ChessComIcon;
     case "youtube":
       return YoutubeIcon;
     case "x (twitter)":
