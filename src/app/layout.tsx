@@ -80,9 +80,11 @@ export const metadata: Metadata = {
     images: ["/images/banner.jpg"],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "hi90QEQQqI46M52CioJaT2DxmnST80qikaK87kS4dJQ",
     other: {
-      "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "YOUR_BING_WEBMASTER_VERIFICATION_CODE",
+      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+        ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+        : {}),
     },
   },
 };
