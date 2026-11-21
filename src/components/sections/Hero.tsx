@@ -13,7 +13,9 @@ import {
 } from "lucide-react";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/socials";
 import { getSocialIcon, DiscordIcon } from "@/components/icons/BrandIcons";
-import { EmberParticles } from "@/components/effects/EmberParticles";
+import { VolumetricEmbers3D } from "@/components/3d/VolumetricEmbers3D";
+import { Card3DTilt } from "@/components/3d/Card3DTilt";
+import { VoxelOreBlock3D } from "@/components/3d/VoxelOreBlock3D";
 import { ShhhBrightnessSimulator } from "@/components/interactive/ShhhBrightnessSimulator";
 import { sound } from "@/lib/sound";
 
@@ -28,8 +30,8 @@ export function Hero() {
 
   return (
     <section className="relative pt-6 pb-20 overflow-hidden transition-colors duration-200">
-      {/* Ambient floating ember particles */}
-      <EmberParticles count={30} />
+      {/* Ambient 3D floating volumetric ember particles with mouse parallax */}
+      <VolumetricEmbers3D count={80} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         {/* Panoramic Banner Card */}
@@ -53,26 +55,28 @@ export function Hero() {
           {/* Profile Header Block Overlapping Banner */}
           <div className="relative px-6 sm:px-10 pb-8 -mt-20 sm:-mt-24 z-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-end gap-5">
-              {/* Pixel Art Avatar Frame */}
-              <div className="relative group/avatar">
-                <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-2 border-red-500 shadow-lg dark:shadow-glow-red relative bg-white dark:bg-[#12040b] p-1">
-                  <div className="relative w-full h-full rounded-xl overflow-hidden">
-                    <Image
-                      src="/images/avatar.jpg"
-                      alt="RafayShhh Pixel Character Portrait"
-                      fill
-                      priority
-                      sizes="144px"
-                      className="object-cover transform group-hover/avatar:scale-105 transition-transform duration-300"
-                    />
+              {/* Pixel Art Avatar Frame with 3D Depth Tilt */}
+              <Card3DTilt maxTilt={14} glare={true} className="rounded-2xl shrink-0">
+                <div className="relative group/avatar">
+                  <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-2 border-red-500 shadow-lg dark:shadow-glow-red relative bg-white dark:bg-[#12040b] p-1">
+                    <div className="relative w-full h-full rounded-xl overflow-hidden">
+                      <Image
+                        src="/images/avatar.jpg"
+                        alt="RafayShhh Pixel Character Portrait"
+                        fill
+                        priority
+                        sizes="144px"
+                        className="object-cover transform group-hover/avatar:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                  {/* Live Status indicator */}
+                  <div className="absolute -bottom-2 -right-2 px-2 py-0.5 rounded-full bg-white dark:bg-[#12040b] border border-emerald-500/60 shadow-md flex items-center gap-1.5 text-[10px] font-mono text-emerald-600 dark:text-emerald-400">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                    <span>ONLINE</span>
                   </div>
                 </div>
-                {/* Live Status indicator */}
-                <div className="absolute -bottom-2 -right-2 px-2 py-0.5 rounded-full bg-white dark:bg-[#12040b] border border-emerald-500/60 shadow-md flex items-center gap-1.5 text-[10px] font-mono text-emerald-600 dark:text-emerald-400">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                  <span>ONLINE</span>
-                </div>
-              </div>
+              </Card3DTilt>
 
               {/* Identity & Subtitle */}
               <div className="space-y-1.5">
@@ -107,7 +111,7 @@ export function Hero() {
 
         {/* Human Manifesto / Intro Copy */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-14">
-          <div className="lg:col-span-8 space-y-4">
+          <div className="lg:col-span-7 space-y-4">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
               Mods that don&apos;t bloat your FPS. Apps that don&apos;t spy on your data.
             </h2>
@@ -150,30 +154,49 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Social Quick-Grid */}
-          <div className="lg:col-span-4 p-5 rounded-2xl bg-white dark:bg-[#0f040a] border border-zinc-200 dark:border-[#2a0b1c] space-y-3 font-mono shadow-sm">
-            <div className="text-xs uppercase tracking-wider text-red-600 dark:text-red-400 font-bold flex items-center justify-between">
-              <span>Network Coordinates</span>
-              <span className="text-[10px] text-zinc-500">Live</span>
-            </div>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              {SOCIAL_LINKS.slice(0, 6).map((s) => {
-                const Icon = getSocialIcon(s.icon);
-                return (
-                  <a
-                    key={s.name}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => sound.playClick()}
-                    className="flex items-center gap-2 p-2 rounded-lg bg-zinc-50 dark:bg-[#180611] hover:bg-zinc-100 dark:hover:bg-[#25091a] text-zinc-700 dark:text-zinc-300 hover:text-red-600 dark:hover:text-white transition-colors border border-zinc-200 dark:border-[#2f0c21]"
-                  >
-                    <Icon className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" />
-                    <span className="truncate">{s.name}</span>
-                  </a>
-                );
-              })}
-            </div>
+          {/* 3D Interactive Showcase + Social Quick-Grid */}
+          <div className="lg:col-span-5 space-y-5">
+            {/* 3D Voxel Ore Core Feature */}
+            <Card3DTilt maxTilt={8} glare={true} className="rounded-2xl">
+              <div className="p-5 rounded-2xl bg-white dark:bg-[#0f040a] border border-zinc-200 dark:border-[#2a0b1c] shadow-sm flex flex-col items-center">
+                <div className="w-full flex items-center justify-between pb-2 mb-2 border-b border-zinc-100 dark:border-[#1e0715] font-mono text-xs">
+                  <span className="font-bold text-red-600 dark:text-red-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    3D Voxel Core
+                  </span>
+                  <span className="text-[10px] text-zinc-500">Procedural 16x16 Pixel Texture</span>
+                </div>
+                <VoxelOreBlock3D />
+              </div>
+            </Card3DTilt>
+
+            {/* Social Quick-Grid */}
+            <Card3DTilt maxTilt={5} glare={false} className="rounded-2xl">
+              <div className="p-5 rounded-2xl bg-white dark:bg-[#0f040a] border border-zinc-200 dark:border-[#2a0b1c] space-y-3 font-mono shadow-sm">
+                <div className="text-xs uppercase tracking-wider text-red-600 dark:text-red-400 font-bold flex items-center justify-between">
+                  <span>Network Coordinates</span>
+                  <span className="text-[10px] text-zinc-500">Live</span>
+                </div>
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  {SOCIAL_LINKS.slice(0, 6).map((s) => {
+                    const Icon = getSocialIcon(s.icon);
+                    return (
+                      <a
+                        key={s.name}
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => sound.playClick()}
+                        className="flex items-center gap-2 p-2 rounded-lg bg-zinc-50 dark:bg-[#180611] hover:bg-zinc-100 dark:hover:bg-[#25091a] text-zinc-700 dark:text-zinc-300 hover:text-red-600 dark:hover:text-white transition-colors border border-zinc-200 dark:border-[#2f0c21]"
+                      >
+                        <Icon className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" />
+                        <span className="truncate">{s.name}</span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </Card3DTilt>
           </div>
         </div>
 

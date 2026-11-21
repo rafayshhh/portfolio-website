@@ -5,6 +5,7 @@ import { ANDROID_APPS } from "@/data/apps";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Smartphone, Download, CheckCircle2, Sparkles } from "lucide-react";
 import { GithubIcon, AndroidIcon } from "@/components/icons/BrandIcons";
+import { Card3DTilt } from "@/components/3d/Card3DTilt";
 import Link from "next/link";
 import { sound } from "@/lib/sound";
 
@@ -34,100 +35,99 @@ export default function AppsPage() {
         {/* Apps Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {ANDROID_APPS.map((app) => (
-            <div
-              key={app.id}
-              className="rounded-2xl bg-white dark:bg-[#0c0408] border border-zinc-200 dark:border-[#230917] hover:border-red-500/40 p-6 sm:p-8 flex flex-col justify-between transition-all group shadow-sm dark:shadow-xl dark:shadow-black/60 font-mono"
-            >
-              <div className="space-y-4">
-                {/* Header status */}
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-2.5">
-                    <span className="p-2.5 rounded-xl bg-zinc-100 dark:bg-[#16060e] text-red-600 dark:text-red-400 border border-zinc-200 dark:border-[#2b0c1c]">
-                      <AndroidIcon className="w-5 h-5" />
+            <Card3DTilt key={app.id} maxTilt={6} glare={true} className="rounded-2xl">
+              <div className="h-full rounded-2xl bg-white dark:bg-[#0c0408] border border-zinc-200 dark:border-[#230917] hover:border-red-500/40 p-6 sm:p-8 flex flex-col justify-between transition-all group shadow-sm dark:shadow-xl dark:shadow-black/60 font-mono">
+                <div className="space-y-4">
+                  {/* Header status */}
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-center gap-2.5">
+                      <span className="p-2.5 rounded-xl bg-zinc-100 dark:bg-[#16060e] text-red-600 dark:text-red-400 border border-zinc-200 dark:border-[#2b0c1c]">
+                        <AndroidIcon className="w-5 h-5" />
+                      </span>
+                      <div>
+                        <span className="text-xs text-zinc-700 dark:text-zinc-400 block font-bold">
+                          {app.category}
+                        </span>
+                        <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
+                          {app.version} • {app.status}
+                        </span>
+                      </div>
+                    </div>
+                    <span className="text-[11px] px-2.5 py-1 rounded bg-zinc-100 dark:bg-[#16060e] text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-[#2b0c1c]">
+                      {app.minAndroidVersion}
                     </span>
-                    <div>
-                      <span className="text-xs text-zinc-700 dark:text-zinc-400 block font-bold">
-                        {app.category}
-                      </span>
-                      <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
-                        {app.version} • {app.status}
-                      </span>
+                  </div>
+
+                  {/* Title & Tagline */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-zinc-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-300 transition-colors">
+                      {app.title}
+                    </h2>
+                    <p className="text-xs text-red-600 dark:text-red-400 font-semibold mt-1">
+                      {app.tagline}
+                    </p>
+                    <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 mt-3 leading-relaxed font-sans font-light">
+                      {app.description}
+                    </p>
+                  </div>
+
+                  {/* Architecture Specs Box */}
+                  <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-[#080205] border border-zinc-200 dark:border-[#1d0714] text-[11px] text-zinc-600 dark:text-zinc-400 space-y-1">
+                    <div className="flex items-center justify-between text-zinc-800 dark:text-zinc-300 border-b border-zinc-200 dark:border-[#180510] pb-1">
+                      <span>● Permissions: Zero Trackers / Offline</span>
+                      <span className="text-emerald-600 dark:text-emerald-400 font-bold">100% Private</span>
+                    </div>
+                    <div className="flex items-center justify-between text-zinc-600 dark:text-zinc-400 pt-0.5">
+                      <span>● Architecture: MVI / Jetpack Compose</span>
+                      <span className="text-red-600 dark:text-red-400 font-semibold">Reactive State</span>
                     </div>
                   </div>
-                  <span className="text-[11px] px-2.5 py-1 rounded bg-zinc-100 dark:bg-[#16060e] text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-[#2b0c1c]">
-                    {app.minAndroidVersion}
-                  </span>
-                </div>
 
-                {/* Title & Tagline */}
-                <div>
-                  <h2 className="text-2xl font-bold text-zinc-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-300 transition-colors">
-                    {app.title}
-                  </h2>
-                  <p className="text-xs text-red-600 dark:text-red-400 font-semibold mt-1">
-                    {app.tagline}
-                  </p>
-                  <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 mt-3 leading-relaxed font-sans font-light">
-                    {app.description}
-                  </p>
-                </div>
-
-                {/* Architecture Specs Box */}
-                <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-[#080205] border border-zinc-200 dark:border-[#1d0714] text-[11px] text-zinc-600 dark:text-zinc-400 space-y-1">
-                  <div className="flex items-center justify-between text-zinc-800 dark:text-zinc-300 border-b border-zinc-200 dark:border-[#180510] pb-1">
-                    <span>● Permissions: Zero Trackers / Offline</span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">100% Private</span>
+                  {/* Tech Stack Pills */}
+                  <div>
+                    <span className="text-[11px] uppercase tracking-wider text-zinc-600 dark:text-zinc-400 block mb-1.5 font-bold">
+                      Stack & Dependencies:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {app.techStack.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-[#16060e] text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-[#2b0c1c]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between text-zinc-600 dark:text-zinc-400 pt-0.5">
-                    <span>● Architecture: MVI / Jetpack Compose</span>
-                    <span className="text-red-600 dark:text-red-400 font-semibold">Reactive State</span>
-                  </div>
-                </div>
 
-                {/* Tech Stack Pills */}
-                <div>
-                  <span className="text-[11px] uppercase tracking-wider text-zinc-600 dark:text-zinc-400 block mb-1.5 font-bold">
-                    Stack & Dependencies:
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {app.techStack.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-[#16060e] text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-[#2b0c1c]"
-                      >
-                        {tech}
-                      </span>
+                  {/* Features */}
+                  <div className="pt-3 border-t border-zinc-200 dark:border-[#1c0713] space-y-1.5">
+                    {app.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs text-zinc-600 dark:text-zinc-400 font-sans">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Features */}
-                <div className="pt-3 border-t border-zinc-200 dark:border-[#1c0713] space-y-1.5">
-                  {app.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-zinc-600 dark:text-zinc-400 font-sans">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
+                {/* Actions */}
+                <div className="pt-6 mt-6 border-t border-zinc-200 dark:border-[#1c0713] flex flex-wrap items-center gap-3">
+                  {app.githubUrl && (
+                    <a
+                      href={app.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => sound.playClick()}
+                      className="px-4 py-2 rounded-xl text-xs font-bold bg-zinc-900 dark:bg-white/10 hover:bg-zinc-800 dark:hover:bg-white/20 text-white transition-colors flex items-center gap-1.5"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>View Repository on GitHub</span>
+                    </a>
+                  )}
                 </div>
               </div>
-
-              {/* Actions */}
-              <div className="pt-6 mt-6 border-t border-zinc-200 dark:border-[#1c0713] flex flex-wrap items-center gap-3">
-                {app.githubUrl && (
-                  <a
-                    href={app.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => sound.playClick()}
-                    className="px-4 py-2 rounded-xl text-xs font-bold bg-zinc-900 dark:bg-white/10 hover:bg-zinc-800 dark:hover:bg-white/20 text-white transition-colors flex items-center gap-1.5"
-                  >
-                    <GithubIcon className="w-3.5 h-3.5" />
-                    <span>View Repository on GitHub</span>
-                  </a>
-                )}
-              </div>
-            </div>
+            </Card3DTilt>
           ))}
         </div>
 
