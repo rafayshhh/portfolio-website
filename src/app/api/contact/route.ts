@@ -31,7 +31,8 @@ export async function POST(request: Request) {
     }
 
     const apiKey = process.env.RESEND_API_KEY;
-    const recipientEmail = process.env.CONTACT_RECEIVER_EMAIL || "contact@rafayshhh.site";
+    const recipientEmail = process.env.CONTACT_RECEIVER_EMAIL || "rafay.shhh@gmail.com";
+    const fromEmail = process.env.RESEND_FROM_EMAIL || "Portfolio Contact <onboarding@resend.dev>";
 
     // If Resend API key is not yet configured, log and return dev success so UI works during dev
     if (!apiKey || apiKey === "re_your_api_key_here") {
@@ -52,7 +53,7 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey);
 
     const { data, error } = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
+      from: fromEmail,
       to: [recipientEmail],
       replyTo: email,
       subject: `[Portfolio Inquiry] ${subject || "New message from " + name}`,
