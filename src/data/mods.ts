@@ -82,6 +82,23 @@ export const MINECRAFT_MODS: MinecraftCreation[] = [
     ],
     status: "Released",
   },
+  {
+    id: "shhh-player-health-indicators",
+    title: "Shhh Player Health Indicators",
+    tagline: "Minimalist client-side player heart and health display above nametags.",
+    description: "Lightweight Fabric utility that renders clean, unobtrusive health indicators above player nametags. Zero server-side overhead and engineered to maintain steady frame rates during intense multiplayer gameplay.",
+    loaders: ["Fabric"],
+    minecraftVersions: ["1.20.x", "1.21.x"],
+    githubUrl: "https://github.com/RafayShhh",
+    type: "mod",
+    features: [
+      "Clean visual heart icons rendered above player nametags",
+      "Color-graded indicator reflecting current health thresholds",
+      "Zero FPS impact and multiplayer anti-cheat safe",
+      "Fully client-side Fabric 26.3 architecture",
+    ],
+    status: "In Development",
+  },
 ];
 
 export const MINECRAFT_PLUGINS: MinecraftCreation[] = [

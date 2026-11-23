@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { Project } from "@/data/projects";
 import { 
   ExternalLink, 
   Check, 
   Code2, 
   Layers, 
-  Terminal 
+  Terminal,
+  Cpu
 } from "lucide-react";
 import { GithubIcon } from "@/components/icons/BrandIcons";
 import { Card3DTilt } from "@/components/3d/Card3DTilt";
@@ -17,7 +19,7 @@ interface ProjectsClientListProps {
   projects: Project[];
 }
 
-const CATEGORIES = ["All", "Full-Stack", "CLI & Tools", "Web App"];
+const CATEGORIES = ["All", "Desktop & AI", "Full-Stack", "CLI & Tools"];
 
 export function ProjectsClientList({ projects }: ProjectsClientListProps) {
   const [selectedCat, setSelectedCat] = useState("All");
@@ -67,6 +69,17 @@ export function ProjectsClientList({ projects }: ProjectsClientListProps) {
                 </div>
 
                 <div>
+                  {project.image && (
+                    <div className="relative w-full h-44 rounded-xl overflow-hidden border border-zinc-200 dark:border-[#200816] bg-zinc-950 mb-4 shadow-inner">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
                   <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-300 transition-colors">
                     {project.title}
                   </h3>

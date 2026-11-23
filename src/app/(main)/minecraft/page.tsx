@@ -69,7 +69,7 @@ export default function MinecraftHubPage() {
                     <Gamepad2 className="w-6 h-6" />
                   </span>
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700/40">
-                    3 Mods Available
+                    4 Mods Available
                   </span>
                 </div>
 
@@ -77,13 +77,14 @@ export default function MinecraftHubPage() {
                   Minecraft Mods
                 </h2>
                 <p className="text-xs text-zinc-600 dark:text-emerald-200/70 font-sans font-light leading-relaxed">
-                  Pure client-side utilities built for Fabric &amp; Quilt. Features Shhh Brightness Toggle, Shhh Builder, and Shhh Printer.
+                  Pure client-side utilities built for Fabric &amp; Quilt. Features Shhh Brightness Toggle, Shhh Builder, Shhh Printer, and Health Indicators.
                 </p>
 
                 <div className="space-y-1.5 pt-2 text-xs font-mono text-zinc-700 dark:text-emerald-300/80">
                   <div>✓ Shhh Brightness Toggle (10k+)</div>
                   <div>✓ Shhh Builder</div>
                   <div>✓ Shhh Printer</div>
+                  <div>✓ Shhh Health Indicators</div>
                 </div>
               </div>
 

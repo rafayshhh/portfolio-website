@@ -43,7 +43,7 @@ export default function MinecraftModsPage() {
 
             <div className="flex items-center gap-2 font-mono text-xs text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-[#091b10] px-3.5 py-2 rounded-xl border border-emerald-200 dark:border-emerald-500/30 shrink-0">
               <Flame className="w-4 h-4 text-emerald-500" />
-              <span className="font-semibold">3 Active Releases</span>
+              <span className="font-semibold">{MINECRAFT_MODS.length} Active Releases</span>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@ export default function MinecraftModsPage() {
         </div>
 
         {/* Mods Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {MINECRAFT_MODS.map((mod) => (
             <Card3DTilt key={mod.id} maxTilt={5} glare={true} className="rounded-2xl">
               <div className="h-full p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0a180e] border border-zinc-200 dark:border-emerald-500/30 hover:border-emerald-500/70 transition-all shadow-sm dark:shadow-[0_10px_30px_rgba(16,185,129,0.1)] flex flex-col justify-between group font-minecraft">

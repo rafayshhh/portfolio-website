@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { ANDROID_APPS } from "@/data/apps";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { 
@@ -10,7 +11,9 @@ import {
   Sparkles, 
   Zap, 
   ShieldCheck, 
-  ArrowUpRight 
+  ArrowUpRight,
+  ExternalLink,
+  Globe
 } from "lucide-react";
 import { GithubIcon, AndroidIcon } from "@/components/icons/BrandIcons";
 import { Card3DTilt } from "@/components/3d/Card3DTilt";
@@ -39,7 +42,7 @@ export default function AppsPage() {
                 KREATE<span className="text-cyan-500">KODE</span>
               </h1>
               <p className="text-sm sm:text-base text-zinc-600 dark:text-cyan-200/70 mt-2 max-w-xl font-light tracking-wide leading-relaxed">
-                Solo Founder Building Apps For Utility &amp; Lightweight That Solve Real Problems. Handcrafted with modern Kotlin and zero telemetry trackers.
+                Solo Founder Building Apps For Utility &amp; Lightweight That Solve Real Problems. Handcrafted with Flutter, Clean Architecture, and zero telemetry trackers.
               </p>
             </div>
 
@@ -58,9 +61,21 @@ export default function AppsPage() {
                 {/* App Top Meta */}
                 <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-zinc-100 dark:border-cyan-900/40">
                   <div className="flex items-center gap-3">
-                    <span className="p-3 rounded-2xl bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/30">
-                      <AndroidIcon className="w-6 h-6" />
-                    </span>
+                    {app.image ? (
+                      <div className="relative w-12 h-12 rounded-2xl overflow-hidden border border-cyan-500/40 bg-zinc-900 shrink-0 shadow-sm">
+                        <Image
+                          src={app.image}
+                          alt={app.title}
+                          fill
+                          sizes="48px"
+                          className="object-cover group-hover:scale-105 transition-transform"
+                        />
+                      </div>
+                    ) : (
+                      <span className="p-3 rounded-2xl bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/30">
+                        <AndroidIcon className="w-6 h-6" />
+                      </span>
+                    )}
                     <div>
                       <span className="text-xs uppercase tracking-wider text-cyan-700 dark:text-cyan-400 font-bold block">
                         {app.category}
@@ -101,10 +116,10 @@ export default function AppsPage() {
                   </div>
                   <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-[#071626] border border-zinc-200 dark:border-cyan-900/40 text-xs space-y-1">
                     <span className="text-[11px] text-zinc-500 dark:text-cyan-300/70 uppercase tracking-wider block font-bold">
-                      Reactive Architecture
+                      Clean Reactive Engine
                     </span>
                     <span className="text-cyan-700 dark:text-cyan-300 font-semibold block">
-                      ● Single-source Room DB + MVI declarative UI states
+                      ● Riverpod 2.x state + on-device Hive storage persistence
                     </span>
                   </div>
                 </div>
@@ -132,18 +147,43 @@ export default function AppsPage() {
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    {app.playStoreUrl && (
+                      <a
+                        href={app.playStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => sound.playClick()}
+                        className="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-500 text-white dark:text-black dark:bg-cyan-400 dark:hover:bg-cyan-300 transition-all flex items-center gap-1.5 shadow-sm"
+                      >
+                        <AndroidIcon className="w-4 h-4" />
+                        <span>Google Play</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {app.webAppUrl && (
+                      <a
+                        href={app.webAppUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => sound.playClick()}
+                        className="px-3.5 py-2 rounded-xl text-xs font-medium text-cyan-600 dark:text-cyan-300 bg-cyan-50 dark:bg-cyan-950/60 hover:bg-cyan-100 dark:hover:bg-cyan-900/40 border border-cyan-200 dark:border-cyan-500/30 transition-all flex items-center gap-1.5"
+                      >
+                        <Globe className="w-3.5 h-3.5" />
+                        <span>Web Studio</span>
+                        <ExternalLink className="w-3 h-3 opacity-70" />
+                      </a>
+                    )}
                     {app.githubUrl && (
                       <a
                         href={app.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => sound.playClick()}
-                        className="px-4 py-2.5 rounded-xl text-xs font-bold bg-zinc-900 dark:bg-cyan-500 text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-cyan-400 transition-all flex items-center gap-2 shadow-sm"
+                        className="px-3.5 py-2 rounded-xl text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white bg-zinc-100 dark:bg-[#081a2e] border border-zinc-200 dark:border-cyan-500/30 transition-colors flex items-center gap-1.5"
                       >
-                        <GithubIcon className="w-4 h-4" />
-                        <span>Source on GitHub</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
+                        <GithubIcon className="w-3.5 h-3.5" />
+                        <span>GitHub</span>
                       </a>
                     )}
                   </div>
@@ -161,7 +201,7 @@ export default function AppsPage() {
               <span>Need a custom utility or offline native app?</span>
             </h3>
             <p className="text-xs sm:text-sm text-zinc-600 dark:text-cyan-200/70 font-sans font-light">
-              Crafted under KreateKode with modern Kotlin, Jetpack Compose, and pure performance focus.
+              Crafted under KreateKode with Flutter, Dart, Riverpod, and zero-telemetry performance focus.
             </p>
           </div>
           <Link
