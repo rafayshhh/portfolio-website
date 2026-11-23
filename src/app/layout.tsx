@@ -1,10 +1,24 @@
 import type { Metadata, Viewport } from "next";
+import { Silkscreen, Space_Grotesk } from "next/font/google";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PERSONAL_INFO } from "@/data/socials";
+
+const silkscreen = Silkscreen({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-minecraft",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-kreate",
+  display: "swap",
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://rafayshhh.site";
 
@@ -95,7 +109,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`dark scroll-smooth ${silkscreen.variable} ${spaceGrotesk.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <JsonLd type="person" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />

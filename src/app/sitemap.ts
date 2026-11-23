@@ -12,10 +12,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/mods`,
+      url: `${baseUrl}/experience`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/minecraft`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/minecraft/mods`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/minecraft/plugins`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/minecraft/resource-packs`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.75,
     },
     {
       url: `${baseUrl}/apps`,
@@ -25,6 +49,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/projects`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/mods`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.8,

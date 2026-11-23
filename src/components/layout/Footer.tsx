@@ -59,25 +59,37 @@ export function Footer() {
             <h4 className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-4">
               System Directory
             </h4>
-            <ul className="space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400">
+            <ul className="space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
               <li>
                 <Link
                   href="/"
                   onClick={() => sound.playClick()}
                   className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
                 >
-                  [1] Overview & Creations
+                  [1] Overview
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/mods"
+                  href="/experience"
                   onClick={() => sound.playClick()}
                   className="hover:text-red-600 dark:hover:text-red-400 transition-colors flex items-center gap-1.5"
                 >
-                  <span>[2] Minecraft Mods</span>
+                  <span>[2] Experience</span>
                   <span className="text-[9px] bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300 px-1 py-0.2 rounded border border-red-200 dark:border-red-800/40">
-                    Hot
+                    5 Roles
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/minecraft"
+                  onClick={() => sound.playClick()}
+                  className="hover:text-emerald-500 transition-colors flex items-center gap-1.5"
+                >
+                  <span className="font-minecraft text-[11px]">[3] Minecraft</span>
+                  <span className="text-[9px] bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 px-1 py-0.2 rounded border border-emerald-500/30">
+                    3 Hubs
                   </span>
                 </Link>
               </li>
@@ -85,9 +97,9 @@ export function Footer() {
                 <Link
                   href="/apps"
                   onClick={() => sound.playClick()}
-                  className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                  className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
                 >
-                  [3] Android Applications
+                  <span className="font-kreate">[4] Android (Kreate)</span>
                 </Link>
               </li>
               <li>
@@ -96,17 +108,17 @@ export function Footer() {
                   onClick={() => sound.playClick()}
                   className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
                 >
-                  [4] Software Projects
+                  [5] Software Projects
                 </Link>
               </li>
               <li>
-                <a
-                  href="/#contact"
+                <Link
+                  href="/contact"
                   onClick={() => sound.playClick()}
                   className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
                 >
-                  Direct Dispatch Form
-                </a>
+                  [6] Direct Contact
+                </Link>
               </li>
             </ul>
           </div>

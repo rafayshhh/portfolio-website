@@ -9,6 +9,10 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        minecraft: ["var(--font-minecraft)", "monospace"],
+        kreate: ["var(--font-kreate)", "sans-serif"],
+      },
       colors: {
         background: "#08080a",
         foreground: "#f4f4f5",
@@ -16,6 +20,30 @@ const config: Config = {
           DEFAULT: "#101015",
           hover: "#17171e",
           border: "#1f1f28",
+        },
+        electric: {
+          DEFAULT: "#00f0ff",
+          glow: "rgba(0, 240, 255, 0.35)",
+          neon: "#00e5ff",
+          dark: "#050c14",
+          card: "#081420",
+          border: "#0e283c",
+        },
+        mc: {
+          emerald: "#10b981",
+          green: "#22c55e",
+          forest: "#15803d",
+          dark: "#0a140d",
+          card: "#0e1c12",
+          border: "#16381e",
+          deepslate: "#141c16",
+        },
+        ruby: {
+          DEFAULT: "#ef233c",
+          dark: "#d90429",
+          wine: "#220713",
+          card: "#10060e",
+          border: "#260a1a",
         },
         crimson: {
           50: "#fff1f2",

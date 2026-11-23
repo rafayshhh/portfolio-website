@@ -3,7 +3,15 @@
 import React from "react";
 import { ANDROID_APPS } from "@/data/apps";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { Smartphone, Download, CheckCircle2, Sparkles } from "lucide-react";
+import { 
+  Smartphone, 
+  Download, 
+  CheckCircle2, 
+  Sparkles, 
+  Zap, 
+  ShieldCheck, 
+  ArrowUpRight 
+} from "lucide-react";
 import { GithubIcon, AndroidIcon } from "@/components/icons/BrandIcons";
 import { Card3DTilt } from "@/components/3d/Card3DTilt";
 import Link from "next/link";
@@ -11,143 +19,157 @@ import { sound } from "@/lib/sound";
 
 export default function AppsPage() {
   return (
-    <div className="pt-12 pb-20 relative transition-colors duration-200">
+    <div className="pt-12 pb-24 relative transition-colors duration-200">
       <JsonLd type="apps" />
 
-      {/* Ambient background glow */}
-      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-red-600/5 dark:bg-red-600/10 blur-[140px] pointer-events-none" />
+      {/* Electric Cyan Ambient Glow */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[650px] h-[340px] bg-cyan-500/10 dark:bg-cyan-400/15 blur-[150px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
-        {/* Header */}
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-600/15 border border-red-300 dark:border-red-500/30 text-red-700 dark:text-red-400 text-xs font-mono mb-4 font-bold">
-            <Smartphone className="w-3.5 h-3.5" />
-            <span>Modern Native Android</span>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+        {/* Kreate Brand Header */}
+        <div className="space-y-4 font-kreate">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-100 dark:bg-cyan-950/70 border border-cyan-300 dark:border-cyan-500/40 text-cyan-800 dark:text-cyan-300 text-xs font-bold tracking-wider uppercase">
+            <Zap className="w-3.5 h-3.5 text-cyan-500 animate-pulse" />
+            <span>KreateKode Mobile Studio</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-black text-zinc-900 dark:text-white tracking-tight font-mono">
-            ANDROID APPLICATIONS
-          </h1>
-          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 mt-4 leading-relaxed font-light">
-            Engineered following Google&apos;s Modern Android Architecture guidelines. Handcrafted with Kotlin, declarative Jetpack Compose UI, Room persistence, and zero telemetry trackers.
-          </p>
+
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <h1 className="text-4xl sm:text-6xl font-black text-zinc-900 dark:text-white tracking-tight uppercase">
+                KREATE<span className="text-cyan-500">KODE</span>
+              </h1>
+              <p className="text-sm sm:text-base text-zinc-600 dark:text-cyan-200/70 mt-2 max-w-xl font-light tracking-wide leading-relaxed">
+                Solo Founder Building Apps For Utility &amp; Lightweight That Solve Real Problems. Handcrafted with modern Kotlin and zero telemetry trackers.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-zinc-100 dark:bg-[#071524] border border-zinc-200 dark:border-cyan-500/30 text-xs text-cyan-700 dark:text-cyan-300 shadow-sm shrink-0">
+              <ShieldCheck className="w-4 h-4 text-cyan-500" />
+              <span className="font-semibold uppercase tracking-wider">100% Offline &amp; Private</span>
+            </div>
+          </div>
         </div>
 
-        {/* Apps Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Electric Kreate App Showcase */}
+        <div className="space-y-8">
           {ANDROID_APPS.map((app) => (
-            <Card3DTilt key={app.id} maxTilt={6} glare={true} className="rounded-2xl">
-              <div className="h-full rounded-2xl bg-white dark:bg-[#0c0408] border border-zinc-200 dark:border-[#230917] hover:border-red-500/40 p-6 sm:p-8 flex flex-col justify-between transition-all group shadow-sm dark:shadow-xl dark:shadow-black/60 font-mono">
-                <div className="space-y-4">
-                  {/* Header status */}
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex items-center gap-2.5">
-                      <span className="p-2.5 rounded-xl bg-zinc-100 dark:bg-[#16060e] text-red-600 dark:text-red-400 border border-zinc-200 dark:border-[#2b0c1c]">
-                        <AndroidIcon className="w-5 h-5" />
+            <Card3DTilt key={app.id} maxTilt={4} glare={true} className="rounded-2xl">
+              <div className="p-6 sm:p-10 rounded-2xl bg-white dark:bg-gradient-to-br dark:from-[#05111d] dark:via-[#040c16] dark:to-[#03080e] border border-zinc-200 dark:border-cyan-500/30 hover:border-cyan-500/70 transition-all shadow-md dark:shadow-[0_10px_35px_rgba(0,240,255,0.1)] group font-kreate">
+                {/* App Top Meta */}
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-zinc-100 dark:border-cyan-900/40">
+                  <div className="flex items-center gap-3">
+                    <span className="p-3 rounded-2xl bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/30">
+                      <AndroidIcon className="w-6 h-6" />
+                    </span>
+                    <div>
+                      <span className="text-xs uppercase tracking-wider text-cyan-700 dark:text-cyan-400 font-bold block">
+                        {app.category}
                       </span>
-                      <div>
-                        <span className="text-xs text-zinc-700 dark:text-zinc-400 block font-bold">
-                          {app.category}
-                        </span>
-                        <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
-                          {app.version} • {app.status}
-                        </span>
-                      </div>
+                      <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-mono font-semibold">
+                        {app.version} • {app.status}
+                      </span>
                     </div>
-                    <span className="text-[11px] px-2.5 py-1 rounded bg-zinc-100 dark:bg-[#16060e] text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-[#2b0c1c]">
-                      {app.minAndroidVersion}
+                  </div>
+
+                  <span className="text-xs px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-[#081a2e] text-zinc-700 dark:text-cyan-300 border border-zinc-200 dark:border-cyan-500/30 font-mono">
+                    {app.minAndroidVersion}
+                  </span>
+                </div>
+
+                {/* App Title & Copy */}
+                <div className="py-6 space-y-3">
+                  <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors tracking-tight">
+                    {app.title}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-cyan-700 dark:text-cyan-400 font-semibold tracking-wide">
+                    {app.tagline}
+                  </p>
+                  <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 font-sans font-light leading-relaxed max-w-3xl">
+                    {app.description}
+                  </p>
+                </div>
+
+                {/* Architecture Highlights */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-6">
+                  <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-[#071626] border border-zinc-200 dark:border-cyan-900/40 text-xs space-y-1">
+                    <span className="text-[11px] text-zinc-500 dark:text-cyan-300/70 uppercase tracking-wider block font-bold">
+                      Privacy &amp; Data Ethos
+                    </span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold block">
+                      ● Zero analytics SDKs, zero background telemetry trackers
                     </span>
                   </div>
-
-                  {/* Title & Tagline */}
-                  <div>
-                    <h2 className="text-2xl font-bold text-zinc-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-300 transition-colors">
-                      {app.title}
-                    </h2>
-                    <p className="text-xs text-red-600 dark:text-red-400 font-semibold mt-1">
-                      {app.tagline}
-                    </p>
-                    <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 mt-3 leading-relaxed font-sans font-light">
-                      {app.description}
-                    </p>
-                  </div>
-
-                  {/* Architecture Specs Box */}
-                  <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-[#080205] border border-zinc-200 dark:border-[#1d0714] text-[11px] text-zinc-600 dark:text-zinc-400 space-y-1">
-                    <div className="flex items-center justify-between text-zinc-800 dark:text-zinc-300 border-b border-zinc-200 dark:border-[#180510] pb-1">
-                      <span>● Permissions: Zero Trackers / Offline</span>
-                      <span className="text-emerald-600 dark:text-emerald-400 font-bold">100% Private</span>
-                    </div>
-                    <div className="flex items-center justify-between text-zinc-600 dark:text-zinc-400 pt-0.5">
-                      <span>● Architecture: MVI / Jetpack Compose</span>
-                      <span className="text-red-600 dark:text-red-400 font-semibold">Reactive State</span>
-                    </div>
-                  </div>
-
-                  {/* Tech Stack Pills */}
-                  <div>
-                    <span className="text-[11px] uppercase tracking-wider text-zinc-600 dark:text-zinc-400 block mb-1.5 font-bold">
-                      Stack & Dependencies:
+                  <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-[#071626] border border-zinc-200 dark:border-cyan-900/40 text-xs space-y-1">
+                    <span className="text-[11px] text-zinc-500 dark:text-cyan-300/70 uppercase tracking-wider block font-bold">
+                      Reactive Architecture
                     </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {app.techStack.map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-[#16060e] text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-[#2b0c1c]"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Features */}
-                  <div className="pt-3 border-t border-zinc-200 dark:border-[#1c0713] space-y-1.5">
-                    {app.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-zinc-600 dark:text-zinc-400 font-sans">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
+                    <span className="text-cyan-700 dark:text-cyan-300 font-semibold block">
+                      ● Single-source Room DB + MVI declarative UI states
+                    </span>
                   </div>
                 </div>
 
-                {/* Actions */}
-                <div className="pt-6 mt-6 border-t border-zinc-200 dark:border-[#1c0713] flex flex-wrap items-center gap-3">
-                  {app.githubUrl && (
-                    <a
-                      href={app.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => sound.playClick()}
-                      className="px-4 py-2 rounded-xl text-xs font-bold bg-zinc-900 dark:bg-white/10 hover:bg-zinc-800 dark:hover:bg-white/20 text-white transition-colors flex items-center gap-1.5"
-                    >
-                      <GithubIcon className="w-3.5 h-3.5" />
-                      <span>View Repository on GitHub</span>
-                    </a>
-                  )}
+                {/* Features Checklist */}
+                <div className="space-y-2 pb-6 border-b border-zinc-100 dark:border-cyan-900/40">
+                  {app.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 text-xs text-zinc-600 dark:text-zinc-300 font-sans font-light">
+                      <CheckCircle2 className="w-4 h-4 text-cyan-500 shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Tech Stack Pills & Actions */}
+                <div className="pt-6 flex flex-wrap items-center justify-between gap-4 font-mono">
+                  <div className="flex flex-wrap gap-1.5">
+                    {app.techStack.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="text-[10px] px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-[#081a2e] text-zinc-700 dark:text-cyan-300 border border-zinc-200 dark:border-cyan-500/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    {app.githubUrl && (
+                      <a
+                        href={app.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => sound.playClick()}
+                        className="px-4 py-2.5 rounded-xl text-xs font-bold bg-zinc-900 dark:bg-cyan-500 text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-cyan-400 transition-all flex items-center gap-2 shadow-sm"
+                      >
+                        <GithubIcon className="w-4 h-4" />
+                        <span>Source on GitHub</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </Card3DTilt>
           ))}
         </div>
 
-        {/* Android Commission Notice */}
-        <div className="mt-12 p-8 rounded-2xl bg-white dark:bg-gradient-to-r dark:from-red-950/40 dark:via-[#10050c] dark:to-[#080205] border border-zinc-200 dark:border-red-500/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm dark:shadow-xl font-mono">
+        {/* Kreate Custom Commission Card */}
+        <div className="p-8 rounded-2xl bg-zinc-100 dark:bg-gradient-to-r dark:from-[#061524] dark:to-[#030911] border border-zinc-200 dark:border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm dark:shadow-xl font-kreate">
           <div className="space-y-1 text-center sm:text-left">
-            <h3 className="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2 justify-center sm:justify-start">
-              <Sparkles className="w-4 h-4 text-red-600 dark:text-red-400" />
-              <span>Have an Android Project in Mind?</span>
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2 justify-center sm:justify-start uppercase tracking-wide">
+              <Zap className="w-4 h-4 text-cyan-500" />
+              <span>Need a custom utility or offline native app?</span>
             </h3>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-sans font-light">
-              Need a modern Kotlin & Jetpack Compose native mobile utility or offline-first tool? Let&apos;s build it.
+            <p className="text-xs sm:text-sm text-zinc-600 dark:text-cyan-200/70 font-sans font-light">
+              Crafted under KreateKode with modern Kotlin, Jetpack Compose, and pure performance focus.
             </p>
           </div>
           <Link
-            href="/#contact"
+            href="/contact"
             onClick={() => sound.playClick()}
-            className="px-5 py-2.5 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white shadow-sm transition-all"
+            className="px-5 py-2.5 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-500 text-white dark:text-black dark:bg-cyan-400 dark:hover:bg-cyan-300 shadow-sm transition-all shrink-0 uppercase tracking-wider"
           >
-            Get in Touch
+            Inquire App &rarr;
           </Link>
         </div>
       </div>

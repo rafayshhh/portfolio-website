@@ -10,6 +10,7 @@ import {
   Gamepad2, 
   Smartphone, 
   Code2, 
+  Briefcase,
   Mail, 
   ExternalLink 
 } from "lucide-react";
@@ -20,9 +21,11 @@ import { sound } from "@/lib/sound";
 
 const NAV_ITEMS = [
   { name: "Overview", href: "/" },
-  { name: "Minecraft Mods", href: "/mods", icon: Gamepad2, badge: "Fabric" },
-  { name: "Android Apps", href: "/apps", icon: Smartphone, badge: "Compose" },
+  { name: "Experience", href: "/experience", icon: Briefcase },
+  { name: "Minecraft", href: "/minecraft", icon: Gamepad2, badge: "3 Branches" },
+  { name: "Android", href: "/apps", icon: Smartphone, badge: "Kreate", electric: true },
   { name: "Projects", href: "/projects", icon: Code2 },
+  { name: "Contact", href: "/contact", icon: Mail },
 ];
 
 export function Navbar() {
@@ -82,7 +85,7 @@ export function Navbar() {
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-1 bg-zinc-100 dark:bg-[#12050c] p-1.5 rounded-xl border border-zinc-200 dark:border-[#2b0c1c] font-mono text-xs">
             {NAV_ITEMS.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = item.href === "/" ? pathname === "/" : pathname?.startsWith(item.href);
               const Icon = item.icon;
               return (
                 <Link
@@ -91,14 +94,24 @@ export function Navbar() {
                   onClick={() => sound.playClick()}
                   className={`px-3.5 py-1.5 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 relative ${
                     isActive
-                      ? "bg-white dark:bg-red-600 text-red-600 dark:text-white shadow-sm font-bold"
+                      ? item.electric
+                        ? "bg-cyan-50 dark:bg-cyan-950/80 text-cyan-600 dark:text-cyan-300 shadow-sm font-bold border border-cyan-500/30"
+                        : item.href === "/minecraft"
+                        ? "bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-300 shadow-sm font-bold border border-emerald-500/30 font-minecraft"
+                        : "bg-white dark:bg-red-600 text-red-600 dark:text-white shadow-sm font-bold"
                       : "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5"
                   }`}
                 >
                   {Icon && (
                     <Icon
                       className={`w-3.5 h-3.5 ${
-                        isActive ? "text-red-600 dark:text-white" : "text-zinc-400 dark:text-zinc-500"
+                        isActive 
+                          ? item.electric 
+                            ? "text-cyan-500" 
+                            : item.href === "/minecraft" 
+                            ? "text-emerald-500" 
+                            : "text-red-600 dark:text-white" 
+                          : "text-zinc-400 dark:text-zinc-500"
                       }`}
                     />
                   )}
@@ -107,7 +120,11 @@ export function Navbar() {
                     <span
                       className={`text-[9px] px-1.5 py-0.2 rounded font-mono ${
                         isActive
-                          ? "bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-200"
+                          ? item.electric
+                            ? "bg-cyan-100 dark:bg-cyan-900/60 text-cyan-700 dark:text-cyan-200"
+                            : item.href === "/minecraft"
+                            ? "bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-200"
+                            : "bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-200"
                           : "bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
                       }`}
                     >
@@ -135,14 +152,14 @@ export function Navbar() {
               <ExternalLink className="w-3 h-3 opacity-70" />
             </a>
 
-            <a
-              href="/#contact"
+            <Link
+              href="/contact"
               onClick={() => sound.playClick()}
               className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-red-600 hover:bg-red-500 text-white transition-all shadow-sm hover:shadow-red-500/20 flex items-center gap-1.5 group"
             >
               <Mail className="w-3.5 h-3.5" />
               <span>Get In Touch</span>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Actions & Menu Toggle */}
@@ -176,7 +193,7 @@ export function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white/98 dark:bg-[#0c0408]/98 border-b border-zinc-200 dark:border-[#250817] backdrop-blur-xl px-4 pt-3 pb-6 space-y-2 animate-in fade-in slide-in-from-top-4 duration-200 font-mono shadow-lg">
           {NAV_ITEMS.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = item.href === "/" ? pathname === "/" : pathname?.startsWith(item.href);
             const Icon = item.icon;
             return (
               <Link
@@ -188,16 +205,38 @@ export function Navbar() {
                 }}
                 className={`flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-red-50 dark:bg-red-600/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-500/30"
+                    ? item.electric
+                      ? "bg-cyan-50 dark:bg-cyan-950/40 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30"
+                      : item.href === "/minecraft"
+                      ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 font-minecraft"
+                      : "bg-red-50 dark:bg-red-600/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-500/30"
                     : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-[#16060e]"
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  {Icon && <Icon className="w-4 h-4 text-red-500" />}
+                  {Icon && (
+                    <Icon 
+                      className={`w-4 h-4 ${
+                        isActive
+                          ? item.electric
+                            ? "text-cyan-500"
+                            : item.href === "/minecraft"
+                            ? "text-emerald-500"
+                            : "text-red-500"
+                          : "text-zinc-400"
+                      }`} 
+                    />
+                  )}
                   <span>{item.name}</span>
                 </div>
                 {item.badge && (
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                  <span className={`text-[10px] px-2 py-0.5 rounded ${
+                    isActive && item.electric
+                      ? "bg-cyan-100 dark:bg-cyan-900/60 text-cyan-700 dark:text-cyan-300"
+                      : isActive && item.href === "/minecraft"
+                      ? "bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300"
+                      : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+                  }`}>
                     {item.badge}
                   </span>
                 )}
@@ -206,8 +245,8 @@ export function Navbar() {
           })}
 
           <div className="pt-3 border-t border-zinc-200 dark:border-[#230816] flex flex-col gap-2">
-            <a
-              href="/#contact"
+            <Link
+              href="/contact"
               onClick={() => {
                 sound.playClick();
                 setIsOpen(false);
@@ -216,7 +255,7 @@ export function Navbar() {
             >
               <Mail className="w-4 h-4" />
               <span>Contact via Resend</span>
-            </a>
+            </Link>
           </div>
         </div>
       )}

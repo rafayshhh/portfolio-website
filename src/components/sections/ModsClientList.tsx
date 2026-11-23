@@ -32,7 +32,7 @@ export function ModsClientList({ mods }: ModsClientListProps) {
 
   const filteredMods = mods.filter((mod) => {
     if (selectedLoader === "All") return true;
-    return mod.loaders.some(
+    return mod.loaders?.some(
       (loader) => loader.toLowerCase() === selectedLoader.toLowerCase()
     );
   });
@@ -68,7 +68,7 @@ export function ModsClientList({ mods }: ModsClientListProps) {
                 {/* Header badges */}
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex flex-wrap gap-1.5">
-                    {mod.loaders.map((loader, idx) => (
+                    {mod.loaders?.map((loader, idx) => (
                       <span
                         key={idx}
                         className="text-[11px] px-2.5 py-0.5 rounded-full bg-red-950/80 text-red-300 border border-red-800/40 font-bold"
@@ -100,25 +100,27 @@ export function ModsClientList({ mods }: ModsClientListProps) {
                 </div>
 
                 {/* Minecraft Versions Matrix */}
-                <div className="pt-2">
-                  <span className="text-[11px] uppercase tracking-wider text-zinc-400 block mb-1.5 font-bold">
-                    Tested Minecraft Versions:
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {mod.minecraftVersions.map((v, idx) => (
-                      <span
-                        key={idx}
-                        className="text-[10px] px-2 py-0.5 rounded bg-[#16060e] text-zinc-300 border border-[#2b0c1c]"
-                      >
-                        {v}
-                      </span>
-                    ))}
+                {mod.minecraftVersions && mod.minecraftVersions.length > 0 && (
+                  <div className="pt-2">
+                    <span className="text-[11px] uppercase tracking-wider text-zinc-400 block mb-1.5 font-bold">
+                      Tested Minecraft Versions:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {mod.minecraftVersions.map((v, idx) => (
+                        <span
+                          key={idx}
+                          className="text-[10px] px-2 py-0.5 rounded bg-[#16060e] text-zinc-300 border border-[#2b0c1c]"
+                        >
+                          {v}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Features bullets */}
                 <div className="pt-3 border-t border-[#1c0713] space-y-1.5">
-                  {mod.features.map((feature, idx) => (
+                  {mod.features?.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-2 text-xs text-zinc-400 font-sans">
                       <Check className="w-3.5 h-3.5 text-red-400 shrink-0 mt-0.5" />
                       <span>{feature}</span>
@@ -183,7 +185,7 @@ export function ModsClientList({ mods }: ModsClientListProps) {
           </p>
         </div>
         <Link
-          href="/#contact"
+          href="/contact"
           onClick={() => sound.playClick()}
           className="px-6 py-3 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white shadow-glow-sm shrink-0 transition-all cursor-pointer"
         >

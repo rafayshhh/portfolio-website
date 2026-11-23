@@ -44,11 +44,14 @@ export function SystemHUD() {
         router.push("/");
       } else if (e.key === "2") {
         sound.playClick();
-        router.push("/mods");
+        router.push("/experience");
       } else if (e.key === "3") {
         sound.playClick();
-        router.push("/apps");
+        router.push("/minecraft");
       } else if (e.key === "4") {
+        sound.playClick();
+        router.push("/apps");
+      } else if (e.key === "5") {
         sound.playClick();
         router.push("/projects");
       } else if (e.key.toLowerCase() === "m") {
@@ -94,13 +97,14 @@ export function SystemHUD() {
         </div>
 
         {/* Center / Hotkeys Guide */}
-        <div className="hidden lg:flex items-center gap-2.5 text-[10px] text-zinc-500 dark:text-zinc-400">
+        <div className="hidden lg:flex items-center gap-2 text-[10px] text-zinc-500 dark:text-zinc-400">
           <span>HOTKEYS:</span>
           <span className="px-1.5 py-0.5 rounded bg-zinc-200/80 dark:bg-white/5 border border-zinc-300 dark:border-white/10 text-zinc-700 dark:text-zinc-300 font-bold">[1] Home</span>
-          <span className="px-1.5 py-0.5 rounded bg-zinc-200/80 dark:bg-white/5 border border-zinc-300 dark:border-white/10 text-zinc-700 dark:text-zinc-300 font-bold">[2] Mods</span>
-          <span className="px-1.5 py-0.5 rounded bg-zinc-200/80 dark:bg-white/5 border border-zinc-300 dark:border-white/10 text-zinc-700 dark:text-zinc-300 font-bold">[3] Apps</span>
-          <span className="px-1.5 py-0.5 rounded bg-zinc-200/80 dark:bg-white/5 border border-zinc-300 dark:border-white/10 text-zinc-700 dark:text-zinc-300 font-bold">[4] Projects</span>
-          <span className="px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-950/60 border border-red-300 dark:border-red-900/40 text-red-700 dark:text-red-300 font-bold">[B] Toggle Brightness</span>
+          <span className="px-1.5 py-0.5 rounded bg-zinc-200/80 dark:bg-white/5 border border-zinc-300 dark:border-white/10 text-zinc-700 dark:text-zinc-300 font-bold">[2] Exp</span>
+          <span className="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800/40 text-emerald-700 dark:text-emerald-300 font-bold">[3] Minecraft</span>
+          <span className="px-1.5 py-0.5 rounded bg-cyan-100 dark:bg-cyan-950/60 border border-cyan-300 dark:border-cyan-800/40 text-cyan-700 dark:text-cyan-300 font-bold">[4] Apps</span>
+          <span className="px-1.5 py-0.5 rounded bg-zinc-200/80 dark:bg-white/5 border border-zinc-300 dark:border-white/10 text-zinc-700 dark:text-zinc-300 font-bold">[5] Projects</span>
+          <span className="px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-950/60 border border-red-300 dark:border-red-900/40 text-red-700 dark:text-red-300 font-bold">[B] Brightness</span>
           <span className="px-1.5 py-0.5 rounded bg-zinc-200/80 dark:bg-white/5 border border-zinc-300 dark:border-white/10 text-zinc-700 dark:text-zinc-300 font-bold">[T] Theme</span>
         </div>
 

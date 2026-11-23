@@ -122,13 +122,21 @@ export function Hero() {
             {/* Direct Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-3">
               <Link
-                href="/mods"
+                href="/minecraft"
                 onClick={() => sound.playClick()}
                 className="px-6 py-3 rounded-xl font-mono text-xs font-bold bg-red-600 hover:bg-red-500 text-white shadow-md shadow-red-500/20 transition-all flex items-center gap-2 group"
               >
                 <Gamepad2 className="w-4 h-4 text-red-100" />
-                <span>Browse Minecraft Mods</span>
+                <span>Minecraft Ecosystem</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              <Link
+                href="/experience"
+                onClick={() => sound.playClick()}
+                className="px-5 py-3 rounded-xl font-mono text-xs font-bold bg-white dark:bg-[#14060e] hover:bg-zinc-100 dark:hover:bg-[#200917] text-zinc-800 dark:text-zinc-200 hover:text-red-600 dark:hover:text-white border border-zinc-200 dark:border-red-500/40 shadow-sm transition-all flex items-center gap-2"
+              >
+                <span>View Experience</span>
               </Link>
 
               <button
@@ -148,7 +156,7 @@ export function Hero() {
                 className="px-5 py-3 rounded-xl font-mono text-xs font-bold bg-[#5865F2]/10 dark:bg-[#5865F2]/15 hover:bg-[#5865F2]/20 text-[#4752c4] dark:text-[#9cb0ff] hover:text-[#5865F2] dark:hover:text-white border border-[#5865F2]/20 dark:border-[#5865F2]/30 transition-all flex items-center gap-2"
               >
                 <DiscordIcon className="w-4 h-4" />
-                <span>Discord Community</span>
+                <span>Discord</span>
                 <ExternalLink className="w-3 h-3 opacity-60" />
               </a>
             </div>
