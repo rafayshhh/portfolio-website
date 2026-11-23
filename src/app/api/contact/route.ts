@@ -30,9 +30,9 @@ export async function POST(request: Request) {
       );
     }
 
-    const apiKey = process.env.RESEND_API_KEY;
-    const recipientEmail = process.env.CONTACT_RECEIVER_EMAIL || "rafay.shhh@gmail.com";
-    const fromEmail = process.env.RESEND_FROM_EMAIL || "Portfolio Contact <onboarding@resend.dev>";
+    const apiKey = process.env.RESEND_API_KEY?.trim().replace(/^["']|["']$/g, "");
+    const recipientEmail = (process.env.CONTACT_RECEIVER_EMAIL || "rafay.shhh@gmail.com").trim().replace(/^["']|["']$/g, "");
+    const fromEmail = (process.env.RESEND_FROM_EMAIL || "Portfolio Contact <onboarding@resend.dev>").trim().replace(/^["']|["']$/g, "");
 
     // If Resend API key is not yet configured, log and return dev success so UI works during dev
     if (!apiKey || apiKey === "re_your_api_key_here") {
@@ -85,8 +85,9 @@ export async function POST(request: Request) {
     });
   } catch (err: unknown) {
     console.error("Contact route error:", err);
+    const message = err instanceof Error ? err.message : "An unexpected error occurred while processing your request.";
     return NextResponse.json(
-      { error: "An unexpected error occurred while processing your request." },
+      { error: message },
       { status: 500 }
     );
   }
