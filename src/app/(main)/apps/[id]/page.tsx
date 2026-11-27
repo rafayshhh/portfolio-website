@@ -69,6 +69,7 @@ export default async function AppDetailPage({ params }: Props) {
         operatingSystem={app.minAndroidVersion}
         codeRepository={app.githubUrl}
         downloadUrl={app.apkDownloadUrl || app.playStoreUrl}
+        faqs={app.faqs}
         breadcrumbs={[
           { name: "Overview", url: "/" },
           { name: "Android Apps", url: "/apps" },
@@ -103,11 +104,12 @@ export default async function AppDetailPage({ params }: Props) {
         {/* Gallery */}
         <ItemGallery gallery={app.gallery} title={app.title} theme="cyan" />
 
-        {/* Detailed Documentation & Specs */}
+        {/* Detailed Documentation, Specs & FAQs */}
         <ItemDocSections
           features={app.features}
           specifications={app.specifications}
           documentation={app.documentation}
+          faqs={app.faqs}
           prevItem={
             prevApp ? { id: prevApp.id, title: prevApp.title, href: `/apps/${prevApp.id}` } : null
           }

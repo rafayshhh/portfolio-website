@@ -1,7 +1,6 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { sound } from "@/lib/sound";
 
 type Theme = "dark" | "light";
 
@@ -55,9 +54,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const toggleTheme = () => {
     const nextTheme: Theme = theme === "dark" ? "light" : "dark";
-    try {
-      sound.playClick();
-    } catch {}
     setTheme(nextTheme);
   };
 

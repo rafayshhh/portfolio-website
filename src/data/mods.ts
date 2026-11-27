@@ -5,6 +5,7 @@ import {
   ControlBinding,
   CommandEntry,
   DependencyLink,
+  FaqItem,
   ItemSeo,
 } from "./types";
 
@@ -33,6 +34,7 @@ export interface MinecraftCreation {
   commands?: CommandEntry[];
   dependencies?: DependencyLink[];
   documentation: DocumentationSection[];
+  faqs?: FaqItem[];
   seo: ItemSeo;
 }
 
@@ -68,39 +70,21 @@ export const MINECRAFT_MODS: MinecraftCreation[] = [
       {
         src: "/images/minecraft/mods/shhh-brightness-toggle/1.jpg",
         alt: "Side-by-side mineshaft comparison without mod vs with Shhh Brightness enabled",
-        caption: "Side-by-side comparison in a deep mineshaft: vanilla cave darkness vs Shhh Brightness 100%.",
+        caption: "Split cave comparison: standard vanilla lightmap vs Shhh Brightness Toggle at 100%.",
         isPrimary: true,
         aspect: "video",
       },
       {
         src: "/images/minecraft/mods/shhh-brightness-toggle/3.jpg",
         alt: "Shhh Brightness Configuration screen accessible via Mod Menu and /shhh",
-        caption: "In-game configuration menu with Fullbright toggle, 10%–100% level slider, and Colored Messages switch.",
+        caption: "In-game configuration menu with Fullbright toggle, 10%–100% brightness selector, and message color toggles.",
         aspect: "video",
       },
       {
         src: "/images/minecraft/mods/shhh-brightness-toggle/2.jpg",
         alt: "Customizable Keybinds inside Minecraft Controls menu for Shhh Brightness Toggle",
-        caption: "Dedicated Controls section to customize Toggle, Increase, and Decrease brightness hotkeys.",
+        caption: "Dedicated Controls keybinds to customize Toggle, Increase, and Decrease brightness hotkeys.",
         aspect: "video",
-      },
-      {
-        src: "/images/minecraft/mods/shhh-brightness-toggle/demo-bright.png",
-        alt: "In-game mineshaft screenshot with Shhh Brightness set to ON 100%",
-        caption: "Live 26.3 Fabric capture inside an abandoned mineshaft with Brightness: ON (100%).",
-        aspect: "video",
-      },
-      {
-        src: "/images/minecraft/mods/shhh-brightness-toggle/demo-dark.png",
-        alt: "In-game mineshaft screenshot with Shhh Brightness turned OFF",
-        caption: "Baseline capture at identical coordinates with Brightness: OFF.",
-        aspect: "video",
-      },
-      {
-        src: "/images/minecraft/mods/shhh-brightness-toggle/icon.png",
-        alt: "Shhh Brightness Toggle Official Mod Icon",
-        caption: "Official split cave brightness emblem.",
-        aspect: "square",
       },
     ],
     specifications: [
@@ -155,9 +139,23 @@ public class LightmapExtractorMixin {
 - **Latest Engine (26.1.1 – 26.3, Java 25)**: Native 26.3 lightmap state integration, Mod Menu configuration screen, and \`/shhh\` client commands.`,
       },
     ],
+    faqs: [
+      {
+        question: "Does Shhh Brightness Toggle work with Sodium and Iris Shaders?",
+        answer: "Yes. Instead of replacing rendering pipelines wholesale, it injects cleanly into Minecraft's lightmap extractor so Sodium performance optimizations stay intact.",
+      },
+      {
+        question: "Does it modify my options.txt gamma setting permanently?",
+        answer: "No. Brightness overrides happen strictly in memory and restore your original vanilla brightness automatically when toggled off or when you close the game.",
+      },
+      {
+        question: "Does switching fullbright show Night Vision potion particles or flashing?",
+        answer: "No. Because it modifies the lightmap gamma curve directly rather than faking a potion effect, your HUD and view remain completely clear.",
+      },
+    ],
     seo: {
-      metaTitle: "Shhh Brightness Toggle — Fullbright Mod for Fabric & Forge (1.8.9–26.3)",
-      metaDescription: "Download Shhh Brightness Toggle: Client-side fullbright mod with 10%–100% stepping, Mod Menu GUI, and zero Night Vision particles across Minecraft 1.8.9–26.3.",
+      metaTitle: "Shhh Brightness Toggle — Fullbright Mod (Fabric & Forge)",
+      metaDescription: "Download Shhh Brightness Toggle: client-side Minecraft fullbright mod with 10%–100% stepping, Mod Menu GUI, and no Night Vision potion clutter for 1.8.9–26.3.",
       keywords: ["Minecraft fullbright mod", "Shhh Brightness Toggle", "Fabric fullbright 26.3", "Forge 1.8.9 fullbright", "Minecraft brightness slider mod"],
     },
   },
@@ -229,12 +227,6 @@ public class LightmapExtractorMixin {
         caption: "Client Command Suite (/shhhbuilder): Complete world-placement control directly from chat.",
         aspect: "video",
       },
-      {
-        src: "/images/minecraft/mods/shhh-builder/icon.png",
-        alt: "Shhh Builder Official Mod Icon",
-        caption: "Official cyan wireframe hologram house icon.",
-        aspect: "square",
-      },
     ],
     specifications: [
       { label: "Mod Loader", value: "Fabric Loader 0.20.1+ (Minecraft 26.3)" },
@@ -284,9 +276,23 @@ public class LightmapExtractorMixin {
 - **One-Click Clipboard Export**: Copy formatted resource checklists cleanly to share with build teammates.`,
       },
     ],
+    faqs: [
+      {
+        question: "What schematic file formats does Shhh Builder support?",
+        answer: "Shhh Builder loads both Litematica (.litematic) and Sponge Schematic (.schem) files directly from your .minecraft/schematics folder.",
+      },
+      {
+        question: "Is Shhh Builder allowed on survival multiplayer servers?",
+        answer: "Yes. By itself Shhh Builder is a pure client-side visual hologram viewer and materials checklist with zero mixins and no automated block placement or custom server packets.",
+      },
+      {
+        question: "Why does Shhh Builder maintain smooth FPS on large builds?",
+        answer: "It applies 6-neighbor internal face culling and distance-based texture limits so hidden interior faces inside large structures are never sent to the GPU.",
+      },
+    ],
     seo: {
-      metaTitle: "Shhh Builder — Fabric Schematic Viewer & Hologram Mod (MC 26.3)",
-      metaDescription: "Download Shhh Builder for Minecraft 26.3 Fabric: Zero-mixin .litematic and .schem holographic viewer, live materials checklist, shulker counter, and layer slicer.",
+      metaTitle: "Shhh Builder — Fabric Schematic & Hologram Mod (26.3)",
+      metaDescription: "Download Shhh Builder for Minecraft 26.3 Fabric: zero-mixin .litematic and .schem hologram viewer, live shulker materials checklist, and layer slicing.",
       keywords: ["Minecraft schematic viewer", "Shhh Builder", "Litematica alternative Fabric 26.3", "zero mixin schematic mod", "Minecraft hologram builder"],
     },
   },
@@ -327,12 +333,6 @@ public class LightmapExtractorMixin {
         alt: "Shhh Printer 3-column graphical settings screen showing Behavior & Targets, Speed & Orientation, and HUD controls",
         caption: "3-Column In-Game Settings ([O]): Behavior & Targets, Speed Presets, and Multi-Corner HUD.",
         aspect: "video",
-      },
-      {
-        src: "/images/minecraft/mods/shhh-printer/icon.png",
-        alt: "Shhh Printer isometric glowing 3D printer logo icon",
-        caption: "Official isometric hologram printer emblem.",
-        aspect: "square",
       },
     ],
     specifications: [
@@ -379,9 +379,19 @@ Shhh Printer defaults to **Point & Place Targeting**:
 Combined with **Directional Orientation** for stairs, slabs, and logs plus **Collision Protection**, placements match schematic state cleanly without suffocating the player.`,
       },
     ],
+    faqs: [
+      {
+        question: "How is Point & Place targeting different from standard 360° printers?",
+        answer: "Instead of placing blocks automatically behind walls or outside your line of sight, Point & Place only places the exact ghost block your crosshair is actively aimed at within vanilla reach.",
+      },
+      {
+        question: "Does Shhh Printer require Shhh Builder installed?",
+        answer: "Yes. Shhh Printer acts as the automated placement companion for Shhh Builder (>= 1.0.0) on Fabric 26.3.",
+      },
+    ],
     seo: {
-      metaTitle: "Shhh Printer — Crosshair Schematic Printer for Shhh Builder (MC 26.3)",
-      metaDescription: "Download Shhh Printer for Fabric 26.3: Fair-play Point & Place schematic printer companion for Shhh Builder with Survival/Public/Creative presets and smart hotbar sync.",
+      metaTitle: "Shhh Printer — Crosshair Schematic Printer (MC 26.3)",
+      metaDescription: "Download Shhh Printer for Fabric 26.3: Point & Place crosshair schematic printer companion for Shhh Builder with Survival, Public, and Creative presets.",
       keywords: ["Shhh Printer", "Minecraft Fabric schematic printer", "Point and Place printer mod", "Shhh Builder companion", "safe schematic printer"],
     },
   },
@@ -435,12 +445,6 @@ Combined with **Directional Orientation** for stairs, slabs, and logs plus **Col
         caption: "Controls & Keybindings: Instant [F12] toggle and [0] settings menu with built-in typing guards.",
         aspect: "video",
       },
-      {
-        src: "/images/minecraft/mods/shhh-player-health-indicators/icon.png",
-        alt: "Customizable Player Health Indicator Pixel Heart Emblem",
-        caption: "Official pixel heart and golden absorption plus icon.",
-        aspect: "square",
-      },
     ],
     specifications: [
       { label: "GitHub Repository", value: "customizable-player-health-indicator" },
@@ -486,9 +490,19 @@ Customizable Player Health Indicator handles high-capacity combat accurately:
 - **Shader Native Sprite Sheet**: 9x9 bitmap heart fonts participate cleanly in Minecraft's billboard nametag pass with Sodium & Iris support.`,
       },
     ],
+    faqs: [
+      {
+        question: "Does Player Health Indicators work accurately on Lifesteal SMP servers?",
+        answer: "Yes. It tracks unclamped max HP (40–120+ HP), adapts to dynamic health scaling without shrinking ratios, and includes scoreboard fallback synchronization for public multiplayer servers.",
+      },
+      {
+        question: "Can I use it alongside Customizable Mobs Health Indicator?",
+        answer: "Yes. Player Health Indicators strictly targets players while Mobs Health Indicators strictly targets non-player living mobs, so both run cleanly side by side.",
+      },
+    ],
     seo: {
-      metaTitle: "Shhh Player Health Indicators (Customizable Player Health) — Fabric 26.3",
-      metaDescription: "Download Customizable Player Health Indicator (Shhh Player Health Indicators) for Fabric 26.3: 9x9 pixel hearts, Lifesteal SMP support, Golden Apple absorption & 5 presets.",
+      metaTitle: "Shhh Player Health Indicators — Lifesteal Fabric 26.3 Mod",
+      metaDescription: "Download Customizable Player Health Indicator for Fabric 26.3: 9x9 vanilla pixel hearts, Lifesteal SMP tracking, Golden Apple shields, and 5 presets.",
       keywords: ["Customizable Player Health Indicator", "Shhh Player Health Indicators", "Lifesteal SMP health mod", "Fabric 26.3 player hearts", "Minecraft PvP health indicator"],
     },
   },
@@ -516,15 +530,7 @@ Customizable Player Health Indicator handles high-capacity combat accurately:
       "Pre-built Component caching during extractRenderState with 0 allocations inside render submission",
     ],
     status: "Released",
-    gallery: [
-      {
-        src: "/images/minecraft/mods/shhh-mob-health-indicators/icon.png",
-        alt: "Customizable Mobs Health Indicator Creeper & Pixel Hearts Emblem",
-        caption: "Official Creeper & 9x9 Pixel-Art Heart emblem for Minecraft 26.3 Fabric.",
-        isPrimary: true,
-        aspect: "square",
-      },
-    ],
+    gallery: [],
     specifications: [
       { label: "GitHub Repository", value: "customizable-mobs-health-indicator" },
       { label: "Mod Loader & Runtime", value: "Fabric Loader • Minecraft 26.3 • Java 25+" },
@@ -587,9 +593,19 @@ private void onExtractRenderState(T entity, S state, float tickDelta, CallbackIn
 - **5 Dynamic Color Tiers**: Progresses smoothly from Crimson Red (Tier 1) &rarr; Radiant Gold (Tier 2) &rarr; Emerald Lime (Tier 3) &rarr; Diamond Cyan (Tier 4) &rarr; Ender Magenta (Tier 5+).`,
       },
     ],
+    faqs: [
+      {
+        question: "How are high-HP bosses like Wardens and Iron Golems displayed?",
+        answer: "Whenever a mob has more than 24 HP (>12 heart containers), Classic mode switches to RPG Tiered Hearts displaying an x5 tier multiplier and a color-coded 10-heart bar instead of flooding the screen.",
+      },
+      {
+        question: "Can I hide full-health farm animals so mobs aren't noisy around bases?",
+        answer: "Yes. Toggle Hide at 100% Full Health or filter Hostile, Passive, Bosses, and Named Only mobs independently via GUI ([0]) or /mobhealth commands.",
+      },
+    ],
     seo: {
-      metaTitle: "Shhh Mob Health Indicators (Customizable Mobs Health) — Fabric 26.3",
-      metaDescription: "Download Customizable Mobs Health Indicator for Minecraft 26.3 Fabric: 9x9 pixel heart textures, RPG tiered boss hearts, hostile/passive/boss filters, and zero player overlap.",
+      metaTitle: "Shhh Mob Health Indicators — Fabric 26.3 Mob Tracker",
+      metaDescription: "Download Customizable Mobs Health Indicator for Minecraft 26.3 Fabric: 9x9 pixel heart textures, RPG tiered boss hearts, and smart category filters.",
       keywords: ["Customizable Mobs Health Indicator", "Shhh Mob Health Indicators", "Fabric 26.3 mob health mod", "RPG tiered hearts minecraft", "minecraft overhead mob hearts"],
     },
   },

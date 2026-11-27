@@ -9,7 +9,7 @@ import { ItemJsonLd } from "@/components/item/ItemJsonLd";
 import { ShhhBrightnessDemo } from "@/components/interactive/ShhhBrightnessDemo";
 import { HealthIndicatorPreview } from "@/components/minecraft/HealthIndicatorPreview";
 import { buildPageMetadata, normalizePageTitle } from "@/lib/seo";
-import { Terminal } from "lucide-react";
+import { Sliders } from "lucide-react";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -73,6 +73,7 @@ export default async function MinecraftModDetailPage({ params }: Props) {
         operatingSystem={`Minecraft Java Edition (${mod.loaders?.join(" / ") || "Fabric"})`}
         codeRepository={mod.githubUrl}
         downloadUrl={mod.releaseUrl}
+        faqs={mod.faqs}
         breadcrumbs={[
           { name: "Overview", url: "/" },
           { name: "Minecraft", url: "/minecraft" },
@@ -109,9 +110,9 @@ export default async function MinecraftModDetailPage({ params }: Props) {
         {/* Interactive Feature Previews */}
         {mod.id === "shhh-brightness-toggle" && (
           <section className="space-y-3">
-            <div className="flex items-center gap-2 text-xs text-emerald-700 dark:text-emerald-400 font-bold font-minecraft">
-              <Terminal className="w-4 h-4 text-emerald-500" />
-              <span>Interactive Lightmap Simulator • Press [B] or [↑]/[↓]</span>
+            <div className="flex items-center gap-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400">
+              <Sliders className="w-4 h-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+              <span>Interactive Lightmap Simulator — Press B to toggle or use controls</span>
             </div>
             <ShhhBrightnessDemo />
           </section>
@@ -126,7 +127,7 @@ export default async function MinecraftModDetailPage({ params }: Props) {
         {/* Mod Gallery */}
         <ItemGallery gallery={mod.gallery} title={mod.title} theme="emerald" />
 
-        {/* Features, Specifications, Dependencies, Keybindings, Commands, Deep Guides */}
+        {/* Features, Specifications, Dependencies, Keybindings, Commands, Deep Guides, FAQs */}
         <ItemDocSections
           features={mod.features}
           specifications={mod.specifications}
@@ -134,6 +135,7 @@ export default async function MinecraftModDetailPage({ params }: Props) {
           controls={mod.controls}
           commands={mod.commands}
           dependencies={mod.dependencies}
+          faqs={mod.faqs}
           prevItem={
             prevMod
               ? { id: prevMod.id, title: prevMod.title, href: `/minecraft/mods/${prevMod.id}` }

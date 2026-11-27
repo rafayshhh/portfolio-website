@@ -68,6 +68,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         type="software"
         operatingSystem="Cross-Platform"
         codeRepository={proj.githubUrl}
+        faqs={proj.faqs}
         breadcrumbs={[
           { name: "Overview", url: "/" },
           { name: "Software Projects", url: "/projects" },
@@ -102,6 +103,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           features={proj.highlights}
           specifications={proj.specifications}
           documentation={proj.documentation}
+          faqs={proj.faqs}
           prevItem={
             prevProj
               ? { id: prevProj.id, title: prevProj.title, href: `/projects/${prevProj.id}` }

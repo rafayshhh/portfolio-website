@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { Heart, Shield, Sparkles } from "lucide-react";
-import { sound } from "@/lib/sound";
 
 type PresetId = "hearts" | "compact" | "bar" | "numeric" | "rpg";
 
@@ -40,7 +39,7 @@ const PRESETS: { id: PresetId; label: string }[] = [
 export function HealthIndicatorPreview({ mode }: { mode: "mob" | "player" }) {
   const scenarios = mode === "mob" ? MOB_SCENARIOS : PLAYER_SCENARIOS;
   const [preset, setPreset] = useState<PresetId>("hearts");
-  const [scenarioIdx, setScenarioIdx] = useState(mode === "mob" ? 1 : 1);
+  const [scenarioIdx, setScenarioIdx] = useState(1);
 
   const s = scenarios[scenarioIdx];
   const heartsCount = Math.min(10, Math.ceil(s.maxHp / 2));
@@ -48,7 +47,7 @@ export function HealthIndicatorPreview({ mode }: { mode: "mob" | "player" }) {
   const absorbHearts = Math.ceil(s.absorption / 2);
 
   return (
-    <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#07120b] border border-emerald-200 dark:border-emerald-500/30 shadow-md space-y-6 font-sans">
+    <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#07120b] border border-zinc-200 dark:border-emerald-500/30 shadow-md space-y-6 font-sans">
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-100 dark:border-emerald-900/40 pb-4">
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
@@ -56,7 +55,7 @@ export function HealthIndicatorPreview({ mode }: { mode: "mob" | "player" }) {
             <span>Interactive Overhead Preset Simulator</span>
           </div>
           <p className="text-xs text-zinc-600 dark:text-zinc-400">
-            Switch visual presets and entity health tiers to preview how indicators render in-world.
+            Switch visual presets and entity health tiers to preview how indicators display in-world.
           </p>
         </div>
 
@@ -65,10 +64,7 @@ export function HealthIndicatorPreview({ mode }: { mode: "mob" | "player" }) {
             <button
               key={sc.id}
               type="button"
-              onClick={() => {
-                sound.playClick();
-                setScenarioIdx(idx);
-              }}
+              onClick={() => setScenarioIdx(idx)}
               className={`px-3 py-1 rounded-lg text-[11px] font-mono font-bold transition-colors ${
                 idx === scenarioIdx
                   ? "bg-emerald-700 text-white"
@@ -81,19 +77,15 @@ export function HealthIndicatorPreview({ mode }: { mode: "mob" | "player" }) {
         </div>
       </div>
 
-      {/* Preset Selector */}
       <div className="flex flex-wrap gap-2">
         {PRESETS.map((p) => (
           <button
             key={p.id}
             type="button"
-            onClick={() => {
-              sound.playClick();
-              setPreset(p.id);
-            }}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+            onClick={() => setPreset(p.id)}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors ${
               preset === p.id
-                ? "bg-zinc-900 dark:bg-emerald-500 text-white dark:text-black shadow-sm"
+                ? "bg-zinc-900 dark:bg-emerald-400 text-white dark:text-black shadow-sm"
                 : "bg-zinc-100 dark:bg-zinc-900/70 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/40"
             }`}
           >
@@ -102,9 +94,8 @@ export function HealthIndicatorPreview({ mode }: { mode: "mob" | "player" }) {
         ))}
       </div>
 
-      {/* Simulated Minecraft Nameplate Canvas */}
+      {/* Overhead Nameplate Simulation Canvas */}
       <div className="rounded-xl bg-gradient-to-b from-[#1a2b42] via-[#131d2d] to-[#0a0f18] border border-zinc-800 p-8 flex flex-col items-center justify-center min-h-[190px] space-y-2.5 text-center select-none">
-        {/* Rendered Indicator Line */}
         {preset === "hearts" && (
           <div className="space-y-1 flex flex-col items-center">
             {absorbHearts > 0 && (
@@ -189,8 +180,7 @@ export function HealthIndicatorPreview({ mode }: { mode: "mob" | "player" }) {
           </div>
         )}
 
-        {/* Simulated Entity Nametag */}
-        <div className="px-3 py-0.5 rounded bg-black/45 text-white font-minecraft text-sm tracking-wide">
+        <div className="px-3 py-0.5 rounded bg-black/45 text-white font-sans font-bold text-sm tracking-wide">
           {s.entityName}
         </div>
       </div>

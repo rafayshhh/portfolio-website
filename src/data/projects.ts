@@ -1,4 +1,4 @@
-import { GalleryImage, SpecificationItem, DocumentationSection, ItemSeo } from "./types";
+import { GalleryImage, SpecificationItem, DocumentationSection, FaqItem, ItemSeo } from "./types";
 
 export interface Project {
   id: string;
@@ -15,6 +15,7 @@ export interface Project {
   gallery: GalleryImage[];
   specifications: SpecificationItem[];
   documentation: DocumentationSection[];
+  faqs?: FaqItem[];
   seo: ItemSeo;
 }
 
@@ -28,59 +29,14 @@ export const SOFTWARE_PROJECTS: Project[] = [
     category: "Desktop & AI",
     techStack: ["Python", "PySide6 / Qt", "google-genai SDK", "Gemini API", "SQLite WAL", "Pydantic"],
     githubUrl: "https://github.com/rafayshhh/blogforge",
-    image: "/images/projects/blogforge/01_dashboard.png",
     featured: true,
     highlights: [
       "Local-first architecture: drafts, brand guidelines, and research stay on device",
-      "Iterative multi-stage AI generation pipeline eliminating repetitive AI slop",
-      "Strict Brand Voice Profiles & Topic-Aware Context Engine preventing hallucinations",
+      "Iterative multi-stage AI generation pipeline eliminating repetitive AI filler",
+      "Strict Brand Voice Profiles & Topic-Aware Context Engine reducing hallucinations",
       "Multi-format editorial export to Markdown, HTML, and publication targets",
     ],
-    gallery: [
-      {
-        src: "/images/projects/blogforge/01_dashboard.png",
-        alt: "BlogForge Main Editorial Dashboard",
-        caption: "Central editorial dashboard showcasing active projects, article pipeline, and word metrics.",
-        isPrimary: true,
-        aspect: "video",
-      },
-      {
-        src: "/images/projects/blogforge/02_projects.png",
-        alt: "Projects & Campaign Manager",
-        caption: "Hierarchical project organizer with client voice tags and publication target bindings.",
-        aspect: "video",
-      },
-      {
-        src: "/images/projects/blogforge/03_articles.png",
-        alt: "Articles Index & Pipeline Status",
-        caption: "Workflow stage tracking: Outlining, Draft In Progress, Editorial Review, and Published.",
-        aspect: "video",
-      },
-      {
-        src: "/images/projects/blogforge/05_generator_studio.png",
-        alt: "Iterative Generator Studio",
-        caption: "4-stage pipeline interface showing real-time token streaming and prompt-context inspector.",
-        aspect: "video",
-      },
-      {
-        src: "/images/projects/blogforge/06_long_article_editor.png",
-        alt: "Distraction-Free Markdown Longform Editor",
-        caption: "Split-pane live preview editor with syntax highlighting, header outline tree, and word counts.",
-        aspect: "video",
-      },
-      {
-        src: "/images/projects/blogforge/04_settings.png",
-        alt: "Settings & Google Gemini API Configuration",
-        caption: "API key vault, temperature tuning, and model selection inside local settings.",
-        aspect: "video",
-      },
-      {
-        src: "/images/projects/blogforge/laptop_view_0.png",
-        alt: "BlogForge Desktop Laptop View",
-        caption: "PySide6 / Qt desktop application running natively on local hardware.",
-        aspect: "video",
-      },
-    ],
+    gallery: [],
     specifications: [
       { label: "Application Type", value: "Native Desktop App (PySide6 / Qt6)" },
       { label: "AI Integration", value: "Google Gemini via official google-genai Python SDK" },
@@ -109,9 +65,19 @@ export const SOFTWARE_PROJECTS: Project[] = [
 4. **Stage 4 — FAQ & Metadata Synthesis**: Extracts schema-ready FAQs, OpenGraph descriptions, and publication snippets.`,
       },
     ],
+    faqs: [
+      {
+        question: "Are my articles and API keys stored on external servers?",
+        answer: "No. All drafts, research notes, style guides, and API credentials stay locally on disk inside a SQLite WAL database and communicate directly with Google Gemini API endpoints.",
+      },
+      {
+        question: "Why use a 4-stage pipeline instead of single-prompt article generation?",
+        answer: "Separating Outlining, Section-by-Section Drafting, Adversarial Critical Review, and FAQ Synthesis keeps structure coherent and removes repetitive filler common in one-shot prompts.",
+      },
+    ],
     seo: {
-      metaTitle: "BlogForge — Local-First Gemini AI Desktop Publishing Studio",
-      metaDescription: "Local-first PySide6 desktop workspace for editorial style guides, deep research, and non-slop AI content generation using the official Google google-genai SDK.",
+      metaTitle: "BlogForge — Local-First Gemini AI Publishing Studio",
+      metaDescription: "Local-first PySide6 desktop workspace for editorial style guides, deep research, and structured AI content workflows using the Google google-genai SDK.",
       keywords: ["BlogForge", "Gemini AI desktop app", "local first AI editor", "PySide6 content studio", "Google genai SDK", "RafayShhh projects"],
     },
   },
@@ -131,27 +97,7 @@ export const SOFTWARE_PROJECTS: Project[] = [
       "OS-level cursor and keyboard automation for Photoshop & desktop apps",
       "Real-time visual feedback loop verifying completed UI actions",
     ],
-    gallery: [
-      {
-        src: "/images/projects/p-pointer/current_screen.png",
-        alt: "Real-time Desktop Buffer Capture analyzed by P-Pointer",
-        caption: "Live screen capture buffer fed into Gemini Multimodal Vision API.",
-        isPrimary: true,
-        aspect: "video",
-      },
-      {
-        src: "/images/projects/p-pointer/step4_notepad.png",
-        alt: "Autonomous Desktop Action Execution in Notepad verification test",
-        caption: "Visual feedback loop mapping screen targets and confirming typed & clicked actions.",
-        aspect: "video",
-      },
-      {
-        src: "/images/projects/p-pointer/p-pointer-logo.png",
-        alt: "P-Pointer Official Multimodal Agent Brand Emblem",
-        caption: "Official P-Pointer agent emblem and visual perception badge.",
-        aspect: "square",
-      },
-    ],
+    gallery: [],
     specifications: [
       { label: "Vision Core", value: "Google Gemini Multimodal Vision API" },
       { label: "OS Automation", value: "PyAutoGUI & OS-level pointer/keyboard execution" },
@@ -167,6 +113,12 @@ export const SOFTWARE_PROJECTS: Project[] = [
 1. **Frame Capture**: Captures the active monitor framebuffer cleanly into memory.
 2. **Multimodal Reasoning**: Sends the frame plus natural language instructions to the Gemini Vision API.
 3. **Coordinate Normalization**: Converts normalized \`[0, 1000]\` bounding-box targets into physical screen coordinates and dispatches OS pointer clicks or shortcuts via PyAutoGUI.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "How does P-Pointer prevent runaway desktop automation?",
+        answer: "It enforces corner failsafe aborts, step-by-step action caps, dry-run validation, and Escape kill-switch interrupts during OS pointer control.",
       },
     ],
     seo: {
@@ -188,26 +140,12 @@ export const SOFTWARE_PROJECTS: Project[] = [
     image: "/images/banner.jpg",
     featured: true,
     highlights: [
-      "Static-First Next.js 15 App Router with dedicated showcase routes for every mod, app, and project",
-      "Dynamic Schema.org JSON-LD (Person, ItemList, SoftwareApplication, BreadcrumbList) & XML Sitemap",
-      "Custom Web Audio UI feedback effects, Theme persistence, and interactive Minecraft lightmap demos",
+      "Static-First Next.js 15 App Router with dedicated routes for every mod, app, and project",
+      "Dynamic Schema.org JSON-LD (Person, ItemList, SoftwareApplication, BreadcrumbList, FAQPage)",
+      "Custom accessible image lightbox, theme persistence, and interactive mod simulators",
       "Resend transactional contact API with honeypot filtering & sanitized HTML rendering",
     ],
-    gallery: [
-      {
-        src: "/images/banner.jpg",
-        alt: "RafayShhh Signature Sunset Pixel Art Hero Banner",
-        caption: "Signature panoramic pixel-art sunset landscape anchored across rafayshhh.site.",
-        isPrimary: true,
-        aspect: "video",
-      },
-      {
-        src: "/images/avatar.jpg",
-        alt: "RafayShhh Official Developer Pixel Avatar",
-        caption: "Official pixel-art developer portrait and crimson identity mark.",
-        aspect: "square",
-      },
-    ],
+    gallery: [],
     specifications: [
       { label: "Framework", value: "Next.js 15 (App Router, Static Site Generation)" },
       { label: "Frontend Stack", value: "React 19, TypeScript 5 Strict, Tailwind CSS" },
@@ -223,11 +161,17 @@ export const SOFTWARE_PROJECTS: Project[] = [
 
 ### Key Architectural Highlights
 - **Dedicated Showcase Templates**: Modular \`ItemHero\`, \`ItemGallery\`, and \`ItemDocSections\` provide unified accessibility, responsive framing, and copyable command/code references across every route.
-- **Automated Search Indexing**: Centralized metadata builders keep titles, canonicals, OpenGraph cards, and JSON-LD \`BreadcrumbList\` + \`SoftwareApplication\` schemas in lockstep.`,
+- **Automated Search Indexing**: Centralized metadata builders keep titles, canonicals, OpenGraph cards, and JSON-LD \`BreadcrumbList\`, \`SoftwareApplication\`, and \`FAQPage\` schemas in lockstep.`,
+      },
+    ],
+    faqs: [
+      {
+        question: "How does rafayshhh.site optimize load performance and SEO?",
+        answer: "All 35 routes pre-render as static HTML via Next.js App Router, paired with structured Schema.org graphs, edited Open Graph banners, and clean semantic landmarks.",
       },
     ],
     seo: {
-      metaTitle: "Portfolio Website — Next.js 15 & TypeScript Engineering Showcase",
+      metaTitle: "Portfolio Website — Next.js 15 & React 19 Showcase",
       metaDescription: "Explore the open-source Next.js 15 & React 19 architecture powering rafayshhh.site with static edge rendering, interactive demos, and rich SEO schemas.",
       keywords: ["Next.js 15 portfolio", "RafayShhh portfolio website", "React 19 TypeScript", "Tailwind CSS dark portfolio"],
     },

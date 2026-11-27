@@ -39,6 +39,11 @@ export interface DependencyLink {
   notes?: string;
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface ItemSeo {
   metaTitle: string;
   metaDescription: string;

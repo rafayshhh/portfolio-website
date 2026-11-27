@@ -27,23 +27,20 @@ export default function ProjectsPage() {
     <div className="pt-12 pb-20 relative transition-colors duration-200">
       <JsonLd type="projects" />
 
-      {/* Ambient glow */}
-      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-red-600/5 dark:bg-red-600/10 blur-[140px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
         {/* Header */}
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-600/15 border border-red-300 dark:border-red-500/30 text-red-700 dark:text-red-400 text-xs font-sans mb-4 font-bold">
-            <Code2 className="w-3.5 h-3.5" />
-            <span>Software & Web Engineering</span>
+        <header className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 text-red-700 dark:text-red-400 text-xs font-medium mb-4">
+            <Code2 className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>Software & AI Engineering</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-black text-zinc-900 dark:text-white tracking-tight font-sans">
-            ENGINEERING & TOOLS
+          <h1 className="text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white tracking-tight font-sans">
+            Software &amp; AI Projects
           </h1>
-          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 mt-4 leading-relaxed font-light">
-            A curated portfolio of full-stack services, publishing automations, developer tools, and utility software designed with performance and clean code.
+          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 mt-4 leading-relaxed">
+            Open-source publishing platforms, voice accessibility utilities, and full-stack web engineering built for reliability and clean code.
           </p>
-        </div>
+        </header>
 
         {/* Client-side filterable list */}
         <ProjectsClientList projects={SOFTWARE_PROJECTS} />

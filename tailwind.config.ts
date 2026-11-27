@@ -11,7 +11,6 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
-        minecraft: ["var(--font-minecraft)", "monospace"],
       },
       colors: {
         background: "#08080a",
@@ -20,30 +19,6 @@ const config: Config = {
           DEFAULT: "#101015",
           hover: "#17171e",
           border: "#1f1f28",
-        },
-        electric: {
-          DEFAULT: "#00f0ff",
-          glow: "rgba(0, 240, 255, 0.35)",
-          neon: "#00e5ff",
-          dark: "#050c14",
-          card: "#081420",
-          border: "#0e283c",
-        },
-        mc: {
-          emerald: "#10b981",
-          green: "#22c55e",
-          forest: "#15803d",
-          dark: "#0a140d",
-          card: "#0e1c12",
-          border: "#16381e",
-          deepslate: "#141c16",
-        },
-        ruby: {
-          DEFAULT: "#ef233c",
-          dark: "#d90429",
-          wine: "#220713",
-          card: "#10060e",
-          border: "#260a1a",
         },
         crimson: {
           50: "#fff1f2",
@@ -58,39 +33,11 @@ const config: Config = {
           900: "#881337",
           950: "#4c0519",
         },
-        brand: {
-          red: "#ef4444",
-          "red-glow": "rgba(239, 68, 68, 0.25)",
-          dark: "#09090c",
-          darker: "#050507",
-          border: "#202028",
-          "border-hover": "#383846",
-          muted: "#8b8b9e",
-        },
       },
       boxShadow: {
         "glow-red": "0 0 25px -5px rgba(239, 68, 68, 0.35)",
         "glow-red-lg": "0 0 50px -10px rgba(239, 68, 68, 0.4)",
         "glow-sm": "0 0 15px -3px rgba(239, 68, 68, 0.25)",
-      },
-      animation: {
-        "pulse-subtle": "pulseSubtle 3s ease-in-out infinite",
-        "float": "float 6s ease-in-out infinite",
-        "glow": "glow 4s ease-in-out infinite alternate",
-      },
-      keyframes: {
-        pulseSubtle: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.6" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-6px)" },
-        },
-        glow: {
-          "0%": { opacity: "0.4", filter: "blur(20px)" },
-          "100%": { opacity: "0.8", filter: "blur(30px)" },
-        },
       },
     },
   },

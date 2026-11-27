@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { JsonLd } from "@/components/seo/JsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -26,10 +25,5 @@ export default function MinecraftModsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <JsonLd type="mods" />
-      {children}
-    </>
-  );
+  return children;
 }

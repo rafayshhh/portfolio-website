@@ -11,8 +11,8 @@
   --brand-orange: #ea580c;
   --brand-ice: #0284c7;
   --card-bg: #ffffff;
-  --card-border: #f2e7e9;
-  --subtle-text: #64748b;
+  --card-border: #e4e4e7;
+  --subtle-text: #52525b;
 }
 
 html.dark {
@@ -45,13 +45,11 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Custom Selection Highlight */
 ::selection {
   background-color: #ef233c;
   color: #ffffff;
 }
 
-/* Sleek Red/Wine Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -61,7 +59,7 @@ html.dark ::-webkit-scrollbar-track {
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: #250817;
+  background: #2b0c1c;
   border-radius: 4px;
 }
 
@@ -74,50 +72,10 @@ html:not(.dark) ::-webkit-scrollbar-track {
 }
 
 html:not(.dark) ::-webkit-scrollbar-thumb {
-  background: #fecdd3;
+  background: #d4d4d8;
   border-radius: 4px;
 }
 
 html:not(.dark) ::-webkit-scrollbar-thumb:hover {
   background: #be123c;
-}
-
-/* CRT Scanlines Texture Overlay */
-.bg-scanlines {
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.25) 50%
-  ), linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.03),
-    rgba(0, 255, 0, 0.01),
-    rgba(0, 0, 255, 0.03)
-  );
-  background-size: 100% 3px, 6px 100%;
-}
-
-/* Retro Pixel Border & Notch */
-.pixel-box {
-  background: #0f050b;
-  border: 1px solid #290c1a;
-  position: relative;
-}
-
-.pixel-box:hover {
-  border-color: rgba(239, 35, 60, 0.5);
-  box-shadow: 0 0 25px -5px rgba(239, 35, 60, 0.2);
-}
-
-/* Glow Helpers */
-.text-glow-crimson {
-  text-shadow: 0 0 18px rgba(239, 35, 60, 0.6);
-}
-
-.box-glow-crimson {
-  box-shadow: 0 0 35px -5px rgba(239, 35, 60, 0.3);
-}
-
-/* Responsive code font utilities */
-.font-pixel-stat {
-  font-feature-settings: "tnum" on, "lnum" on, "zero" on;
 }

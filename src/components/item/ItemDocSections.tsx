@@ -8,6 +8,7 @@ import {
   ControlBinding,
   CommandEntry,
   DependencyLink,
+  FaqItem,
 } from "@/data/types";
 import {
   BookOpen,
@@ -22,8 +23,9 @@ import {
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  HelpCircle,
 } from "lucide-react";
-import { sound } from "@/lib/sound";
 
 export interface RelatedNavItem {
   id: string;
@@ -39,6 +41,7 @@ export interface ItemDocSectionsProps {
   controls?: ControlBinding[];
   commands?: CommandEntry[];
   dependencies?: DependencyLink[];
+  faqs?: FaqItem[];
   prevItem?: RelatedNavItem | null;
   nextItem?: RelatedNavItem | null;
   theme: "cyan" | "emerald" | "red";
@@ -153,6 +156,7 @@ export function ItemDocSections({
   controls,
   commands,
   dependencies,
+  faqs,
   prevItem,
   nextItem,
   theme,
@@ -175,7 +179,6 @@ export function ItemDocSections({
   }[theme];
 
   const handleCopy = (text: string, key: string) => {
-    sound.playClick();
     navigator.clipboard.writeText(text);
     setCopiedSlug(key);
     setTimeout(() => setCopiedSlug(null), 2000);
@@ -258,11 +261,11 @@ export function ItemDocSections({
 
               if (!dep.href) return <div key={idx}>{inner}</div>;
               return dep.href.startsWith("http") ? (
-                <a key={idx} href={dep.href} target="_blank" rel="noopener noreferrer" onClick={() => sound.playClick()}>
+                <a key={idx} href={dep.href} target="_blank" rel="noopener noreferrer">
                   {inner}
                 </a>
               ) : (
-                <Link key={idx} href={dep.href} onClick={() => sound.playClick()}>
+                <Link key={idx} href={dep.href}>
                   {inner}
                 </Link>
               );
@@ -407,6 +410,39 @@ export function ItemDocSections({
         </section>
       )}
 
+      {/* Frequently Asked Questions */}
+      {faqs && faqs.length > 0 && (
+        <section aria-labelledby="faq-heading" className="space-y-4">
+          <div className="flex items-center gap-2">
+            <HelpCircle className={`w-4 h-4 ${themeStyles.iconColor}`} aria-hidden="true" />
+            <h2 id="faq-heading" className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="space-y-3">
+            {faqs.map((faq, idx) => (
+              <details
+                key={idx}
+                open={idx === 0}
+                className="group rounded-2xl bg-white dark:bg-[#070c14] border border-zinc-200 dark:border-zinc-800 overflow-hidden"
+              >
+                <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none font-semibold text-sm sm:text-base text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-colors">
+                  <span>{faq.question}</span>
+                  <ChevronDown
+                    className="w-4 h-4 text-zinc-500 dark:text-zinc-400 shrink-0 transition-transform duration-200 group-open:rotate-180"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <div className="px-5 pb-5 pt-1 text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/80">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Adjacent Sibling Cross-Navigation */}
       {(prevItem || nextItem) && (
         <nav aria-label="Related entries" className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
@@ -414,12 +450,11 @@ export function ItemDocSections({
             {prevItem && (
               <Link
                 href={prevItem.href}
-                onClick={() => sound.playClick()}
                 className="p-4 rounded-2xl bg-white dark:bg-[#070c14] border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex items-center gap-3 group"
               >
-                <ChevronLeft className="w-5 h-5 text-zinc-400 group-hover:-translate-x-0.5 transition-transform shrink-0" />
+                <ChevronLeft className="w-5 h-5 text-zinc-500 dark:text-zinc-400 group-hover:-translate-x-0.5 transition-transform shrink-0" aria-hidden="true" />
                 <div className="min-w-0">
-                  <span className="text-[10px] uppercase tracking-wider font-mono text-zinc-500 dark:text-zinc-400 block">
+                  <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400 block">
                     Previous
                   </span>
                   <span className="text-sm font-bold text-zinc-900 dark:text-white truncate block">
@@ -433,18 +468,17 @@ export function ItemDocSections({
             {nextItem && (
               <Link
                 href={nextItem.href}
-                onClick={() => sound.playClick()}
                 className="p-4 rounded-2xl bg-white dark:bg-[#070c14] border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex items-center justify-end gap-3 text-right group"
               >
                 <div className="min-w-0">
-                  <span className="text-[10px] uppercase tracking-wider font-mono text-zinc-500 dark:text-zinc-400 block">
+                  <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400 block">
                     Next
                   </span>
                   <span className="text-sm font-bold text-zinc-900 dark:text-white truncate block">
                     {nextItem.title}
                   </span>
                 </div>
-                <ChevronRight className="w-5 h-5 text-zinc-400 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                <ChevronRight className="w-5 h-5 text-zinc-500 dark:text-zinc-400 group-hover:translate-x-0.5 transition-transform shrink-0" aria-hidden="true" />
               </Link>
             )}
           </div>

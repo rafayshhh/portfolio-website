@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Gamepad2, Server, Palette, Layers } from "lucide-react";
 import { MINECRAFT_MODS, MINECRAFT_PLUGINS, MINECRAFT_RESOURCE_PACKS } from "@/data/mods";
-import { sound } from "@/lib/sound";
 
 const MC_TABS = [
   { name: "Overview", href: "/minecraft", icon: Layers },
@@ -13,22 +12,19 @@ const MC_TABS = [
     name: "Mods",
     href: "/minecraft/mods",
     icon: Gamepad2,
-    badge: `${MINECRAFT_MODS.length} Active`,
+    badge: `${MINECRAFT_MODS.length}`,
   },
   {
     name: "Plugins",
     href: "/minecraft/plugins",
     icon: Server,
-    badge: MINECRAFT_PLUGINS.length > 0 ? `${MINECRAFT_PLUGINS.length} Active` : "Roadmap",
+    badge: MINECRAFT_PLUGINS.length > 0 ? `${MINECRAFT_PLUGINS.length}` : "Roadmap",
   },
   {
     name: "Resource Packs",
     href: "/minecraft/resource-packs",
     icon: Palette,
-    badge:
-      MINECRAFT_RESOURCE_PACKS.length > 0
-        ? `${MINECRAFT_RESOURCE_PACKS.length} Active`
-        : "Roadmap",
+    badge: MINECRAFT_RESOURCE_PACKS.length > 0 ? `${MINECRAFT_RESOURCE_PACKS.length}` : "Roadmap",
   },
 ];
 
@@ -36,7 +32,10 @@ export function MinecraftNavTabs() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-emerald-950/20 dark:bg-[#07130a] border border-emerald-500/30 w-fit font-minecraft text-xs">
+    <nav
+      aria-label="Minecraft categories"
+      className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl bg-zinc-100 dark:bg-[#07130a] border border-zinc-200 dark:border-emerald-500/25 w-fit font-sans text-xs"
+    >
       {MC_TABS.map((tab) => {
         const isActive = pathname === tab.href || (tab.href === "/minecraft/mods" && pathname === "/mods");
         const Icon = tab.icon;
@@ -45,21 +44,20 @@ export function MinecraftNavTabs() {
           <Link
             key={tab.href}
             href={tab.href}
-            onClick={() => sound.playClick()}
-            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 ${
+            className={`px-3.5 py-2 rounded-xl transition-colors flex items-center gap-2 ${
               isActive
-                ? "bg-emerald-700 text-white shadow-[0_0_15px_rgba(16,185,129,0.4)] font-bold"
-                : "text-zinc-600 dark:text-emerald-300/70 hover:text-emerald-600 dark:hover:text-emerald-200 hover:bg-emerald-500/10"
+                ? "bg-emerald-700 text-white shadow-sm font-semibold"
+                : "text-zinc-700 dark:text-emerald-200/80 hover:text-zinc-900 dark:hover:text-white hover:bg-white dark:hover:bg-emerald-950/60 font-medium"
             }`}
           >
             <Icon className="w-3.5 h-3.5" />
             <span>{tab.name}</span>
             {tab.badge && (
               <span
-                className={`text-[9px] px-1.5 py-0.5 rounded font-mono ${
+                className={`text-[10px] px-1.5 py-0.5 rounded-md font-semibold ${
                   isActive
-                    ? "bg-emerald-950/80 text-emerald-200 border border-emerald-400/40"
-                    : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                    ? "bg-white/20 text-white"
+                    : "bg-zinc-200/80 dark:bg-emerald-950/80 text-zinc-700 dark:text-emerald-300"
                 }`}
               >
                 {tab.badge}
@@ -68,6 +66,6 @@ export function MinecraftNavTabs() {
           </Link>
         );
       })}
-    </div>
+    </nav>
   );
 }

@@ -13,14 +13,13 @@ export function JsonLd({ type = "person" }: JsonLdProps) {
   const sameAsLinks = SOCIAL_LINKS.map((s) => s.url);
 
   const authorRef = {
-    "@type": "Person",
-    name: PERSONAL_INFO.name,
-    url: baseUrl,
+    "@id": `${baseUrl}/#person`,
   };
 
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": `${baseUrl}/#person`,
     name: PERSONAL_INFO.name,
     alternateName: [PERSONAL_INFO.fullName, "rafayshhh", "Muhammad Abdul Rafay"],
     url: baseUrl,
@@ -48,8 +47,9 @@ export function JsonLd({ type = "person" }: JsonLdProps) {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "RafayShhh — Portfolio & Projects",
-    alternateName: "RafayShhh Website",
+    "@id": `${baseUrl}/#website`,
+    name: "RafayShhh — Portfolio & Software Studio",
+    alternateName: "RafayShhh",
     url: baseUrl,
     author: authorRef,
     description: PERSONAL_INFO.bio,
@@ -62,6 +62,7 @@ export function JsonLd({ type = "person" }: JsonLdProps) {
     url: `${baseUrl}/minecraft/mods`,
     description: "Open-source client-side Minecraft Fabric & Forge utility mods by RafayShhh.",
     author: authorRef,
+    isPartOf: { "@id": `${baseUrl}/#website` },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: MINECRAFT_MODS.length,
@@ -89,6 +90,7 @@ export function JsonLd({ type = "person" }: JsonLdProps) {
     url: `${baseUrl}/apps`,
     description: "Offline-first Flutter & Dart utility applications engineered by RafayShhh under KreateKode.",
     author: authorRef,
+    isPartOf: { "@id": `${baseUrl}/#website` },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: ANDROID_APPS.length,
@@ -116,6 +118,7 @@ export function JsonLd({ type = "person" }: JsonLdProps) {
     url: `${baseUrl}/projects`,
     description: "Open-source desktop AI publishing tools, multimodal desktop agents, and Next.js platforms by RafayShhh.",
     author: authorRef,
+    isPartOf: { "@id": `${baseUrl}/#website` },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: SOFTWARE_PROJECTS.length,
@@ -141,7 +144,9 @@ export function JsonLd({ type = "person" }: JsonLdProps) {
     name: "Contact & Collaborations",
     url: `${baseUrl}/contact`,
     description: "Send direct engineering inquiries or mod commission requests to RafayShhh.",
+    isPartOf: { "@id": `${baseUrl}/#website` },
     mainEntity: {
+      "@id": `${baseUrl}/#person`,
       "@type": "Person",
       name: PERSONAL_INFO.name,
       email: PERSONAL_INFO.email,
@@ -153,12 +158,15 @@ export function JsonLd({ type = "person" }: JsonLdProps) {
     "@type": "ProfilePage",
     name: "RafayShhh Developer Profile & Socials",
     url: `${baseUrl}/socials`,
-    mainEntity: personSchema,
+    isPartOf: { "@id": `${baseUrl}/#website` },
+    mainEntity: authorRef,
   };
 
-  const schemaToRender: Record<string, unknown>[] = [personSchema, websiteSchema];
+  const schemaToRender: Record<string, unknown>[] = [];
 
-  if (type === "mods") {
+  if (type === "person") {
+    schemaToRender.push(personSchema, websiteSchema);
+  } else if (type === "mods") {
     schemaToRender.push(modsCollectionSchema);
   } else if (type === "apps") {
     schemaToRender.push(appsCollectionSchema);

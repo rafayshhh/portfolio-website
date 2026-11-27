@@ -1,11 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Silkscreen } from "next/font/google";
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { PERSONAL_INFO } from "@/data/socials";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,14 +12,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const silkscreen = Silkscreen({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-minecraft",
-  display: "swap",
-});
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://rafayshhh.site";
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://rafayshhh.site").replace(/\/+$/, "");
 
 export const viewport: Viewport = {
   themeColor: "#ef4444",
@@ -31,11 +23,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "RafayShhh — Minecraft Mod Developer, Android Engineer & Systems Portfolio",
+    default: "RafayShhh — Software Engineer, Minecraft Mod & Flutter Developer",
     template: "%s | RafayShhh",
   },
   description:
-    "Official portfolio and software hub of RafayShhh (Muhammad Abdul Rafay). Creator of Shhh Brightness Toggle, Shhh Builder, Fabric Minecraft mods (1.8.9–26.3), Flutter apps, and KreateKode systems.",
+    "Portfolio of Muhammad Abdul Rafay (RafayShhh): creator of 5 open-source Minecraft Fabric & Forge mods, offline Flutter apps under KreateKode, and local-first AI tools.",
   keywords: [
     "RafayShhh",
     "Muhammad Abdul Rafay",
@@ -43,17 +35,16 @@ export const metadata: Metadata = {
     "Shhh Brightness Toggle",
     "Shhh Builder",
     "Shhh Printer",
-    "Shhh Mob Health Indicators",
     "Shhh Player Health Indicators",
+    "Shhh Mob Health Indicators",
     "Minecraft Fabric Mods",
-    "Minecraft Utility Mods",
-    "CurseForge rafayshhh",
-    "Calculator 150+ Tools",
     "KreateKode",
-    "Flutter Dart Developer",
-    "Full-Stack Next.js Engineer",
+    "Kreate Typography",
+    "Calculator 150 Math Tools",
+    "Flutter Developer",
+    "Next.js Engineer",
   ],
-  authors: [{ name: "RafayShhh", url: siteUrl }],
+  authors: [{ name: "Muhammad Abdul Rafay (RafayShhh)", url: siteUrl }],
   creator: "RafayShhh",
   publisher: "RafayShhh",
   robots: {
@@ -74,9 +65,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "RafayShhh — Minecraft Mod Developer & Systems Engineer",
+    title: "RafayShhh — Software Engineer, Minecraft Mod & Flutter Developer",
     description:
-      "Explore client-side Minecraft mods (Shhh Brightness Toggle, Shhh Builder, Health Indicators), Flutter Android apps, and open-source web software by RafayShhh.",
+      "Explore client-side Minecraft mods (Shhh Brightness Toggle, Shhh Builder), offline Flutter utilities at KreateKode, and open-source AI desktop tools.",
     siteName: "RafayShhh Portfolio",
     images: [
       {
@@ -89,9 +80,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "RafayShhh — Minecraft Mod Developer & Android Engineer",
+    title: "RafayShhh — Software Engineer, Minecraft Mod & Flutter Developer",
     description:
-      "Explore Minecraft mods (Shhh Brightness Toggle), Android apps, and software projects by RafayShhh.",
+      "Explore client-side Minecraft Fabric/Forge mods, offline Flutter mobile apps, and local-first software projects by RafayShhh.",
     creator: "@RafayShhh",
     images: ["/images/banner.jpg"],
   },
@@ -113,7 +104,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark scroll-smooth ${inter.variable} ${silkscreen.variable} font-sans`}
+      className={`dark scroll-smooth ${inter.variable} font-sans`}
       suppressHydrationWarning
     >
       <head>

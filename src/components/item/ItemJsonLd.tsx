@@ -1,5 +1,6 @@
 import React from "react";
 import { PERSONAL_INFO } from "@/data/socials";
+import { FaqItem } from "@/data/types";
 
 export interface ItemBreadcrumb {
   name: string;
@@ -20,6 +21,7 @@ export interface ItemJsonLdProps {
   codeRepository?: string;
   downloadUrl?: string;
   breadcrumbs?: ItemBreadcrumb[];
+  faqs?: FaqItem[];
   offers?: {
     price: string;
     priceCurrency: string;
@@ -40,10 +42,12 @@ export function ItemJsonLd({
   codeRepository,
   downloadUrl,
   breadcrumbs,
+  faqs,
   offers = { price: "0", priceCurrency: "USD" },
 }: ItemJsonLdProps) {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://rafayshhh.site").replace(/\/+$/, "");
   const schemaType = type === "mobile" ? "MobileApplication" : "SoftwareApplication";
+  const validScreenshots = screenshots?.filter((s) => Boolean(s && s.trim())) ?? [];
 
   const appSchema: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -52,9 +56,9 @@ export function ItemJsonLd({
     ...(alternateName ? { alternateName } : {}),
     description,
     url: `${baseUrl}${url}`,
-    image: image ? `${baseUrl}${image}` : `${baseUrl}/images/avatar.jpg`,
-    ...(screenshots && screenshots.length > 0
-      ? { screenshot: screenshots.map((s) => `${baseUrl}${s}`) }
+    image: image ? `${baseUrl}${image}` : `${baseUrl}/images/banner.jpg`,
+    ...(validScreenshots.length > 0
+      ? { screenshot: validScreenshots.map((s) => `${baseUrl}${s}`) }
       : {}),
     applicationCategory: category,
     operatingSystem,
@@ -62,9 +66,13 @@ export function ItemJsonLd({
     ...(codeRepository ? { codeRepository, sameAs: codeRepository } : {}),
     ...(downloadUrl ? { downloadUrl } : {}),
     author: {
+      "@id": `${baseUrl}/#person`,
       "@type": "Person",
       name: PERSONAL_INFO.name,
       url: baseUrl,
+    },
+    isPartOf: {
+      "@id": `${baseUrl}/#website`,
     },
     offers: {
       "@type": "Offer",
@@ -84,6 +92,21 @@ export function ItemJsonLd({
         position: index + 1,
         name: crumb.name,
         item: `${baseUrl}${crumb.url === "/" ? "" : crumb.url}`,
+      })),
+    });
+  }
+
+  if (faqs && faqs.length > 0) {
+    payload.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
       })),
     });
   }

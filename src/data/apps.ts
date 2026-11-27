@@ -1,4 +1,4 @@
-import { GalleryImage, SpecificationItem, DocumentationSection, ItemSeo } from "./types";
+import { GalleryImage, SpecificationItem, DocumentationSection, FaqItem, ItemSeo } from "./types";
 
 export interface AndroidApp {
   id: string;
@@ -20,6 +20,7 @@ export interface AndroidApp {
   gallery: GalleryImage[];
   specifications: SpecificationItem[];
   documentation: DocumentationSection[];
+  faqs?: FaqItem[];
   seo: ItemSeo;
 }
 
@@ -49,58 +50,28 @@ export const ANDROID_APPS: AndroidApp[] = [
     category: "Typography & Creative Suite",
     gallery: [
       {
-        src: "/images/apps/kreate-typography/08_desktop_web.png",
-        alt: "Kreate Typography Desktop & Web PWA Workstation",
-        caption: "Responsive dual-column Web PWA workstation running seamlessly on desktop and tablet.",
+        src: "/images/apps/kreate-typography/promo-showcase-wide.jpg",
+        alt: "Kreate Typography 3-phone showcase displaying Typography Studio, Editor styles, and Symbol Browser",
+        caption: "Kreate Typography Studio Showcase: Unicode font studio, instant transforms, and symbol directory.",
         isPrimary: true,
         aspect: "video",
       },
       {
-        src: "/images/apps/kreate-typography/01_home_dashboard.png",
-        alt: "Kreate Typography Home Dashboard on Pixel 8",
-        caption: "Main Dashboard featuring instant style search, favorite toolkits, and quick actions.",
+        src: "/images/apps/kreate-typography/promo-your-text.png",
+        alt: "Kreate Typography promotional poster — Your Text, Your Style",
+        caption: "Your Text. Your Style. Quick Unicode transforms, creative toolkits, and clean navigation.",
         aspect: "portrait",
       },
       {
-        src: "/images/apps/kreate-typography/02_studio_105_styles.png",
-        alt: "105 Mathematical Unicode Styles Studio",
-        caption: "Live typography studio rendering 105 distinct styles with sub-0.05ms zero-latency typing.",
+        src: "/images/apps/kreate-typography/promo-themes.png",
+        alt: "Kreate Typography promotional showcase highlighting Midnight Ember, Kreate Violet, Ocean, Rose & Emerald themes",
+        caption: "Personalized Dynamic Color Themes designed for clean contrast and readability.",
         aspect: "portrait",
       },
       {
-        src: "/images/apps/kreate-typography/03_share_as_image.png",
-        alt: "Share As Image Sticker Studio",
-        caption: "HD sticker card generator with glassmorphism gradients and configurable palettes.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/kreate-typography/04_watermark_free_export.png",
-        alt: "Watermark-Free Export System",
-        caption: "100% watermark-free image export in high-density PNG format for Instagram, Discord, and Telegram.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/kreate-typography/05_toolkits_hub.png",
-        alt: "22 Dedicated Toolkits Hub",
-        caption: "Specialized utilities including Discord Slugifier, Zalgo Glitch, Kaomoji, and Big Text Banners.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/kreate-typography/06_symbols_browser.png",
-        alt: "2,093 Special Symbols Browser",
-        caption: "Curated categorical symbol directory with one-tap copy and search filtering.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/kreate-typography/07_emoji_browser.png",
-        alt: "2,060 Categorized Emojis Browser",
-        caption: "Full Unicode 15/16 emoji library categorized into 14 distinct visual collections.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/kreate-typography/00_onboarding_walkthrough.png",
-        alt: "Guided Onboarding Walkthrough Screen",
-        caption: "First-launch 4-slide Golden Quill onboarding tour detailing 105 styles and offline privacy.",
+        src: "/images/apps/kreate-typography/promo-history.png",
+        alt: "Kreate Typography History & Favorites search showcase",
+        caption: "Offline History & Favorites manager keeping transformed text accessible anytime.",
         aspect: "portrait",
       },
     ],
@@ -165,9 +136,19 @@ class UnicodeStyleEngine {
         content: `Kreate Typography requires zero user accounts, collects zero telemetry, and includes zero tracking SDKs (no Firebase Analytics, no Facebook SDK, no advertising trackers). Your text transformations and clipboard operations never leave your physical device.`,
       },
     ],
+    faqs: [
+      {
+        question: "Does Kreate Typography add watermarks when exporting images?",
+        answer: "No. Every PNG card exported from the Share As Image studio is 100% watermark-free at full resolution.",
+      },
+      {
+        question: "Does Kreate Typography collect analytics or require an account?",
+        answer: "No. It operates completely offline with zero Firebase Analytics, ad SDKs, or user logins.",
+      },
+    ],
     seo: {
       metaTitle: "Kreate Typography 2.1 — Unicode Font Studio & HD Cards",
-      metaDescription: "Download Kreate Typography for Android: 105 Unicode font styles, 2,060 emojis, 2,093 symbols, 22 toolkits, and watermark-free HD sticker cards with 0-telemetry privacy.",
+      metaDescription: "Download Kreate Typography for Android or try the web app: 105 Unicode font styles, 2,060 emojis, 2,093 symbols, and watermark-free HD card exports.",
       keywords: ["Kreate Typography", "Unicode font generator", "Discord font converter", "Android font app", "Flutter typography studio", "watermark free sticker card", "RafayShhh apps"],
     },
   },
@@ -195,64 +176,10 @@ class UnicodeStyleEngine {
     gallery: [
       {
         src: "/images/apps/calculator/hero_showcase.png",
-        alt: "Calculator with 150 Math Tools hero showcase banner showing Arithmetic, 2D Grapher, and Toolbox Hub",
-        caption: "Core Workspace Trio: Standard Calculator, Interactive 2D Function Grapher, and 150+ Toolbox Hub.",
+        alt: "Calculator with 150 Math Tools hero showcase displaying Standard Calculator, 2D Function Grapher, and Toolbox Hub",
+        caption: "Core Workspace Suite: Standard Calculator, Interactive 2D Function Grapher, and 150+ Specialized Math Tools.",
         isPrimary: true,
         aspect: "video",
-      },
-      {
-        src: "/images/apps/calculator/screen_calculator.png",
-        alt: "Standard Arithmetic Calculator screen with history panel and glassmorphic keypad",
-        caption: "Arithmetic Workspace with live AST evaluation, history logging, and adaptive keypad.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/calculator/screen_scientific.png",
-        alt: "Scientific Calculator screen featuring trigonometry, logarithms, and mathematical constants",
-        caption: "Scientific Keypad with trigonometric functions, factorials, powers, and π / e constants.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/calculator/screen_graphing.png",
-        alt: "2D Function Grapher plotting sin(x) on interactive Cartesian coordinate canvas",
-        caption: "Interactive 2D Function Grapher plotting y = sin(x) with pinch-to-zoom and function presets.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/calculator/screen_equation_solver.png",
-        alt: "Equation Solver resolving linear and quadratic roots",
-        caption: "Equation Solver handling linear, quadratic, and single-variable numeric roots.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/calculator/screen_toolbox_hub.png",
-        alt: "Toolbox Hub showing Everyday, Finance, Mathematics, Statistics, Physics, and Chemistry categories",
-        caption: "Toolbox Hub organizing 150+ specialized calculators across 10 core domain categories.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/calculator/screen_tools_directory.png",
-        alt: "Searchable 150+ Tools Directory with instant filter and Favorites tabs",
-        caption: "Searchable Tools Directory with Favorites and Recents persistence.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/calculator/screen_compound_interest.png",
-        alt: "Compound Interest Finance Calculator screen with balance projection breakdown",
-        caption: "Finance Domain Tool: Compound Interest growth projection with custom compounding intervals.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/calculator/screen_palette_mint.png",
-        alt: "Emerald Mint dynamic palette variant running across calculator workspace",
-        caption: "Emerald Mint Dynamic Palette showcasing instant theme accent switching.",
-        aspect: "portrait",
-      },
-      {
-        src: "/images/apps/calculator/screen_settings.png",
-        alt: "Calculator Settings screen in Signature Electric Cyan Dark mode",
-        caption: "Settings Panel controlling palettes, precision rounding, and angle units (DEG / RAD / GRAD).",
-        aspect: "portrait",
       },
     ],
     specifications: [
@@ -306,9 +233,19 @@ class ExpressionParser {
 - **Dynamic Accent Palettes**: Electric Cyan (Dark OLED), Emerald Mint, and Clean Light Mode stored locally via Hive binary boxes.`,
       },
     ],
+    faqs: [
+      {
+        question: "Does Calculator with 150 Math Tools require internet access?",
+        answer: "No. All 150+ calculators, the recursive-descent AST evaluator, and the 2D Cartesian function plotter run 100% offline with zero network permissions.",
+      },
+      {
+        question: "Where can I download the Android APK or inspect the source code?",
+        answer: "A signed v1.0.0 APK release is available directly from the GitHub Releases link alongside full Flutter & Dart source code.",
+      },
+    ],
     seo: {
-      metaTitle: "Calculator with 150 Math Tools — Offline Scientific Flutter Suite",
-      metaDescription: "Open-source offline mathematical suite & Android APK featuring 150+ calculators across Calculus, Linear Algebra, 2D Graphing, Physics, Chemistry, and Finance.",
+      metaTitle: "Calculator with 150 Math Tools — Offline Flutter App",
+      metaDescription: "Open-source offline Android math suite featuring a scientific AST calculator, 2D function grapher, and 150+ calculators across physics, chemistry & finance.",
       keywords: ["Android math suite", "150 math tools", "offline scientific calculator", "Flutter calculator app", "2D graphing calculator android", "RafayShhh apps"],
     },
   },
