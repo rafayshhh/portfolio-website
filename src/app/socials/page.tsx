@@ -80,12 +80,12 @@ export default function SocialsPage() {
         <Link
           href="/"
           onClick={() => sound.playClick()}
-          className="text-xs font-mono font-bold tracking-wider text-zinc-500 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400 transition-colors flex items-center gap-1.5"
+          className="text-xs font-sans font-bold tracking-wider text-zinc-600 dark:text-zinc-300 hover:text-red-600 dark:hover:text-red-400 transition-colors flex items-center gap-1.5"
           title="Return to Portfolio"
         >
           <span>RafayShhh</span>
-          <span className="text-[10px] text-zinc-400 dark:text-zinc-600">•</span>
-          <span className="text-[11px] font-normal text-zinc-400 dark:text-zinc-500">Hub</span>
+          <span className="text-[10px] text-zinc-500 dark:text-zinc-500">•</span>
+          <span className="text-[11px] font-normal text-zinc-600 dark:text-zinc-400">Hub</span>
         </Link>
         <div className="flex items-center gap-2">
           <ThemeToggle />
@@ -114,14 +114,14 @@ export default function SocialsPage() {
         {/* Name & Headline */}
         <div className="text-center mb-6">
           <div className="flex items-center justify-center gap-1.5 mb-1">
-            <h1 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-white font-mono">
+            <h1 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-white font-sans">
               {PERSONAL_INFO.name}
             </h1>
             <span className="inline-flex items-center text-red-600 dark:text-red-400" title="Verified Creator">
               <ShieldCheck className="w-5 h-5" />
             </span>
           </div>
-          <p className="text-xs font-mono text-zinc-500 dark:text-zinc-400 font-medium mb-2">
+          <p className="text-xs font-sans text-zinc-500 dark:text-zinc-400 font-medium mb-2">
             @{PERSONAL_INFO.handle} • {PERSONAL_INFO.fullName}
           </p>
           <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 max-w-xs mx-auto leading-relaxed">
@@ -149,7 +149,7 @@ export default function SocialsPage() {
                 <span className="p-2 rounded-xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-700 dark:text-zinc-200 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                   {getBrandIcon(social.icon)}
                 </span>
-                <div className="text-left font-mono">
+                <div className="text-left font-sans">
                   <div className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                     {social.name}
                   </div>
@@ -180,7 +180,7 @@ export default function SocialsPage() {
               <span className="p-2 rounded-xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-700 dark:text-zinc-200 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                 <Mail className="w-5 h-5 text-red-500" />
               </span>
-              <div className="text-left font-mono">
+              <div className="text-left font-sans">
                 <div className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                   Direct Email
                 </div>
@@ -201,7 +201,7 @@ export default function SocialsPage() {
           <button
             type="button"
             onClick={handleCopy}
-            className="w-full py-3 px-4 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2
+            className="w-full py-3 px-4 rounded-xl text-xs font-sans font-bold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2
               bg-zinc-900 dark:bg-red-600 text-white
               hover:bg-red-600 dark:hover:bg-red-500
               shadow-lg shadow-black/10 dark:shadow-red-600/25 active:scale-98"
@@ -222,7 +222,7 @@ export default function SocialsPage() {
       </main>
 
       {/* Clean minimal footer */}
-      <footer className="w-full max-w-md py-4 text-center text-[11px] font-mono text-zinc-400 dark:text-zinc-500 relative z-10">
+      <footer className="w-full max-w-md py-4 text-center text-[11px] font-sans text-zinc-600 dark:text-zinc-400 relative z-10">
         © 2026 {PERSONAL_INFO.name} • rafayshhh.site
       </footer>
     </div>

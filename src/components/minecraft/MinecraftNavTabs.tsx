@@ -4,13 +4,32 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Gamepad2, Server, Palette, Layers } from "lucide-react";
+import { MINECRAFT_MODS, MINECRAFT_PLUGINS, MINECRAFT_RESOURCE_PACKS } from "@/data/mods";
 import { sound } from "@/lib/sound";
 
 const MC_TABS = [
   { name: "Overview", href: "/minecraft", icon: Layers },
-  { name: "Mods", href: "/minecraft/mods", icon: Gamepad2, badge: "3 Released" },
-  { name: "Plugins", href: "/minecraft/plugins", icon: Server, badge: "Coming Soon" },
-  { name: "Resource Packs", href: "/minecraft/resource-packs", icon: Palette, badge: "Coming Soon" },
+  {
+    name: "Mods",
+    href: "/minecraft/mods",
+    icon: Gamepad2,
+    badge: `${MINECRAFT_MODS.length} Active`,
+  },
+  {
+    name: "Plugins",
+    href: "/minecraft/plugins",
+    icon: Server,
+    badge: MINECRAFT_PLUGINS.length > 0 ? `${MINECRAFT_PLUGINS.length} Active` : "Roadmap",
+  },
+  {
+    name: "Resource Packs",
+    href: "/minecraft/resource-packs",
+    icon: Palette,
+    badge:
+      MINECRAFT_RESOURCE_PACKS.length > 0
+        ? `${MINECRAFT_RESOURCE_PACKS.length} Active`
+        : "Roadmap",
+  },
 ];
 
 export function MinecraftNavTabs() {
@@ -29,7 +48,7 @@ export function MinecraftNavTabs() {
             onClick={() => sound.playClick()}
             className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 ${
               isActive
-                ? "bg-emerald-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.4)] font-bold"
+                ? "bg-emerald-700 text-white shadow-[0_0_15px_rgba(16,185,129,0.4)] font-bold"
                 : "text-zinc-600 dark:text-emerald-300/70 hover:text-emerald-600 dark:hover:text-emerald-200 hover:bg-emerald-500/10"
             }`}
           >

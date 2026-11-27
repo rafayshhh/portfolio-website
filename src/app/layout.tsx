@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Silkscreen, Space_Grotesk } from "next/font/google";
+import { Inter, Silkscreen } from "next/font/google";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
@@ -7,16 +7,16 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PERSONAL_INFO } from "@/data/socials";
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
 const silkscreen = Silkscreen({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-minecraft",
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-kreate",
   display: "swap",
 });
 
@@ -35,21 +35,23 @@ export const metadata: Metadata = {
     template: "%s | RafayShhh",
   },
   description:
-    "Official portfolio and creations by RafayShhh (Muhammad Abdul Rafay). Creator of Shhh Brightness Toggle, client-side Minecraft Fabric mods, and native Android apps.",
+    "Official portfolio and software hub of RafayShhh (Muhammad Abdul Rafay). Creator of Shhh Brightness Toggle, Shhh Builder, Fabric Minecraft mods (1.8.9–26.3), Flutter apps, and KreateKode systems.",
   keywords: [
     "RafayShhh",
-    "rafayshhh",
+    "Muhammad Abdul Rafay",
     "rafayshhh.site",
-    "rafayshhh.website",
     "Shhh Brightness Toggle",
-    "Minecraft Mods",
-    "Fabric Mod",
-    "Minecraft Utility Mod",
+    "Shhh Builder",
+    "Shhh Printer",
+    "Shhh Mob Health Indicators",
+    "Shhh Player Health Indicators",
+    "Minecraft Fabric Mods",
+    "Minecraft Utility Mods",
     "CurseForge rafayshhh",
-    "Modrinth RafayShhh",
-    "Android Developer",
-    "Kotlin Jetpack Compose",
-    "Full-Stack Software Engineer",
+    "Calculator 150+ Tools",
+    "KreateKode",
+    "Flutter Dart Developer",
+    "Full-Stack Next.js Engineer",
   ],
   authors: [{ name: "RafayShhh", url: siteUrl }],
   creator: "RafayShhh",
@@ -72,16 +74,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "RafayShhh — Minecraft Mod Developer & Android Engineer",
+    title: "RafayShhh — Minecraft Mod Developer & Systems Engineer",
     description:
-      "Explore Minecraft mods (Shhh Brightness Toggle), Android apps, and software projects by RafayShhh.",
+      "Explore client-side Minecraft mods (Shhh Brightness Toggle, Shhh Builder, Health Indicators), Flutter Android apps, and open-source web software by RafayShhh.",
     siteName: "RafayShhh Portfolio",
     images: [
       {
         url: "/images/banner.jpg",
         width: 1200,
         height: 630,
-        alt: "RafayShhh Banner",
+        alt: "RafayShhh Portfolio Banner",
       },
     ],
   },
@@ -111,7 +113,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark scroll-smooth ${silkscreen.variable} ${spaceGrotesk.variable}`}
+      className={`dark scroll-smooth ${inter.variable} ${silkscreen.variable} font-sans`}
       suppressHydrationWarning
     >
       <head>

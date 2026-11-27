@@ -1,3 +1,5 @@
-import MinecraftModsPage from "@/app/(main)/minecraft/mods/page";
+import { redirect } from "next/navigation";
 
-export default MinecraftModsPage;
+export default function LegacyModsRedirectPage() {
+  redirect("/minecraft/mods");
+}

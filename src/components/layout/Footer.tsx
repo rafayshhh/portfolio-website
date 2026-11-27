@@ -18,7 +18,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-zinc-100 dark:bg-[#050103] border-t border-zinc-200 dark:border-[#200816] pt-16 pb-12 overflow-hidden font-mono transition-colors duration-200">
+    <footer className="relative bg-zinc-100 dark:bg-[#050103] border-t border-zinc-200 dark:border-[#200816] pt-16 pb-12 overflow-hidden font-sans transition-colors duration-200">
       {/* Background glow decoration */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-red-600/5 dark:bg-red-600/10 blur-[100px] pointer-events-none" />
 
@@ -56,9 +56,9 @@ export function Footer() {
 
           {/* Col 2: Navigation */}
           <div>
-            <h4 className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-4">
+            <h2 className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-4">
               System Directory
-            </h4>
+            </h2>
             <ul className="space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
               <li>
                 <Link
@@ -89,7 +89,7 @@ export function Footer() {
                 >
                   <span className="font-minecraft text-[11px]">[3] Minecraft</span>
                   <span className="text-[9px] bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 px-1 py-0.2 rounded border border-emerald-500/30">
-                    3 Hubs
+                    5 Mods
                   </span>
                 </Link>
               </li>
@@ -99,7 +99,7 @@ export function Footer() {
                   onClick={() => sound.playClick()}
                   className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
                 >
-                  <span className="font-kreate">[4] Android (Kreate)</span>
+                  <span className="font-sans">[4] Android Apps</span>
                 </Link>
               </li>
               <li>
@@ -125,9 +125,9 @@ export function Footer() {
 
           {/* Col 3: Network Links */}
           <div>
-            <h4 className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-4">
+            <h2 className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider mb-4">
               Network Links
-            </h4>
+            </h2>
             <div className="grid grid-cols-2 gap-2 text-xs text-zinc-600 dark:text-zinc-400">
               {SOCIAL_LINKS.map((s) => {
                 const Icon = getSocialIcon(s.icon);
@@ -150,13 +150,13 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-500">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-600 dark:text-zinc-400">
           <div>
             &copy; {new Date().getFullYear()} {PERSONAL_INFO.name} ({PERSONAL_INFO.fullName}) • rafayshhh.site
           </div>
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 hover:text-red-600 dark:hover:text-red-400 transition-colors p-2 rounded-lg bg-white dark:bg-[#12050c] border border-zinc-200 dark:border-[#220715] shadow-sm"
+            className="flex items-center gap-1.5 text-zinc-700 dark:text-zinc-300 hover:text-red-600 dark:hover:text-red-400 transition-colors p-2 rounded-lg bg-white dark:bg-[#12050c] border border-zinc-200 dark:border-[#220715] shadow-sm"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5" />

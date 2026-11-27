@@ -50,16 +50,16 @@ export default function MinecraftPluginsPage() {
         <MinecraftNavTabs />
 
         {/* Coming Soon Notice Banner */}
-        <div className="p-8 rounded-2xl bg-gradient-to-r from-emerald-950/30 via-[#0a180e] to-[#040e07] border border-emerald-500/40 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm dark:shadow-[0_10px_35px_rgba(16,185,129,0.15)] font-minecraft">
+        <div className="p-8 rounded-2xl bg-emerald-50/90 dark:bg-gradient-to-r dark:from-emerald-950/30 dark:via-[#0a180e] dark:to-[#040e07] border border-emerald-200 dark:border-emerald-500/40 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm dark:shadow-[0_10px_35px_rgba(16,185,129,0.15)] font-minecraft">
           <div className="space-y-2 text-center sm:text-left">
-            <div className="inline-flex items-center gap-2 text-xs text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 text-xs text-amber-700 dark:text-amber-400 font-bold uppercase tracking-wider">
               <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
               <span>Release Pipeline Status: Coming Soon</span>
             </div>
             <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
               Public Plugin Releases Dropping Soon
             </h2>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-emerald-200/70 font-sans font-light max-w-xl">
+            <p className="text-xs sm:text-sm text-zinc-700 dark:text-emerald-200/80 font-sans font-light max-w-xl">
               Paper and Purpur server utilities are currently undergoing stress testing on multi-instance server clusters.
             </p>
           </div>
@@ -67,59 +67,88 @@ export default function MinecraftPluginsPage() {
           <Link
             href="/contact"
             onClick={() => sound.playClick()}
-            className="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all shrink-0"
+            className="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-700 hover:bg-emerald-600 text-white shadow-sm transition-all shrink-0"
           >
             Commission a Plugin &rarr;
           </Link>
         </div>
 
         {/* Plugins In Pipeline */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {MINECRAFT_PLUGINS.map((plugin) => (
-            <Card3DTilt key={plugin.id} maxTilt={5} glare={true} className="rounded-2xl">
-              <div className="h-full p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0a180e] border border-zinc-200 dark:border-emerald-500/30 hover:border-emerald-500/70 transition-all shadow-sm dark:shadow-[0_10px_30px_rgba(16,185,129,0.1)] flex flex-col justify-between group font-minecraft">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700/40 font-bold">
-                      {plugin.status}
-                    </span>
-                    <span className="text-xs text-zinc-500 dark:text-emerald-400/80 font-mono">
-                      Paper / Purpur
-                    </span>
+        {MINECRAFT_PLUGINS.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {MINECRAFT_PLUGINS.map((plugin) => (
+              <Card3DTilt key={plugin.id} maxTilt={5} glare={true} className="rounded-2xl">
+                <div className="h-full p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0a180e] border border-zinc-200 dark:border-emerald-500/30 hover:border-emerald-500/70 transition-all shadow-sm dark:shadow-[0_10px_30px_rgba(16,185,129,0.1)] flex flex-col justify-between group font-minecraft">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700/40 font-bold">
+                        {plugin.status}
+                      </span>
+                      <span className="text-xs text-zinc-500 dark:text-emerald-400/80 font-mono">
+                        Paper / Purpur
+                      </span>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                        {plugin.title}
+                      </h2>
+                      <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">
+                        {plugin.tagline}
+                      </p>
+                      <p className="text-xs text-zinc-600 dark:text-zinc-300 mt-3 font-sans font-light leading-relaxed">
+                        {plugin.description}
+                      </p>
+                    </div>
+
+                    {/* Features list */}
+                    <div className="space-y-2 pt-3 border-t border-zinc-100 dark:border-emerald-900/40">
+                      {plugin.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs text-zinc-600 dark:text-zinc-300 font-sans font-light">
+                          <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <div>
-                    <h2 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                      {plugin.title}
-                    </h2>
-                    <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">
-                      {plugin.tagline}
-                    </p>
-                    <p className="text-xs text-zinc-600 dark:text-zinc-300 mt-3 font-sans font-light leading-relaxed">
-                      {plugin.description}
-                    </p>
-                  </div>
-
-                  {/* Features list */}
-                  <div className="space-y-2 pt-3 border-t border-zinc-100 dark:border-emerald-900/40">
-                    {plugin.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-zinc-600 dark:text-zinc-300 font-sans font-light">
-                        <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
+                  <div className="pt-6 mt-6 border-t border-zinc-100 dark:border-emerald-900/40 flex flex-wrap items-center justify-between gap-3 font-mono">
+                    <Link
+                      href={`/minecraft/plugins/${plugin.id}`}
+                      onClick={() => sound.playClick()}
+                      className="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-700 hover:bg-emerald-600 text-white shadow-sm transition-all flex items-center gap-1.5"
+                    >
+                      <span>Plugin Specs &amp; Architecture</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <span className="text-xs text-zinc-500 dark:text-emerald-400/70">
+                      Source and SpigotMC listings pending beta
+                    </span>
                   </div>
                 </div>
-
-                <div className="pt-6 mt-6 border-t border-zinc-100 dark:border-emerald-900/40 font-mono">
-                  <span className="text-xs text-zinc-500 dark:text-emerald-400/70">
-                    Source and SpigotMC listings will be posted upon beta completion.
-                  </span>
-                </div>
-              </div>
-            </Card3DTilt>
-          ))}
-        </div>
+              </Card3DTilt>
+            ))}
+          </div>
+        ) : (
+          <div className="p-8 rounded-2xl bg-white dark:bg-[#0a180e] border border-zinc-200 dark:border-emerald-500/30 text-center font-minecraft space-y-3">
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
+              No Standalone Server Plugins Published on GitHub Yet
+            </h3>
+            <p className="text-xs sm:text-sm text-zinc-600 dark:text-emerald-200/70 font-sans font-light max-w-xl mx-auto">
+              All currently released Minecraft tools are built as client-side Fabric mods (Shhh Brightness Toggle, Shhh Mob Health Indicators, Shhh Player Health Indicators, Shhh Builder, and Shhh Printer).
+            </p>
+            <div className="pt-2">
+              <Link
+                href="/minecraft/mods"
+                onClick={() => sound.playClick()}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-700 hover:bg-emerald-600 text-white shadow-sm transition-all"
+              >
+                <span>Browse 5 Active Fabric Mods</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -92,7 +92,7 @@ export function SystemHUD() {
           <span className="hidden sm:inline text-zinc-300 dark:text-zinc-700">|</span>
           <div className="hidden sm:flex items-center gap-1 text-red-600 dark:text-red-400 font-medium">
             <Sparkles className="w-3 h-3" />
-            <span>LOADER: FABRIC 1.21.x</span>
+            <span>FABRIC 26.3 • LEGACY 1.8.9+</span>
           </div>
         </div>
 

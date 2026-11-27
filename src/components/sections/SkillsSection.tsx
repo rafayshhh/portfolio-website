@@ -9,44 +9,44 @@ const SKILL_CATEGORIES = [
     icon: Gamepad2,
     badge: "Core Specialty",
     skills: [
-      "Java (8 / 17 / 21)",
+      "Java (8 / 17 / 21 / 25)",
       "Fabric API & Fabric Loom",
       "Mixin Bytecode Injection",
-      "Quilt Standard Libraries",
-      "NeoForge & Forge APIs",
-      "Paper / Purpur Server APIs",
-      "Lightmap & GL Render Hooking",
+      "Minecraft 26.3 & Legacy Ports",
+      "Forge & NeoForge APIs",
+      "Litematic & Schem NBT Parsing",
+      "Custom HUD & Lightmap Rendering",
       "Gradle Multi-Project Pipelines",
     ],
   },
   {
-    title: "Android Engineering",
+    title: "Mobile & Desktop",
     icon: Smartphone,
-    badge: "Mobile Native",
+    badge: "Cross-Platform",
     skills: [
-      "Kotlin Modern Coroutines",
-      "Jetpack Compose Declarative UI",
-      "Android SDK & NDK Tooling",
-      "Room Persistence DB & SQLite",
-      "Material Design 3 (Material You)",
-      "Clean Architecture & MVI / MVVM",
-      "WorkManager Background Deferrals",
+      "Flutter 3.x & Dart 3.x",
+      "Riverpod 2.x State Management",
+      "Hive CE Binary Persistence",
+      "Material Design 3 & Typography",
+      "Python 3.12 & PySide6 / Qt6",
+      "Android Studio & APK Signing",
       "Offline-First Architecture",
+      "Responsive Multi-Viewport UI",
     ],
   },
   {
-    title: "Web & Systems",
+    title: "Web & AI Systems",
     icon: Globe,
     badge: "Modern Stack",
     skills: [
       "TypeScript 5 (Strict)",
       "Next.js 15 (App Router)",
-      "React 19 Server Components",
-      "Tailwind CSS Utility Architecture",
-      "Node.js Runtime Services",
-      "REST & Webhook Protocols",
-      "Edge Middleware & CDN Caching",
-      "Schema.org JSON-LD SEO",
+      "React 19 & Server Components",
+      "Tailwind CSS Architecture",
+      "Google Gemini API (google-genai)",
+      "SQLite WAL & Pydantic",
+      "Edge Middleware & SEO Metadata",
+      "Schema.org JSON-LD Graphs",
     ],
   },
   {
@@ -54,14 +54,14 @@ const SKILL_CATEGORIES = [
     icon: Wrench,
     badge: "DevOps & Tools",
     skills: [
-      "Git & Automated GitHub Actions",
-      "Modrinth API Automation",
-      "CurseForge Developer API",
-      "IntelliJ IDEA & Android Studio",
-      "Vercel Edge Cloud Deployment",
+      "Git & GitHub Releases CI",
+      "CurseForge Developer Portal",
+      "IntelliJ IDEA & VS Code",
+      "Vercel Edge Deployment",
+      "Chrome DevTools & Lighthouse",
       "Resend Transactional Email",
-      "Discord Webhook Integrations",
-      "Local Sandbox Virtualization",
+      "Discord Community Tooling",
+      "Technical & Mod Documentation",
     ],
   },
 ];
@@ -75,7 +75,7 @@ export function SkillsSection() {
             <Cpu className="w-3.5 h-3.5" />
             <span>Technical Capabilities</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white tracking-tight font-mono">
+          <h2 className="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white tracking-tight font-sans">
             TECHNICAL MATRIX
           </h2>
           <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 font-light">
@@ -89,7 +89,7 @@ export function SkillsSection() {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white dark:bg-[#0c0408] border border-zinc-200 dark:border-[#230917] hover:border-red-500/40 transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg dark:shadow-black/60 font-mono"
+                className="p-6 rounded-2xl bg-white dark:bg-[#0c0408] border border-zinc-200 dark:border-[#230917] hover:border-red-500/40 transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg dark:shadow-black/60 font-sans"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

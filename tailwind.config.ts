@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ["var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
         minecraft: ["var(--font-minecraft)", "monospace"],
-        kreate: ["var(--font-kreate)", "sans-serif"],
       },
       colors: {
         background: "#08080a",

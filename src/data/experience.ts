@@ -28,7 +28,7 @@ export const WORK_EXPERIENCES: ExperienceItem[] = [
       "Utility-first engineering with lightweight runtime footprints",
       "Strict privacy-first ethos: zero trackers, zero spyware, 100% offline-ready",
     ],
-    technologies: ["Kotlin", "Jetpack Compose", "Android", "TypeScript", "Next.js"],
+    technologies: ["Flutter", "Dart", "Android", "TypeScript", "Next.js"],
     featured: true,
   },
   {

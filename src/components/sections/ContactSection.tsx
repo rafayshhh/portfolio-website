@@ -14,7 +14,14 @@ import { PERSONAL_INFO } from "@/data/socials";
 import { DiscordIcon } from "@/components/icons/BrandIcons";
 import { sound } from "@/lib/sound";
 
-export function ContactSection() {
+export interface ContactSectionProps {
+  headingTag?: "h1" | "h2";
+}
+
+export function ContactSection({ headingTag = "h2" }: ContactSectionProps) {
+  const Heading = headingTag;
+  const SubHeading = headingTag === "h1" ? "h2" : "h3";
+  const InnerHeading = headingTag === "h1" ? "h3" : "h4";
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -80,17 +87,17 @@ export function ContactSection() {
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Direct Communications</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white tracking-tight font-mono">
+              <Heading className="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white tracking-tight font-sans">
                 DISPATCH A MESSAGE
-              </h2>
+              </Heading>
               <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 font-light leading-relaxed">
                 Got a custom Minecraft mod inquiry, technical question, or project idea? Send a transmission or connect on Discord.
               </p>
             </div>
 
             {/* Email quick-action card */}
-            <div className="p-5 rounded-2xl bg-white dark:bg-[#10050c] border border-zinc-200 dark:border-[#2b0c1e] font-mono shadow-sm">
-              <div className="text-[11px] text-zinc-500 uppercase tracking-wider mb-2">
+            <div className="p-5 rounded-2xl bg-white dark:bg-[#10050c] border border-zinc-200 dark:border-[#2b0c1e] font-sans shadow-sm">
+              <div className="text-[11px] text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-2">
                 Primary Direct Ingestion
               </div>
               <div className="flex items-center justify-between gap-3 bg-zinc-50 dark:bg-[#070205] p-3 rounded-xl border border-zinc-200 dark:border-[#200816]">
@@ -122,7 +129,7 @@ export function ContactSection() {
             </div>
 
             {/* Discord channel banner */}
-            <div className="p-5 rounded-2xl bg-[#5865F2]/10 border border-[#5865F2]/25 space-y-3 font-mono">
+            <div className="p-5 rounded-2xl bg-[#5865F2]/10 border border-[#5865F2]/25 space-y-3 font-sans">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-[#5865F2] dark:text-[#a0b0ff] uppercase tracking-wider font-bold">
                   Real-time Chat & Support
@@ -150,8 +157,8 @@ export function ContactSection() {
 
           {/* Right Column: Resend Contact Form */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0c0408] border border-zinc-200 dark:border-[#230917] shadow-md dark:shadow-2xl relative font-mono">
-              <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-1">Send a Message</h3>
+            <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0c0408] border border-zinc-200 dark:border-[#230917] shadow-md dark:shadow-2xl relative font-sans">
+              <SubHeading className="text-xl font-bold text-zinc-900 dark:text-white mb-1">Send a Message</SubHeading>
               <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-6 font-sans">
                 Powered by Resend. Delivers directly to my personal developer inbox.
               </p>
@@ -161,7 +168,7 @@ export function ContactSection() {
                   <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center">
                     <Check className="w-6 h-6" />
                   </div>
-                  <h4 className="text-lg font-bold text-zinc-900 dark:text-white">Message Delivered!</h4>
+                  <InnerHeading className="text-lg font-bold text-zinc-900 dark:text-white">Message Delivered!</InnerHeading>
                   <p className="text-xs text-zinc-600 dark:text-zinc-300 max-w-sm mx-auto font-sans">
                     Thanks for reaching out. I&apos;ll get back to you as soon as possible.
                   </p>
@@ -196,10 +203,14 @@ export function ContactSection() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs text-zinc-700 dark:text-zinc-300 mb-1.5 font-semibold">
+                      <label
+                        htmlFor="contact-name"
+                        className="block text-xs text-zinc-700 dark:text-zinc-300 mb-1.5 font-semibold"
+                      >
                         Your Name <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="contact-name"
                         type="text"
                         required
                         value={formData.name}
@@ -212,10 +223,14 @@ export function ContactSection() {
                     </div>
 
                     <div>
-                      <label className="block text-xs text-zinc-700 dark:text-zinc-300 mb-1.5 font-semibold">
+                      <label
+                        htmlFor="contact-email"
+                        className="block text-xs text-zinc-700 dark:text-zinc-300 mb-1.5 font-semibold"
+                      >
                         Email Address <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="contact-email"
                         type="email"
                         required
                         value={formData.email}
@@ -229,25 +244,33 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs text-zinc-700 dark:text-zinc-300 mb-1.5 font-semibold">
+                    <label
+                      htmlFor="contact-subject"
+                      className="block text-xs text-zinc-700 dark:text-zinc-300 mb-1.5 font-semibold"
+                    >
                       Subject
                     </label>
                     <input
+                      id="contact-subject"
                       type="text"
                       value={formData.subject}
                       onChange={(e) =>
                         setFormData({ ...formData, subject: e.target.value })
                       }
-                      placeholder="Minecraft Mod Commission / Android Project / Bug Report"
+                      placeholder="Minecraft Fabric Mod / Flutter App / Web Collaboration"
                       className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-[#14060e] border border-zinc-200 dark:border-[#260a1a] focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-600 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs text-zinc-700 dark:text-zinc-300 mb-1.5 font-semibold">
+                    <label
+                      htmlFor="contact-message"
+                      className="block text-xs text-zinc-700 dark:text-zinc-300 mb-1.5 font-semibold"
+                    >
                       Message <span className="text-red-500">*</span>
                     </label>
                     <textarea
+                      id="contact-message"
                       required
                       rows={5}
                       value={formData.message}

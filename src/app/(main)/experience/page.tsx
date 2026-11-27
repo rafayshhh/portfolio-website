@@ -2,6 +2,8 @@ import React from "react";
 import type { Metadata } from "next";
 import { WORK_EXPERIENCES } from "@/data/experience";
 import { Card3DTilt } from "@/components/3d/Card3DTilt";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildPageMetadata } from "@/lib/seo";
 import { 
   Briefcase, 
   ExternalLink, 
@@ -12,23 +14,33 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Experience & Roles — RafayShhh",
-  description: "Verified engineering roles, ventures, and leadership experience by RafayShhh (Muhammad Abdul Rafay).",
-  alternates: {
-    canonical: "/experience",
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Experience & Roles",
+  description:
+    "Verified engineering roles, tech leadership at KreateKode, front-end software development, e-commerce brand infrastructure, and distributed game server architecture by RafayShhh (Muhammad Abdul Rafay).",
+  path: "/experience",
+  type: "profile",
+  keywords: [
+    "RafayShhh experience",
+    "Muhammad Abdul Rafay resume",
+    "KreateKode Founder",
+    "Software Engineer career",
+    "Minecraft server infrastructure",
+    "Front-end engineer experience",
+  ],
+  imageAlt: "Experience & Engineering Roles — RafayShhh",
+});
 
 export default function ExperiencePage() {
   return (
     <div className="pt-12 pb-24 relative transition-colors duration-200">
+      <JsonLd type="person" />
       {/* Background crimson ambient glow */}
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[320px] bg-red-600/5 dark:bg-red-600/10 blur-[140px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         {/* Clean Header */}
-        <div className="max-w-2xl space-y-3 font-mono">
+        <div className="max-w-2xl space-y-3 font-sans">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-600/15 border border-red-300 dark:border-red-500/30 text-red-700 dark:text-red-400 text-xs font-bold">
             <Briefcase className="w-3.5 h-3.5" />
             <span>Career Milestones & Roles</span>
@@ -45,7 +57,7 @@ export default function ExperiencePage() {
         <div className="space-y-6">
           {WORK_EXPERIENCES.map((exp) => (
             <Card3DTilt key={exp.id} maxTilt={4} glare={true} className="rounded-2xl">
-              <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0c0408] border border-zinc-200 dark:border-[#240918] hover:border-red-500/50 dark:hover:border-red-500/50 shadow-sm dark:shadow-xl dark:shadow-black/60 transition-all font-mono">
+              <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0c0408] border border-zinc-200 dark:border-[#240918] hover:border-red-500/50 dark:hover:border-red-500/50 shadow-sm dark:shadow-xl dark:shadow-black/60 transition-all font-sans">
                 {/* Header row */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-zinc-100 dark:border-[#1d0714]">
                   <div>
@@ -130,7 +142,7 @@ export default function ExperiencePage() {
         </div>
 
         {/* Clean CTA Footer */}
-        <div className="p-8 rounded-2xl bg-zinc-100 dark:bg-[#10050c] border border-zinc-200 dark:border-[#290a1c] flex flex-col sm:flex-row items-center justify-between gap-6 font-mono">
+        <div className="p-8 rounded-2xl bg-zinc-100 dark:bg-[#10050c] border border-zinc-200 dark:border-[#290a1c] flex flex-col sm:flex-row items-center justify-between gap-6 font-sans">
           <div className="space-y-1 text-center sm:text-left">
             <h3 className="text-base font-bold text-zinc-900 dark:text-white flex items-center gap-2 justify-center sm:justify-start">
               <Sparkles className="w-4 h-4 text-red-500" />

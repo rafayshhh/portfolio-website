@@ -12,6 +12,7 @@ import {
   Zap, 
   ShieldCheck, 
   ArrowUpRight,
+  ArrowRight,
   ExternalLink,
   Globe
 } from "lucide-react";
@@ -30,7 +31,7 @@ export default function AppsPage() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         {/* Kreate Brand Header */}
-        <div className="space-y-4 font-kreate">
+        <div className="space-y-4 font-sans">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-100 dark:bg-cyan-950/70 border border-cyan-300 dark:border-cyan-500/40 text-cyan-800 dark:text-cyan-300 text-xs font-bold tracking-wider uppercase">
             <Zap className="w-3.5 h-3.5 text-cyan-500 animate-pulse" />
             <span>KreateKode Mobile Studio</span>
@@ -57,7 +58,7 @@ export default function AppsPage() {
         <div className="space-y-8">
           {ANDROID_APPS.map((app) => (
             <Card3DTilt key={app.id} maxTilt={4} glare={true} className="rounded-2xl">
-              <div className="p-6 sm:p-10 rounded-2xl bg-white dark:bg-gradient-to-br dark:from-[#05111d] dark:via-[#040c16] dark:to-[#03080e] border border-zinc-200 dark:border-cyan-500/30 hover:border-cyan-500/70 transition-all shadow-md dark:shadow-[0_10px_35px_rgba(0,240,255,0.1)] group font-kreate">
+              <div className="p-6 sm:p-10 rounded-2xl bg-white dark:bg-gradient-to-br dark:from-[#05111d] dark:via-[#040c16] dark:to-[#03080e] border border-zinc-200 dark:border-cyan-500/30 hover:border-cyan-500/70 transition-all shadow-md dark:shadow-[0_10px_35px_rgba(0,240,255,0.1)] group font-sans">
                 {/* App Top Meta */}
                 <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-zinc-100 dark:border-cyan-900/40">
                   <div className="flex items-center gap-3">
@@ -148,6 +149,14 @@ export default function AppsPage() {
                   </div>
 
                   <div className="flex flex-wrap items-center gap-2.5">
+                    <Link
+                      href={`/apps/${app.id}`}
+                      onClick={() => sound.playClick()}
+                      className="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-500 text-white dark:text-black dark:bg-cyan-400 dark:hover:bg-cyan-300 transition-all flex items-center gap-1.5 shadow-sm"
+                    >
+                      <span>App Landing Page &amp; Docs</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
                     {app.playStoreUrl && (
                       <a
                         href={app.playStoreUrl}
@@ -194,12 +203,12 @@ export default function AppsPage() {
         </div>
 
         {/* Kreate Custom Commission Card */}
-        <div className="p-8 rounded-2xl bg-zinc-100 dark:bg-gradient-to-r dark:from-[#061524] dark:to-[#030911] border border-zinc-200 dark:border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm dark:shadow-xl font-kreate">
+        <div className="p-8 rounded-2xl bg-zinc-100 dark:bg-gradient-to-r dark:from-[#061524] dark:to-[#030911] border border-zinc-200 dark:border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm dark:shadow-xl font-sans">
           <div className="space-y-1 text-center sm:text-left">
-            <h3 className="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2 justify-center sm:justify-start uppercase tracking-wide">
+            <h2 className="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2 justify-center sm:justify-start uppercase tracking-wide">
               <Zap className="w-4 h-4 text-cyan-500" />
               <span>Need a custom utility or offline native app?</span>
-            </h3>
+            </h2>
             <p className="text-xs sm:text-sm text-zinc-600 dark:text-cyan-200/70 font-sans font-light">
               Crafted under KreateKode with Flutter, Dart, Riverpod, and zero-telemetry performance focus.
             </p>

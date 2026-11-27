@@ -11,7 +11,7 @@ export default function NotFound() {
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-red-600/15 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-md w-full text-center space-y-6 relative z-10 p-8 rounded-2xl bg-[#0c0408] border border-[#230917] shadow-2xl font-mono">
+      <div className="max-w-md w-full text-center space-y-6 relative z-10 p-8 rounded-2xl bg-[#0c0408] border border-[#230917] shadow-2xl font-sans">
         <div className="w-16 h-16 rounded-2xl bg-red-600/15 border border-red-500/40 flex items-center justify-center mx-auto text-red-500 text-2xl font-black shadow-glow-sm">
           404
         </div>

@@ -10,7 +10,8 @@ import {
   Clock, 
   Check, 
   Eye, 
-  ShieldCheck 
+  ShieldCheck,
+  ArrowRight 
 } from "lucide-react";
 import Link from "next/link";
 import { sound } from "@/lib/sound";
@@ -50,16 +51,16 @@ export default function MinecraftResourcePacksPage() {
         <MinecraftNavTabs />
 
         {/* Coming Soon Notice Banner */}
-        <div className="p-8 rounded-2xl bg-gradient-to-r from-emerald-950/30 via-[#0a180e] to-[#040e07] border border-emerald-500/40 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm dark:shadow-[0_10px_35px_rgba(16,185,129,0.15)] font-minecraft">
+        <div className="p-8 rounded-2xl bg-emerald-50/90 dark:bg-gradient-to-r dark:from-emerald-950/30 dark:via-[#0a180e] dark:to-[#040e07] border border-emerald-200 dark:border-emerald-500/40 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm dark:shadow-[0_10px_35px_rgba(16,185,129,0.15)] font-minecraft">
           <div className="space-y-2 text-center sm:text-left">
-            <div className="inline-flex items-center gap-2 text-xs text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 text-xs text-amber-700 dark:text-amber-400 font-bold uppercase tracking-wider">
               <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
               <span>Packaging Status: Coming Soon</span>
             </div>
             <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
               Texture &amp; GUI Packs Dropping Soon
             </h2>
-            <p className="text-xs sm:text-sm text-zinc-600 dark:text-emerald-200/70 font-sans font-light max-w-xl">
+            <p className="text-xs sm:text-sm text-zinc-700 dark:text-emerald-200/80 font-sans font-light max-w-xl">
               Clean 16x16 pixel textures and dark mode container overhauls are being packaged for Vanilla, OptiFine, and Fabric sodium setups.
             </p>
           </div>
@@ -67,59 +68,88 @@ export default function MinecraftResourcePacksPage() {
           <Link
             href="/contact"
             onClick={() => sound.playClick()}
-            className="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all shrink-0"
+            className="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-700 hover:bg-emerald-600 text-white shadow-sm transition-all shrink-0"
           >
             Request a Feature &rarr;
           </Link>
         </div>
 
         {/* Resource Packs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {MINECRAFT_RESOURCE_PACKS.map((pack) => (
-            <Card3DTilt key={pack.id} maxTilt={5} glare={true} className="rounded-2xl">
-              <div className="h-full p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0a180e] border border-zinc-200 dark:border-emerald-500/30 hover:border-emerald-500/70 transition-all shadow-sm dark:shadow-[0_10px_30px_rgba(16,185,129,0.1)] flex flex-col justify-between group font-minecraft">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700/40 font-bold">
-                      {pack.status}
-                    </span>
-                    <span className="text-xs text-zinc-500 dark:text-emerald-400/80 font-mono">
-                      16×16 Vanilla Native
-                    </span>
+        {MINECRAFT_RESOURCE_PACKS.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {MINECRAFT_RESOURCE_PACKS.map((pack) => (
+              <Card3DTilt key={pack.id} maxTilt={5} glare={true} className="rounded-2xl">
+                <div className="h-full p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0a180e] border border-zinc-200 dark:border-emerald-500/30 hover:border-emerald-500/70 transition-all shadow-sm dark:shadow-[0_10px_30px_rgba(16,185,129,0.1)] flex flex-col justify-between group font-minecraft">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700/40 font-bold">
+                        {pack.status}
+                      </span>
+                      <span className="text-xs text-zinc-500 dark:text-emerald-400/80 font-mono">
+                        16×16 Vanilla Native
+                      </span>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                        {pack.title}
+                      </h2>
+                      <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">
+                        {pack.tagline}
+                      </p>
+                      <p className="text-xs text-zinc-600 dark:text-zinc-300 mt-3 font-sans font-light leading-relaxed">
+                        {pack.description}
+                      </p>
+                    </div>
+
+                    {/* Features list */}
+                    <div className="space-y-2 pt-3 border-t border-zinc-100 dark:border-emerald-900/40">
+                      {pack.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs text-zinc-600 dark:text-zinc-300 font-sans font-light">
+                          <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  <div>
-                    <h2 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                      {pack.title}
-                    </h2>
-                    <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">
-                      {pack.tagline}
-                    </p>
-                    <p className="text-xs text-zinc-600 dark:text-zinc-300 mt-3 font-sans font-light leading-relaxed">
-                      {pack.description}
-                    </p>
-                  </div>
-
-                  {/* Features list */}
-                  <div className="space-y-2 pt-3 border-t border-zinc-100 dark:border-emerald-900/40">
-                    {pack.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-zinc-600 dark:text-zinc-300 font-sans font-light">
-                        <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
+                  <div className="pt-6 mt-6 border-t border-zinc-100 dark:border-emerald-900/40 flex flex-wrap items-center justify-between gap-3 font-mono">
+                    <Link
+                      href={`/minecraft/resource-packs/${pack.id}`}
+                      onClick={() => sound.playClick()}
+                      className="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-700 hover:bg-emerald-600 text-white shadow-sm transition-all flex items-center gap-1.5"
+                    >
+                      <span>View Pack Details &amp; Visuals</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <span className="text-xs text-zinc-500 dark:text-emerald-400/70">
+                      Publishing to Modrinth &amp; CurseForge
+                    </span>
                   </div>
                 </div>
-
-                <div className="pt-6 mt-6 border-t border-zinc-100 dark:border-emerald-900/40 font-mono">
-                  <span className="text-xs text-zinc-500 dark:text-emerald-400/70">
-                    Releases will be published to Modrinth and CurseForge.
-                  </span>
-                </div>
-              </div>
-            </Card3DTilt>
-          ))}
-        </div>
+              </Card3DTilt>
+            ))}
+          </div>
+        ) : (
+          <div className="p-8 rounded-2xl bg-white dark:bg-[#0a180e] border border-zinc-200 dark:border-emerald-500/30 text-center font-minecraft space-y-3">
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
+              Texture &amp; GUI Resource Packs in Private Testing
+            </h3>
+            <p className="text-xs sm:text-sm text-zinc-600 dark:text-emerald-200/70 font-sans font-light max-w-xl mx-auto">
+              Custom GUI overhauls and texture packs are currently undergoing compatibility verification. In the meantime, explore our 5 client-side Fabric utility mods.
+            </p>
+            <div className="pt-2">
+              <Link
+                href="/minecraft/mods"
+                onClick={() => sound.playClick()}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-700 hover:bg-emerald-600 text-white shadow-sm transition-all"
+              >
+                <span>Browse 5 Active Fabric Mods</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

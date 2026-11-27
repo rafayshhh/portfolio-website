@@ -4,28 +4,23 @@ import { SOFTWARE_PROJECTS } from "@/data/projects";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Code2 } from "lucide-react";
 import { ProjectsClientList } from "@/components/sections/ProjectsClientList";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Software & Web Projects — RafayShhh",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Software & Web Projects",
   description:
-    "Explore full-stack web platforms, developer CLI utilities, and open-source software engineered by RafayShhh.",
+    "Explore BlogForge Studio, P-Pointer AI desktop agent, and open-source Next.js, TypeScript, and Python platforms engineered by RafayShhh.",
+  path: "/projects",
   keywords: [
-    "Full stack projects",
-    "developer CLI",
     "RafayShhh projects",
+    "BlogForge Studio",
+    "P-Pointer AI",
     "Next.js portfolio",
-    "software engineer projects",
+    "Python PySide6 desktop app",
+    "Full stack projects",
   ],
-  alternates: {
-    canonical: "/projects",
-  },
-  openGraph: {
-    title: "Software & Web Projects — RafayShhh",
-    description:
-      "Explore full-stack web platforms, developer CLI utilities, and open-source software engineered by RafayShhh.",
-    url: "/projects",
-  },
-};
+  imageAlt: "Software & Web Projects — RafayShhh",
+});
 
 export default function ProjectsPage() {
   return (
@@ -38,11 +33,11 @@ export default function ProjectsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         {/* Header */}
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-600/15 border border-red-300 dark:border-red-500/30 text-red-700 dark:text-red-400 text-xs font-mono mb-4 font-bold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-600/15 border border-red-300 dark:border-red-500/30 text-red-700 dark:text-red-400 text-xs font-sans mb-4 font-bold">
             <Code2 className="w-3.5 h-3.5" />
             <span>Software & Web Engineering</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-black text-zinc-900 dark:text-white tracking-tight font-mono">
+          <h1 className="text-4xl sm:text-5xl font-black text-zinc-900 dark:text-white tracking-tight font-sans">
             ENGINEERING & TOOLS
           </h1>
           <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 mt-4 leading-relaxed font-light">

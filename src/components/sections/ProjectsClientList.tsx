@@ -3,13 +3,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Project } from "@/data/projects";
+import Link from "next/link";
 import { 
   ExternalLink, 
   Check, 
   Code2, 
   Layers, 
   Terminal,
-  Cpu
+  Cpu,
+  ArrowRight
 } from "lucide-react";
 import { GithubIcon } from "@/components/icons/BrandIcons";
 import { Card3DTilt } from "@/components/3d/Card3DTilt";
@@ -30,7 +32,7 @@ export function ProjectsClientList({ projects }: ProjectsClientListProps) {
   });
 
   return (
-    <div className="space-y-8 font-mono">
+    <div className="space-y-8 font-sans">
       {/* Category filter tabs */}
       <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-xl bg-zinc-100 dark:bg-[#0c0408] border border-zinc-200 dark:border-[#230917] w-fit">
         {CATEGORIES.map((cat) => (
@@ -80,9 +82,9 @@ export function ProjectsClientList({ projects }: ProjectsClientListProps) {
                       />
                     </div>
                   )}
-                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-300 transition-colors">
+                  <h2 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-300 transition-colors">
                     {project.title}
-                  </h3>
+                  </h2>
                   <p className="text-xs text-red-600 dark:text-red-400 font-semibold mt-1">
                     {project.tagline}
                   </p>
@@ -118,13 +120,21 @@ export function ProjectsClientList({ projects }: ProjectsClientListProps) {
 
               {/* Actions */}
               <div className="pt-6 mt-6 border-t border-zinc-100 dark:border-[#1c0713] flex flex-wrap items-center gap-3">
+                <Link
+                  href={`/projects/${project.id}`}
+                  onClick={() => sound.playClick()}
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white shadow-sm transition-all flex items-center gap-1.5"
+                >
+                  <span>Project Landing Page &amp; Docs</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
                 {project.demoUrl && (
                   <a
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => sound.playClick()}
-                    className="px-4 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-500 text-white shadow-sm transition-all flex items-center gap-1.5"
+                    className="px-3.5 py-2 rounded-xl text-xs font-medium text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-[#16060e] hover:bg-zinc-200 dark:hover:bg-[#200816] transition-all flex items-center gap-1.5"
                   >
                     <span>Live Preview</span>
                     <ExternalLink className="w-3 h-3" />
@@ -139,7 +149,7 @@ export function ProjectsClientList({ projects }: ProjectsClientListProps) {
                     className="px-3.5 py-2 rounded-xl text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-[#16060e] transition-colors flex items-center gap-1.5"
                   >
                     <GithubIcon className="w-3.5 h-3.5" />
-                    <span>GitHub Repository</span>
+                    <span>Source</span>
                   </a>
                 )}
               </div>

@@ -22,7 +22,7 @@ import { sound } from "@/lib/sound";
 const NAV_ITEMS = [
   { name: "Overview", href: "/" },
   { name: "Experience", href: "/experience", icon: Briefcase },
-  { name: "Minecraft", href: "/minecraft", icon: Gamepad2, badge: "3 Branches" },
+  { name: "Minecraft", href: "/minecraft", icon: Gamepad2, badge: "5 Mods" },
   { name: "Android", href: "/apps", icon: Smartphone, badge: "Kreate", electric: true },
   { name: "Projects", href: "/projects", icon: Code2 },
   { name: "Contact", href: "/contact", icon: Mail },
@@ -71,7 +71,7 @@ export function Navbar() {
                 className="object-cover group-hover:scale-110 transition-transform duration-300"
               />
             </div>
-            <div className="font-mono text-left">
+            <div className="font-sans text-left">
               <div className="text-sm font-black tracking-tight text-zinc-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors flex items-center gap-1.5">
                 <span>{PERSONAL_INFO.name}</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-red-500 inline-block animate-pulse" />
@@ -83,7 +83,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-zinc-100 dark:bg-[#12050c] p-1.5 rounded-xl border border-zinc-200 dark:border-[#2b0c1c] font-mono text-xs">
+          <nav className="hidden md:flex items-center gap-1 bg-zinc-100 dark:bg-[#12050c] p-1.5 rounded-xl border border-zinc-200 dark:border-[#2b0c1c] font-sans text-xs">
             {NAV_ITEMS.map((item) => {
               const isActive = item.href === "/" ? pathname === "/" : pathname?.startsWith(item.href);
               const Icon = item.icon;
@@ -137,7 +137,7 @@ export function Navbar() {
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="hidden md:flex items-center gap-2.5 font-mono">
+          <div className="hidden md:flex items-center gap-2.5 font-sans">
             <ThemeToggle />
 
             <a
@@ -163,7 +163,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile Actions & Menu Toggle */}
-          <div className="flex md:hidden items-center gap-2 font-mono">
+          <div className="flex md:hidden items-center gap-2 font-sans">
             <ThemeToggle />
             <a
               href={PERSONAL_INFO.discordInvite}
@@ -191,7 +191,7 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden bg-white/98 dark:bg-[#0c0408]/98 border-b border-zinc-200 dark:border-[#250817] backdrop-blur-xl px-4 pt-3 pb-6 space-y-2 animate-in fade-in slide-in-from-top-4 duration-200 font-mono shadow-lg">
+        <div className="md:hidden bg-white/98 dark:bg-[#0c0408]/98 border-b border-zinc-200 dark:border-[#250817] backdrop-blur-xl px-4 pt-3 pb-6 space-y-2 animate-in fade-in slide-in-from-top-4 duration-200 font-sans shadow-lg">
           {NAV_ITEMS.map((item) => {
             const isActive = item.href === "/" ? pathname === "/" : pathname?.startsWith(item.href);
             const Icon = item.icon;
